@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmRoleUserMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    <id column="ROLEUSERID" jdbcType="VARCHAR" property="roleuserid" />
+    <result column="ROLEUSERAUTHTIME" jdbcType="VARCHAR" property="roleuserauthtime" />
+    <result column="ROLEUSERCREATORID" jdbcType="VARCHAR" property="roleusercreatorid" />
+    <result column="ROLEUSERCREATETIME" jdbcType="VARCHAR" property="roleusercreatetime" />
+    <result column="ROLEUSERMODIFIERID" jdbcType="VARCHAR" property="roleusermodifierid" />
+    <result column="ROLEUSERMODIFYTIME" jdbcType="VARCHAR" property="roleusermodifytime" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="ROLEID" jdbcType="VARCHAR" property="roleid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
+    ROLEUSERMODIFYTIME, USERID, ROLEID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMROLEUSER
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMROLEUSER
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample">
+    delete from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    insert into FRMROLEUSER (ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, 
+      ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
+      ROLEUSERMODIFYTIME, USERID, ROLEID
+      )
+    values (#{roleuserid,jdbcType=VARCHAR}, #{roleuserauthtime,jdbcType=VARCHAR}, #{roleusercreatorid,jdbcType=VARCHAR}, 
+      #{roleusercreatetime,jdbcType=VARCHAR}, #{roleusermodifierid,jdbcType=VARCHAR}, 
+      #{roleusermodifytime,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    insert into FRMROLEUSER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleuserid != null">
+        ROLEUSERID,
+      </if>
+      <if test="roleuserauthtime != null">
+        ROLEUSERAUTHTIME,
+      </if>
+      <if test="roleusercreatorid != null">
+        ROLEUSERCREATORID,
+      </if>
+      <if test="roleusercreatetime != null">
+        ROLEUSERCREATETIME,
+      </if>
+      <if test="roleusermodifierid != null">
+        ROLEUSERMODIFIERID,
+      </if>
+      <if test="roleusermodifytime != null">
+        ROLEUSERMODIFYTIME,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="roleid != null">
+        ROLEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleuserid != null">
+        #{roleuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleuserauthtime != null">
+        #{roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatorid != null">
+        #{roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatetime != null">
+        #{roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifierid != null">
+        #{roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifytime != null">
+        #{roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultType="java.lang.Integer">
+    select count(*) from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMROLEUSER
+    <set>
+      <if test="record.roleuserid != null">
+        ROLEUSERID = #{record.roleuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleuserauthtime != null">
+        ROLEUSERAUTHTIME = #{record.roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusercreatorid != null">
+        ROLEUSERCREATORID = #{record.roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusercreatetime != null">
+        ROLEUSERCREATETIME = #{record.roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusermodifierid != null">
+        ROLEUSERMODIFIERID = #{record.roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusermodifytime != null">
+        ROLEUSERMODIFYTIME = #{record.roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleid != null">
+        ROLEID = #{record.roleid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMROLEUSER
+    set ROLEUSERID = #{record.roleuserid,jdbcType=VARCHAR},
+      ROLEUSERAUTHTIME = #{record.roleuserauthtime,jdbcType=VARCHAR},
+      ROLEUSERCREATORID = #{record.roleusercreatorid,jdbcType=VARCHAR},
+      ROLEUSERCREATETIME = #{record.roleusercreatetime,jdbcType=VARCHAR},
+      ROLEUSERMODIFIERID = #{record.roleusermodifierid,jdbcType=VARCHAR},
+      ROLEUSERMODIFYTIME = #{record.roleusermodifytime,jdbcType=VARCHAR},
+      USERID = #{record.userid,jdbcType=VARCHAR},
+      ROLEID = #{record.roleid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    update FRMROLEUSER
+    <set>
+      <if test="roleuserauthtime != null">
+        ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatorid != null">
+        ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatetime != null">
+        ROLEUSERCREATETIME = #{roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifierid != null">
+        ROLEUSERMODIFIERID = #{roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifytime != null">
+        ROLEUSERMODIFYTIME = #{roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null">
+        ROLEID = #{roleid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    update FRMROLEUSER
+    set ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
+      ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
+      ROLEUSERCREATETIME = #{roleusercreatetime,jdbcType=VARCHAR},
+      ROLEUSERMODIFIERID = #{roleusermodifierid,jdbcType=VARCHAR},
+      ROLEUSERMODIFYTIME = #{roleusermodifytime,jdbcType=VARCHAR},
+      USERID = #{userid,jdbcType=VARCHAR},
+      ROLEID = #{roleid,jdbcType=VARCHAR}
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    <id column="ROLEUSERID" jdbcType="VARCHAR" property="roleuserid" />
+    <result column="ROLEUSERAUTHTIME" jdbcType="VARCHAR" property="roleuserauthtime" />
+    <result column="ROLEUSERCREATORID" jdbcType="VARCHAR" property="roleusercreatorid" />
+    <result column="ROLEUSERCREATETIME" jdbcType="VARCHAR" property="roleusercreatetime" />
+    <result column="ROLEUSERMODIFIERID" jdbcType="VARCHAR" property="roleusermodifierid" />
+    <result column="ROLEUSERMODIFYTIME" jdbcType="VARCHAR" property="roleusermodifytime" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="ROLEID" jdbcType="VARCHAR" property="roleid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
+    ROLEUSERMODIFYTIME, USERID, ROLEID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMROLEUSER
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMROLEUSER
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample">
+    delete from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    insert into FRMROLEUSER (ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, 
+      ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
+      ROLEUSERMODIFYTIME, USERID, ROLEID
+      )
+    values (#{roleuserid,jdbcType=VARCHAR}, #{roleuserauthtime,jdbcType=VARCHAR}, #{roleusercreatorid,jdbcType=VARCHAR}, 
+      #{roleusercreatetime,jdbcType=VARCHAR}, #{roleusermodifierid,jdbcType=VARCHAR}, 
+      #{roleusermodifytime,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    insert into FRMROLEUSER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleuserid != null">
+        ROLEUSERID,
+      </if>
+      <if test="roleuserauthtime != null">
+        ROLEUSERAUTHTIME,
+      </if>
+      <if test="roleusercreatorid != null">
+        ROLEUSERCREATORID,
+      </if>
+      <if test="roleusercreatetime != null">
+        ROLEUSERCREATETIME,
+      </if>
+      <if test="roleusermodifierid != null">
+        ROLEUSERMODIFIERID,
+      </if>
+      <if test="roleusermodifytime != null">
+        ROLEUSERMODIFYTIME,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="roleid != null">
+        ROLEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleuserid != null">
+        #{roleuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleuserauthtime != null">
+        #{roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatorid != null">
+        #{roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatetime != null">
+        #{roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifierid != null">
+        #{roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifytime != null">
+        #{roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultType="java.lang.Integer">
+    select count(*) from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMROLEUSER
+    <set>
+      <if test="record.roleuserid != null">
+        ROLEUSERID = #{record.roleuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleuserauthtime != null">
+        ROLEUSERAUTHTIME = #{record.roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusercreatorid != null">
+        ROLEUSERCREATORID = #{record.roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusercreatetime != null">
+        ROLEUSERCREATETIME = #{record.roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusermodifierid != null">
+        ROLEUSERMODIFIERID = #{record.roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusermodifytime != null">
+        ROLEUSERMODIFYTIME = #{record.roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleid != null">
+        ROLEID = #{record.roleid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMROLEUSER
+    set ROLEUSERID = #{record.roleuserid,jdbcType=VARCHAR},
+      ROLEUSERAUTHTIME = #{record.roleuserauthtime,jdbcType=VARCHAR},
+      ROLEUSERCREATORID = #{record.roleusercreatorid,jdbcType=VARCHAR},
+      ROLEUSERCREATETIME = #{record.roleusercreatetime,jdbcType=VARCHAR},
+      ROLEUSERMODIFIERID = #{record.roleusermodifierid,jdbcType=VARCHAR},
+      ROLEUSERMODIFYTIME = #{record.roleusermodifytime,jdbcType=VARCHAR},
+      USERID = #{record.userid,jdbcType=VARCHAR},
+      ROLEID = #{record.roleid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    update FRMROLEUSER
+    <set>
+      <if test="roleuserauthtime != null">
+        ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatorid != null">
+        ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatetime != null">
+        ROLEUSERCREATETIME = #{roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifierid != null">
+        ROLEUSERMODIFIERID = #{roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifytime != null">
+        ROLEUSERMODIFYTIME = #{roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null">
+        ROLEID = #{roleid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    update FRMROLEUSER
+    set ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
+      ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
+      ROLEUSERCREATETIME = #{roleusercreatetime,jdbcType=VARCHAR},
+      ROLEUSERMODIFIERID = #{roleusermodifierid,jdbcType=VARCHAR},
+      ROLEUSERMODIFYTIME = #{roleusermodifytime,jdbcType=VARCHAR},
+      USERID = #{userid,jdbcType=VARCHAR},
+      ROLEID = #{roleid,jdbcType=VARCHAR}
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    <id column="ROLEUSERID" jdbcType="VARCHAR" property="roleuserid" />
+    <result column="ROLEUSERAUTHTIME" jdbcType="VARCHAR" property="roleuserauthtime" />
+    <result column="ROLEUSERCREATORID" jdbcType="VARCHAR" property="roleusercreatorid" />
+    <result column="ROLEUSERCREATETIME" jdbcType="VARCHAR" property="roleusercreatetime" />
+    <result column="ROLEUSERMODIFIERID" jdbcType="VARCHAR" property="roleusermodifierid" />
+    <result column="ROLEUSERMODIFYTIME" jdbcType="VARCHAR" property="roleusermodifytime" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="ROLEID" jdbcType="VARCHAR" property="roleid" />
+    <result column="PAGEID" jdbcType="DECIMAL" property="pageid" />
+    <result column="SYSID" jdbcType="VARCHAR" property="sysid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
+    ROLEUSERMODIFYTIME, USERID, ROLEID, PAGEID, SYSID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMROLEUSER
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMROLEUSER
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample">
+    delete from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    insert into FRMROLEUSER (ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, 
+      ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
+      ROLEUSERMODIFYTIME, USERID, ROLEID, 
+      PAGEID, SYSID)
+    values (#{roleuserid,jdbcType=VARCHAR}, #{roleuserauthtime,jdbcType=VARCHAR}, #{roleusercreatorid,jdbcType=VARCHAR}, 
+      #{roleusercreatetime,jdbcType=VARCHAR}, #{roleusermodifierid,jdbcType=VARCHAR}, 
+      #{roleusermodifytime,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}, 
+      #{pageid,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    insert into FRMROLEUSER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleuserid != null">
+        ROLEUSERID,
+      </if>
+      <if test="roleuserauthtime != null">
+        ROLEUSERAUTHTIME,
+      </if>
+      <if test="roleusercreatorid != null">
+        ROLEUSERCREATORID,
+      </if>
+      <if test="roleusercreatetime != null">
+        ROLEUSERCREATETIME,
+      </if>
+      <if test="roleusermodifierid != null">
+        ROLEUSERMODIFIERID,
+      </if>
+      <if test="roleusermodifytime != null">
+        ROLEUSERMODIFYTIME,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="roleid != null">
+        ROLEID,
+      </if>
+      <if test="pageid != null">
+        PAGEID,
+      </if>
+      <if test="sysid != null">
+        SYSID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleuserid != null">
+        #{roleuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleuserauthtime != null">
+        #{roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatorid != null">
+        #{roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatetime != null">
+        #{roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifierid != null">
+        #{roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifytime != null">
+        #{roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        #{sysid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultType="java.lang.Integer">
+    select count(*) from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMROLEUSER
+    <set>
+      <if test="record.roleuserid != null">
+        ROLEUSERID = #{record.roleuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleuserauthtime != null">
+        ROLEUSERAUTHTIME = #{record.roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusercreatorid != null">
+        ROLEUSERCREATORID = #{record.roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusercreatetime != null">
+        ROLEUSERCREATETIME = #{record.roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusermodifierid != null">
+        ROLEUSERMODIFIERID = #{record.roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusermodifytime != null">
+        ROLEUSERMODIFYTIME = #{record.roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleid != null">
+        ROLEID = #{record.roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pageid != null">
+        PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sysid != null">
+        SYSID = #{record.sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMROLEUSER
+    set ROLEUSERID = #{record.roleuserid,jdbcType=VARCHAR},
+      ROLEUSERAUTHTIME = #{record.roleuserauthtime,jdbcType=VARCHAR},
+      ROLEUSERCREATORID = #{record.roleusercreatorid,jdbcType=VARCHAR},
+      ROLEUSERCREATETIME = #{record.roleusercreatetime,jdbcType=VARCHAR},
+      ROLEUSERMODIFIERID = #{record.roleusermodifierid,jdbcType=VARCHAR},
+      ROLEUSERMODIFYTIME = #{record.roleusermodifytime,jdbcType=VARCHAR},
+      USERID = #{record.userid,jdbcType=VARCHAR},
+      ROLEID = #{record.roleid,jdbcType=VARCHAR},
+      PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      SYSID = #{record.sysid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    update FRMROLEUSER
+    <set>
+      <if test="roleuserauthtime != null">
+        ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatorid != null">
+        ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatetime != null">
+        ROLEUSERCREATETIME = #{roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifierid != null">
+        ROLEUSERMODIFIERID = #{roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifytime != null">
+        ROLEUSERMODIFYTIME = #{roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null">
+        ROLEID = #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        PAGEID = #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        SYSID = #{sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    update FRMROLEUSER
+    set ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
+      ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
+      ROLEUSERCREATETIME = #{roleusercreatetime,jdbcType=VARCHAR},
+      ROLEUSERMODIFIERID = #{roleusermodifierid,jdbcType=VARCHAR},
+      ROLEUSERMODIFYTIME = #{roleusermodifytime,jdbcType=VARCHAR},
+      USERID = #{userid,jdbcType=VARCHAR},
+      ROLEID = #{roleid,jdbcType=VARCHAR},
+      PAGEID = #{pageid,jdbcType=DECIMAL},
+      SYSID = #{sysid,jdbcType=VARCHAR}
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    <id column="ROLEUSERID" jdbcType="VARCHAR" property="roleuserid" />
+    <result column="ROLEUSERAUTHTIME" jdbcType="VARCHAR" property="roleuserauthtime" />
+    <result column="ROLEUSERCREATORID" jdbcType="VARCHAR" property="roleusercreatorid" />
+    <result column="ROLEUSERCREATETIME" jdbcType="VARCHAR" property="roleusercreatetime" />
+    <result column="ROLEUSERMODIFIERID" jdbcType="VARCHAR" property="roleusermodifierid" />
+    <result column="ROLEUSERMODIFYTIME" jdbcType="VARCHAR" property="roleusermodifytime" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="ROLEID" jdbcType="VARCHAR" property="roleid" />
+    <result column="PAGEID" jdbcType="DECIMAL" property="pageid" />
+    <result column="SYSID" jdbcType="VARCHAR" property="sysid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
+    ROLEUSERMODIFYTIME, USERID, ROLEID, PAGEID, SYSID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMROLEUSER
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMROLEUSER
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample">
+    delete from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    insert into FRMROLEUSER (ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, 
+      ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
+      ROLEUSERMODIFYTIME, USERID, ROLEID, 
+      PAGEID, SYSID)
+    values (#{roleuserid,jdbcType=VARCHAR}, #{roleuserauthtime,jdbcType=VARCHAR}, #{roleusercreatorid,jdbcType=VARCHAR}, 
+      #{roleusercreatetime,jdbcType=VARCHAR}, #{roleusermodifierid,jdbcType=VARCHAR}, 
+      #{roleusermodifytime,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}, 
+      #{pageid,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    insert into FRMROLEUSER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleuserid != null">
+        ROLEUSERID,
+      </if>
+      <if test="roleuserauthtime != null">
+        ROLEUSERAUTHTIME,
+      </if>
+      <if test="roleusercreatorid != null">
+        ROLEUSERCREATORID,
+      </if>
+      <if test="roleusercreatetime != null">
+        ROLEUSERCREATETIME,
+      </if>
+      <if test="roleusermodifierid != null">
+        ROLEUSERMODIFIERID,
+      </if>
+      <if test="roleusermodifytime != null">
+        ROLEUSERMODIFYTIME,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="roleid != null">
+        ROLEID,
+      </if>
+      <if test="pageid != null">
+        PAGEID,
+      </if>
+      <if test="sysid != null">
+        SYSID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleuserid != null">
+        #{roleuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleuserauthtime != null">
+        #{roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatorid != null">
+        #{roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatetime != null">
+        #{roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifierid != null">
+        #{roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifytime != null">
+        #{roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        #{sysid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultType="java.lang.Integer">
+    select count(*) from FRMROLEUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMROLEUSER
+    <set>
+      <if test="record.roleuserid != null">
+        ROLEUSERID = #{record.roleuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleuserauthtime != null">
+        ROLEUSERAUTHTIME = #{record.roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusercreatorid != null">
+        ROLEUSERCREATORID = #{record.roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusercreatetime != null">
+        ROLEUSERCREATETIME = #{record.roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusermodifierid != null">
+        ROLEUSERMODIFIERID = #{record.roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleusermodifytime != null">
+        ROLEUSERMODIFYTIME = #{record.roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleid != null">
+        ROLEID = #{record.roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pageid != null">
+        PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sysid != null">
+        SYSID = #{record.sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMROLEUSER
+    set ROLEUSERID = #{record.roleuserid,jdbcType=VARCHAR},
+      ROLEUSERAUTHTIME = #{record.roleuserauthtime,jdbcType=VARCHAR},
+      ROLEUSERCREATORID = #{record.roleusercreatorid,jdbcType=VARCHAR},
+      ROLEUSERCREATETIME = #{record.roleusercreatetime,jdbcType=VARCHAR},
+      ROLEUSERMODIFIERID = #{record.roleusermodifierid,jdbcType=VARCHAR},
+      ROLEUSERMODIFYTIME = #{record.roleusermodifytime,jdbcType=VARCHAR},
+      USERID = #{record.userid,jdbcType=VARCHAR},
+      ROLEID = #{record.roleid,jdbcType=VARCHAR},
+      PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      SYSID = #{record.sysid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    update FRMROLEUSER
+    <set>
+      <if test="roleuserauthtime != null">
+        ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatorid != null">
+        ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusercreatetime != null">
+        ROLEUSERCREATETIME = #{roleusercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifierid != null">
+        ROLEUSERMODIFIERID = #{roleusermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleusermodifytime != null">
+        ROLEUSERMODIFYTIME = #{roleusermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null">
+        ROLEID = #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        PAGEID = #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        SYSID = #{sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+    update FRMROLEUSER
+    set ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
+      ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
+      ROLEUSERCREATETIME = #{roleusercreatetime,jdbcType=VARCHAR},
+      ROLEUSERMODIFIERID = #{roleusermodifierid,jdbcType=VARCHAR},
+      ROLEUSERMODIFYTIME = #{roleusermodifytime,jdbcType=VARCHAR},
+      USERID = #{userid,jdbcType=VARCHAR},
+      ROLEID = #{roleid,jdbcType=VARCHAR},
+      PAGEID = #{pageid,jdbcType=DECIMAL},
+      SYSID = #{sysid,jdbcType=VARCHAR}
+    where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
+  </update>
+</mapper>

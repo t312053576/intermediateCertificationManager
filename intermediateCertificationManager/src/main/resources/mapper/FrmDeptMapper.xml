@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmDeptMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmDept" >
+    <id column="XX0301ID" property="xx0301id" jdbcType="VARCHAR" />
+    <result column="DWH" property="dwh" jdbcType="VARCHAR" />
+    <result column="DWMC" property="dwmc" jdbcType="VARCHAR" />
+    <result column="DWJC" property="dwjc" jdbcType="VARCHAR" />
+    <result column="DWDZ" property="dwdz" jdbcType="VARCHAR" />
+    <result column="LSDWH" property="lsdwh" jdbcType="VARCHAR" />
+    <result column="JLNY" property="jlny" jdbcType="VARCHAR" />
+    <result column="BZ" property="bz" jdbcType="VARCHAR" />
+    <result column="CJR" property="cjr" jdbcType="VARCHAR" />
+    <result column="CJSJ" property="cjsj" jdbcType="VARCHAR" />
+    <result column="XGR" property="xgr" jdbcType="VARCHAR" />
+    <result column="XGSJ" property="xgsj" jdbcType="VARCHAR" />
+    <result column="YLZD" property="ylzd" jdbcType="VARCHAR" />
+    <result column="ISDEL" property="isdel" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    XX0301ID, DWH, DWMC, DWJC, DWDZ, LSDWH, JLNY, BZ, CJR, CJSJ, XGR, XGSJ, YLZD, ISDEL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDeptExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMDEPT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from FRMDEPT
+    where XX0301ID = #{xx0301id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from FRMDEPT
+    where XX0301ID = #{xx0301id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDeptExample" >
+    delete from FRMDEPT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDept" >
+    insert into FRMDEPT (XX0301ID, DWH, DWMC, 
+      DWJC, DWDZ, LSDWH, 
+      JLNY, BZ, CJR, CJSJ, 
+      XGR, XGSJ, YLZD, ISDEL
+      )
+    values (#{xx0301id,jdbcType=VARCHAR}, #{dwh,jdbcType=VARCHAR}, #{dwmc,jdbcType=VARCHAR}, 
+      #{dwjc,jdbcType=VARCHAR}, #{dwdz,jdbcType=VARCHAR}, #{lsdwh,jdbcType=VARCHAR}, 
+      #{jlny,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR}, #{cjr,jdbcType=VARCHAR}, #{cjsj,jdbcType=VARCHAR}, 
+      #{xgr,jdbcType=VARCHAR}, #{xgsj,jdbcType=VARCHAR}, #{ylzd,jdbcType=VARCHAR}, #{isdel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDept" >
+    insert into FRMDEPT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xx0301id != null" >
+        XX0301ID,
+      </if>
+      <if test="dwh != null" >
+        DWH,
+      </if>
+      <if test="dwmc != null" >
+        DWMC,
+      </if>
+      <if test="dwjc != null" >
+        DWJC,
+      </if>
+      <if test="dwdz != null" >
+        DWDZ,
+      </if>
+      <if test="lsdwh != null" >
+        LSDWH,
+      </if>
+      <if test="jlny != null" >
+        JLNY,
+      </if>
+      <if test="bz != null" >
+        BZ,
+      </if>
+      <if test="cjr != null" >
+        CJR,
+      </if>
+      <if test="cjsj != null" >
+        CJSJ,
+      </if>
+      <if test="xgr != null" >
+        XGR,
+      </if>
+      <if test="xgsj != null" >
+        XGSJ,
+      </if>
+      <if test="ylzd != null" >
+        YLZD,
+      </if>
+      <if test="isdel != null" >
+        ISDEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xx0301id != null" >
+        #{xx0301id,jdbcType=VARCHAR},
+      </if>
+      <if test="dwh != null" >
+        #{dwh,jdbcType=VARCHAR},
+      </if>
+      <if test="dwmc != null" >
+        #{dwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="dwjc != null" >
+        #{dwjc,jdbcType=VARCHAR},
+      </if>
+      <if test="dwdz != null" >
+        #{dwdz,jdbcType=VARCHAR},
+      </if>
+      <if test="lsdwh != null" >
+        #{lsdwh,jdbcType=VARCHAR},
+      </if>
+      <if test="jlny != null" >
+        #{jlny,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null" >
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="cjr != null" >
+        #{cjr,jdbcType=VARCHAR},
+      </if>
+      <if test="cjsj != null" >
+        #{cjsj,jdbcType=VARCHAR},
+      </if>
+      <if test="xgr != null" >
+        #{xgr,jdbcType=VARCHAR},
+      </if>
+      <if test="xgsj != null" >
+        #{xgsj,jdbcType=VARCHAR},
+      </if>
+      <if test="ylzd != null" >
+        #{ylzd,jdbcType=VARCHAR},
+      </if>
+      <if test="isdel != null" >
+        #{isdel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDeptExample" resultType="java.lang.Integer" >
+    select count(*) from FRMDEPT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update FRMDEPT
+    <set >
+      <if test="record.xx0301id != null" >
+        XX0301ID = #{record.xx0301id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dwh != null" >
+        DWH = #{record.dwh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dwmc != null" >
+        DWMC = #{record.dwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dwjc != null" >
+        DWJC = #{record.dwjc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dwdz != null" >
+        DWDZ = #{record.dwdz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lsdwh != null" >
+        LSDWH = #{record.lsdwh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jlny != null" >
+        JLNY = #{record.jlny,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz != null" >
+        BZ = #{record.bz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cjr != null" >
+        CJR = #{record.cjr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cjsj != null" >
+        CJSJ = #{record.cjsj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xgr != null" >
+        XGR = #{record.xgr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xgsj != null" >
+        XGSJ = #{record.xgsj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ylzd != null" >
+        YLZD = #{record.ylzd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdel != null" >
+        ISDEL = #{record.isdel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update FRMDEPT
+    set XX0301ID = #{record.xx0301id,jdbcType=VARCHAR},
+      DWH = #{record.dwh,jdbcType=VARCHAR},
+      DWMC = #{record.dwmc,jdbcType=VARCHAR},
+      DWJC = #{record.dwjc,jdbcType=VARCHAR},
+      DWDZ = #{record.dwdz,jdbcType=VARCHAR},
+      LSDWH = #{record.lsdwh,jdbcType=VARCHAR},
+      JLNY = #{record.jlny,jdbcType=VARCHAR},
+      BZ = #{record.bz,jdbcType=VARCHAR},
+      CJR = #{record.cjr,jdbcType=VARCHAR},
+      CJSJ = #{record.cjsj,jdbcType=VARCHAR},
+      XGR = #{record.xgr,jdbcType=VARCHAR},
+      XGSJ = #{record.xgsj,jdbcType=VARCHAR},
+      YLZD = #{record.ylzd,jdbcType=VARCHAR},
+      ISDEL = #{record.isdel,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDept" >
+    update FRMDEPT
+    <set >
+      <if test="dwh != null" >
+        DWH = #{dwh,jdbcType=VARCHAR},
+      </if>
+      <if test="dwmc != null" >
+        DWMC = #{dwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="dwjc != null" >
+        DWJC = #{dwjc,jdbcType=VARCHAR},
+      </if>
+      <if test="dwdz != null" >
+        DWDZ = #{dwdz,jdbcType=VARCHAR},
+      </if>
+      <if test="lsdwh != null" >
+        LSDWH = #{lsdwh,jdbcType=VARCHAR},
+      </if>
+      <if test="jlny != null" >
+        JLNY = #{jlny,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null" >
+        BZ = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="cjr != null" >
+        CJR = #{cjr,jdbcType=VARCHAR},
+      </if>
+      <if test="cjsj != null" >
+        CJSJ = #{cjsj,jdbcType=VARCHAR},
+      </if>
+      <if test="xgr != null" >
+        XGR = #{xgr,jdbcType=VARCHAR},
+      </if>
+      <if test="xgsj != null" >
+        XGSJ = #{xgsj,jdbcType=VARCHAR},
+      </if>
+      <if test="ylzd != null" >
+        YLZD = #{ylzd,jdbcType=VARCHAR},
+      </if>
+      <if test="isdel != null" >
+        ISDEL = #{isdel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where XX0301ID = #{xx0301id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDept" >
+    update FRMDEPT
+    set DWH = #{dwh,jdbcType=VARCHAR},
+      DWMC = #{dwmc,jdbcType=VARCHAR},
+      DWJC = #{dwjc,jdbcType=VARCHAR},
+      DWDZ = #{dwdz,jdbcType=VARCHAR},
+      LSDWH = #{lsdwh,jdbcType=VARCHAR},
+      JLNY = #{jlny,jdbcType=VARCHAR},
+      BZ = #{bz,jdbcType=VARCHAR},
+      CJR = #{cjr,jdbcType=VARCHAR},
+      CJSJ = #{cjsj,jdbcType=VARCHAR},
+      XGR = #{xgr,jdbcType=VARCHAR},
+      XGSJ = #{xgsj,jdbcType=VARCHAR},
+      YLZD = #{ylzd,jdbcType=VARCHAR},
+      ISDEL = #{isdel,jdbcType=VARCHAR}
+    where XX0301ID = #{xx0301id,jdbcType=VARCHAR}
+  </update>
+</mapper>

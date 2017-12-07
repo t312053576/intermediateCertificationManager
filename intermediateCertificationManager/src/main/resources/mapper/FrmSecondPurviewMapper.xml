@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmSecondPurviewMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurview">
+    <id column="SECONDPURVIEWID" jdbcType="VARCHAR" property="secondpurviewid" />
+    <result column="SOURCEUSERID" jdbcType="VARCHAR" property="sourceuserid" />
+    <result column="TARGETUSERID" jdbcType="VARCHAR" property="targetuserid" />
+    <result column="AUTHSTARTTIME" jdbcType="VARCHAR" property="authstarttime" />
+    <result column="AUTHENDTIME" jdbcType="VARCHAR" property="authendtime" />
+    <result column="TABLEPK" jdbcType="VARCHAR" property="tablepk" />
+    <result column="TABLEPKVALUE" jdbcType="VARCHAR" property="tablepkvalue" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    SECONDPURVIEWID, SOURCEUSERID, TARGETUSERID, AUTHSTARTTIME, AUTHENDTIME, TABLEPK, 
+    TABLEPKVALUE
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurviewExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMSECONDPURVIEW
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMSECONDPURVIEW
+    where SECONDPURVIEWID = #{secondpurviewid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMSECONDPURVIEW
+    where SECONDPURVIEWID = #{secondpurviewid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurviewExample">
+    delete from FRMSECONDPURVIEW
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurview">
+    insert into FRMSECONDPURVIEW (SECONDPURVIEWID, SOURCEUSERID, TARGETUSERID, 
+      AUTHSTARTTIME, AUTHENDTIME, TABLEPK, 
+      TABLEPKVALUE)
+    values (#{secondpurviewid,jdbcType=VARCHAR}, #{sourceuserid,jdbcType=VARCHAR}, #{targetuserid,jdbcType=VARCHAR}, 
+      #{authstarttime,jdbcType=VARCHAR}, #{authendtime,jdbcType=VARCHAR}, #{tablepk,jdbcType=VARCHAR}, 
+      #{tablepkvalue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurview">
+    insert into FRMSECONDPURVIEW
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="secondpurviewid != null">
+        SECONDPURVIEWID,
+      </if>
+      <if test="sourceuserid != null">
+        SOURCEUSERID,
+      </if>
+      <if test="targetuserid != null">
+        TARGETUSERID,
+      </if>
+      <if test="authstarttime != null">
+        AUTHSTARTTIME,
+      </if>
+      <if test="authendtime != null">
+        AUTHENDTIME,
+      </if>
+      <if test="tablepk != null">
+        TABLEPK,
+      </if>
+      <if test="tablepkvalue != null">
+        TABLEPKVALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="secondpurviewid != null">
+        #{secondpurviewid,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceuserid != null">
+        #{sourceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="targetuserid != null">
+        #{targetuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="authstarttime != null">
+        #{authstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="authendtime != null">
+        #{authendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="tablepk != null">
+        #{tablepk,jdbcType=VARCHAR},
+      </if>
+      <if test="tablepkvalue != null">
+        #{tablepkvalue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurviewExample" resultType="java.lang.Integer">
+    select count(*) from FRMSECONDPURVIEW
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMSECONDPURVIEW
+    <set>
+      <if test="record.secondpurviewid != null">
+        SECONDPURVIEWID = #{record.secondpurviewid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceuserid != null">
+        SOURCEUSERID = #{record.sourceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetuserid != null">
+        TARGETUSERID = #{record.targetuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authstarttime != null">
+        AUTHSTARTTIME = #{record.authstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authendtime != null">
+        AUTHENDTIME = #{record.authendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tablepk != null">
+        TABLEPK = #{record.tablepk,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tablepkvalue != null">
+        TABLEPKVALUE = #{record.tablepkvalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMSECONDPURVIEW
+    set SECONDPURVIEWID = #{record.secondpurviewid,jdbcType=VARCHAR},
+      SOURCEUSERID = #{record.sourceuserid,jdbcType=VARCHAR},
+      TARGETUSERID = #{record.targetuserid,jdbcType=VARCHAR},
+      AUTHSTARTTIME = #{record.authstarttime,jdbcType=VARCHAR},
+      AUTHENDTIME = #{record.authendtime,jdbcType=VARCHAR},
+      TABLEPK = #{record.tablepk,jdbcType=VARCHAR},
+      TABLEPKVALUE = #{record.tablepkvalue,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurview">
+    update FRMSECONDPURVIEW
+    <set>
+      <if test="sourceuserid != null">
+        SOURCEUSERID = #{sourceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="targetuserid != null">
+        TARGETUSERID = #{targetuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="authstarttime != null">
+        AUTHSTARTTIME = #{authstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="authendtime != null">
+        AUTHENDTIME = #{authendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="tablepk != null">
+        TABLEPK = #{tablepk,jdbcType=VARCHAR},
+      </if>
+      <if test="tablepkvalue != null">
+        TABLEPKVALUE = #{tablepkvalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SECONDPURVIEWID = #{secondpurviewid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurview">
+    update FRMSECONDPURVIEW
+    set SOURCEUSERID = #{sourceuserid,jdbcType=VARCHAR},
+      TARGETUSERID = #{targetuserid,jdbcType=VARCHAR},
+      AUTHSTARTTIME = #{authstarttime,jdbcType=VARCHAR},
+      AUTHENDTIME = #{authendtime,jdbcType=VARCHAR},
+      TABLEPK = #{tablepk,jdbcType=VARCHAR},
+      TABLEPKVALUE = #{tablepkvalue,jdbcType=VARCHAR}
+    where SECONDPURVIEWID = #{secondpurviewid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurview">
+    <id column="SECONDPURVIEWID" jdbcType="VARCHAR" property="secondpurviewid" />
+    <result column="SOURCEUSERID" jdbcType="VARCHAR" property="sourceuserid" />
+    <result column="TARGETUSERID" jdbcType="VARCHAR" property="targetuserid" />
+    <result column="AUTHSTARTTIME" jdbcType="VARCHAR" property="authstarttime" />
+    <result column="AUTHENDTIME" jdbcType="VARCHAR" property="authendtime" />
+    <result column="TABLEPK" jdbcType="VARCHAR" property="tablepk" />
+    <result column="TABLEPKVALUE" jdbcType="VARCHAR" property="tablepkvalue" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    SECONDPURVIEWID, SOURCEUSERID, TARGETUSERID, AUTHSTARTTIME, AUTHENDTIME, TABLEPK, 
+    TABLEPKVALUE
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurviewExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMSECONDPURVIEW
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMSECONDPURVIEW
+    where SECONDPURVIEWID = #{secondpurviewid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMSECONDPURVIEW
+    where SECONDPURVIEWID = #{secondpurviewid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurviewExample">
+    delete from FRMSECONDPURVIEW
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurview">
+    insert into FRMSECONDPURVIEW (SECONDPURVIEWID, SOURCEUSERID, TARGETUSERID, 
+      AUTHSTARTTIME, AUTHENDTIME, TABLEPK, 
+      TABLEPKVALUE)
+    values (#{secondpurviewid,jdbcType=VARCHAR}, #{sourceuserid,jdbcType=VARCHAR}, #{targetuserid,jdbcType=VARCHAR}, 
+      #{authstarttime,jdbcType=VARCHAR}, #{authendtime,jdbcType=VARCHAR}, #{tablepk,jdbcType=VARCHAR}, 
+      #{tablepkvalue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurview">
+    insert into FRMSECONDPURVIEW
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="secondpurviewid != null">
+        SECONDPURVIEWID,
+      </if>
+      <if test="sourceuserid != null">
+        SOURCEUSERID,
+      </if>
+      <if test="targetuserid != null">
+        TARGETUSERID,
+      </if>
+      <if test="authstarttime != null">
+        AUTHSTARTTIME,
+      </if>
+      <if test="authendtime != null">
+        AUTHENDTIME,
+      </if>
+      <if test="tablepk != null">
+        TABLEPK,
+      </if>
+      <if test="tablepkvalue != null">
+        TABLEPKVALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="secondpurviewid != null">
+        #{secondpurviewid,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceuserid != null">
+        #{sourceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="targetuserid != null">
+        #{targetuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="authstarttime != null">
+        #{authstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="authendtime != null">
+        #{authendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="tablepk != null">
+        #{tablepk,jdbcType=VARCHAR},
+      </if>
+      <if test="tablepkvalue != null">
+        #{tablepkvalue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurviewExample" resultType="java.lang.Integer">
+    select count(*) from FRMSECONDPURVIEW
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMSECONDPURVIEW
+    <set>
+      <if test="record.secondpurviewid != null">
+        SECONDPURVIEWID = #{record.secondpurviewid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceuserid != null">
+        SOURCEUSERID = #{record.sourceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetuserid != null">
+        TARGETUSERID = #{record.targetuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authstarttime != null">
+        AUTHSTARTTIME = #{record.authstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authendtime != null">
+        AUTHENDTIME = #{record.authendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tablepk != null">
+        TABLEPK = #{record.tablepk,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tablepkvalue != null">
+        TABLEPKVALUE = #{record.tablepkvalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMSECONDPURVIEW
+    set SECONDPURVIEWID = #{record.secondpurviewid,jdbcType=VARCHAR},
+      SOURCEUSERID = #{record.sourceuserid,jdbcType=VARCHAR},
+      TARGETUSERID = #{record.targetuserid,jdbcType=VARCHAR},
+      AUTHSTARTTIME = #{record.authstarttime,jdbcType=VARCHAR},
+      AUTHENDTIME = #{record.authendtime,jdbcType=VARCHAR},
+      TABLEPK = #{record.tablepk,jdbcType=VARCHAR},
+      TABLEPKVALUE = #{record.tablepkvalue,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurview">
+    update FRMSECONDPURVIEW
+    <set>
+      <if test="sourceuserid != null">
+        SOURCEUSERID = #{sourceuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="targetuserid != null">
+        TARGETUSERID = #{targetuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="authstarttime != null">
+        AUTHSTARTTIME = #{authstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="authendtime != null">
+        AUTHENDTIME = #{authendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="tablepk != null">
+        TABLEPK = #{tablepk,jdbcType=VARCHAR},
+      </if>
+      <if test="tablepkvalue != null">
+        TABLEPKVALUE = #{tablepkvalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SECONDPURVIEWID = #{secondpurviewid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondPurview">
+    update FRMSECONDPURVIEW
+    set SOURCEUSERID = #{sourceuserid,jdbcType=VARCHAR},
+      TARGETUSERID = #{targetuserid,jdbcType=VARCHAR},
+      AUTHSTARTTIME = #{authstarttime,jdbcType=VARCHAR},
+      AUTHENDTIME = #{authendtime,jdbcType=VARCHAR},
+      TABLEPK = #{tablepk,jdbcType=VARCHAR},
+      TABLEPKVALUE = #{tablepkvalue,jdbcType=VARCHAR}
+    where SECONDPURVIEWID = #{secondpurviewid,jdbcType=VARCHAR}
+  </update>
+</mapper>

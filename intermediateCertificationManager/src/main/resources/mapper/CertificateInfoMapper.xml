@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.CertificateInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.CertificateInfo" >
+    <result column="CER_ID" property="cerId" jdbcType="VARCHAR" />
+    <result column="ICARD" property="icard" jdbcType="VARCHAR" />
+    <result column="HOLDER_NAME" property="holderName" jdbcType="VARCHAR" />
+    <result column="WORK_UNIT" property="workUnit" jdbcType="VARCHAR" />
+    <result column="CER_NO" property="cerNo" jdbcType="VARCHAR" />
+    <result column="CATENA" property="catena" jdbcType="VARCHAR" />
+    <result column="CER_NAME" property="cerName" jdbcType="VARCHAR" />
+    <result column="CER_PROFESSION" property="cerProfession" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="VARCHAR" />
+    <result column="ADD_TIME" property="addTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CER_ID, ICARD, HOLDER_NAME, WORK_UNIT, CER_NO, CATENA, CER_NAME, CER_PROFESSION, 
+    START_TIME, ADD_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.intermediateCertificationManager.entry.CertificateInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CERTIFICATE_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.CertificateInfoExample" >
+    delete from CERTIFICATE_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.CertificateInfo" >
+    insert into CERTIFICATE_INFO (CER_ID, ICARD, HOLDER_NAME, 
+      WORK_UNIT, CER_NO, CATENA, 
+      CER_NAME, CER_PROFESSION, START_TIME, 
+      ADD_TIME)
+    values (#{cerId,jdbcType=VARCHAR}, #{icard,jdbcType=VARCHAR}, #{holderName,jdbcType=VARCHAR}, 
+      #{workUnit,jdbcType=VARCHAR}, #{cerNo,jdbcType=VARCHAR}, #{catena,jdbcType=VARCHAR}, 
+      #{cerName,jdbcType=VARCHAR}, #{cerProfession,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.CertificateInfo" >
+    insert into CERTIFICATE_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cerId != null" >
+        CER_ID,
+      </if>
+      <if test="icard != null" >
+        ICARD,
+      </if>
+      <if test="holderName != null" >
+        HOLDER_NAME,
+      </if>
+      <if test="workUnit != null" >
+        WORK_UNIT,
+      </if>
+      <if test="cerNo != null" >
+        CER_NO,
+      </if>
+      <if test="catena != null" >
+        CATENA,
+      </if>
+      <if test="cerName != null" >
+        CER_NAME,
+      </if>
+      <if test="cerProfession != null" >
+        CER_PROFESSION,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cerId != null" >
+        #{cerId,jdbcType=VARCHAR},
+      </if>
+      <if test="icard != null" >
+        #{icard,jdbcType=VARCHAR},
+      </if>
+      <if test="holderName != null" >
+        #{holderName,jdbcType=VARCHAR},
+      </if>
+      <if test="workUnit != null" >
+        #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="cerNo != null" >
+        #{cerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="catena != null" >
+        #{catena,jdbcType=VARCHAR},
+      </if>
+      <if test="cerName != null" >
+        #{cerName,jdbcType=VARCHAR},
+      </if>
+      <if test="cerProfession != null" >
+        #{cerProfession,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.CertificateInfoExample" resultType="java.lang.Integer" >
+    select count(*) from CERTIFICATE_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CERTIFICATE_INFO
+    <set >
+      <if test="record.cerId != null" >
+        CER_ID = #{record.cerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icard != null" >
+        ICARD = #{record.icard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.holderName != null" >
+        HOLDER_NAME = #{record.holderName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workUnit != null" >
+        WORK_UNIT = #{record.workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cerNo != null" >
+        CER_NO = #{record.cerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.catena != null" >
+        CATENA = #{record.catena,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cerName != null" >
+        CER_NAME = #{record.cerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cerProfession != null" >
+        CER_PROFESSION = #{record.cerProfession,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startTime != null" >
+        START_TIME = #{record.startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+        ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CERTIFICATE_INFO
+    set CER_ID = #{record.cerId,jdbcType=VARCHAR},
+      ICARD = #{record.icard,jdbcType=VARCHAR},
+      HOLDER_NAME = #{record.holderName,jdbcType=VARCHAR},
+      WORK_UNIT = #{record.workUnit,jdbcType=VARCHAR},
+      CER_NO = #{record.cerNo,jdbcType=VARCHAR},
+      CATENA = #{record.catena,jdbcType=VARCHAR},
+      CER_NAME = #{record.cerName,jdbcType=VARCHAR},
+      CER_PROFESSION = #{record.cerProfession,jdbcType=VARCHAR},
+      START_TIME = #{record.startTime,jdbcType=VARCHAR},
+      ADD_TIME = #{record.addTime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

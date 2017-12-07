@@ -1,0 +1,1656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmFunctionCellMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    <id column="FUCEID" jdbcType="VARCHAR" property="fuceid" />
+    <result column="FUCECODE" jdbcType="VARCHAR" property="fucecode" />
+    <result column="FUCENAME" jdbcType="VARCHAR" property="fucename" />
+    <result column="FUCELEVEL" jdbcType="CHAR" property="fucelevel" />
+    <result column="FUCEDESC" jdbcType="VARCHAR" property="fucedesc" />
+    <result column="FUCERESOURCE" jdbcType="VARCHAR" property="fuceresource" />
+    <result column="FUCEICONURL" jdbcType="VARCHAR" property="fuceiconurl" />
+    <result column="FUCEDEFAULTPAGE" jdbcType="VARCHAR" property="fucedefaultpage" />
+    <result column="FUCEINDEX" jdbcType="VARCHAR" property="fuceindex" />
+    <result column="FUCEMODIFIERID" jdbcType="VARCHAR" property="fucemodifierid" />
+    <result column="FUCEMODIFYTIME" jdbcType="VARCHAR" property="fucemodifytime" />
+    <result column="FUCECREATORID" jdbcType="VARCHAR" property="fucecreatorid" />
+    <result column="FUCECREATETIME" jdbcType="VARCHAR" property="fucecreatetime" />
+    <result column="FUCEPARENTCODE" jdbcType="VARCHAR" property="fuceparentcode" />
+    <result column="FUCEISMENU" jdbcType="CHAR" property="fuceismenu" />
+    <result column="FUCENEEDLOG" jdbcType="CHAR" property="fuceneedlog" />
+    <result column="FUCESSXT" jdbcType="VARCHAR" property="fucessxt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FUCEID, FUCECODE, FUCENAME, FUCELEVEL, FUCEDESC, FUCERESOURCE, FUCEICONURL, FUCEDEFAULTPAGE, 
+    FUCEINDEX, FUCEMODIFIERID, FUCEMODIFYTIME, FUCECREATORID, FUCECREATETIME, FUCEPARENTCODE, 
+    FUCEISMENU, FUCENEEDLOG, FUCESSXT
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMFUNCTIONCELL
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMFUNCTIONCELL
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample">
+    delete from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    insert into FRMFUNCTIONCELL (FUCEID, FUCECODE, FUCENAME, 
+      FUCELEVEL, FUCEDESC, FUCERESOURCE, 
+      FUCEICONURL, FUCEDEFAULTPAGE, FUCEINDEX, 
+      FUCEMODIFIERID, FUCEMODIFYTIME, FUCECREATORID, 
+      FUCECREATETIME, FUCEPARENTCODE, FUCEISMENU, 
+      FUCENEEDLOG, FUCESSXT)
+    values (#{fuceid,jdbcType=VARCHAR}, #{fucecode,jdbcType=VARCHAR}, #{fucename,jdbcType=VARCHAR}, 
+      #{fucelevel,jdbcType=CHAR}, #{fucedesc,jdbcType=VARCHAR}, #{fuceresource,jdbcType=VARCHAR}, 
+      #{fuceiconurl,jdbcType=VARCHAR}, #{fucedefaultpage,jdbcType=VARCHAR}, #{fuceindex,jdbcType=VARCHAR}, 
+      #{fucemodifierid,jdbcType=VARCHAR}, #{fucemodifytime,jdbcType=VARCHAR}, #{fucecreatorid,jdbcType=VARCHAR}, 
+      #{fucecreatetime,jdbcType=VARCHAR}, #{fuceparentcode,jdbcType=VARCHAR}, #{fuceismenu,jdbcType=CHAR}, 
+      #{fuceneedlog,jdbcType=CHAR}, #{fucessxt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    insert into FRMFUNCTIONCELL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fuceid != null">
+        FUCEID,
+      </if>
+      <if test="fucecode != null">
+        FUCECODE,
+      </if>
+      <if test="fucename != null">
+        FUCENAME,
+      </if>
+      <if test="fucelevel != null">
+        FUCELEVEL,
+      </if>
+      <if test="fucedesc != null">
+        FUCEDESC,
+      </if>
+      <if test="fuceresource != null">
+        FUCERESOURCE,
+      </if>
+      <if test="fuceiconurl != null">
+        FUCEICONURL,
+      </if>
+      <if test="fucedefaultpage != null">
+        FUCEDEFAULTPAGE,
+      </if>
+      <if test="fuceindex != null">
+        FUCEINDEX,
+      </if>
+      <if test="fucemodifierid != null">
+        FUCEMODIFIERID,
+      </if>
+      <if test="fucemodifytime != null">
+        FUCEMODIFYTIME,
+      </if>
+      <if test="fucecreatorid != null">
+        FUCECREATORID,
+      </if>
+      <if test="fucecreatetime != null">
+        FUCECREATETIME,
+      </if>
+      <if test="fuceparentcode != null">
+        FUCEPARENTCODE,
+      </if>
+      <if test="fuceismenu != null">
+        FUCEISMENU,
+      </if>
+      <if test="fuceneedlog != null">
+        FUCENEEDLOG,
+      </if>
+      <if test="fucessxt != null">
+        FUCESSXT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fuceid != null">
+        #{fuceid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecode != null">
+        #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="fucename != null">
+        #{fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="fucelevel != null">
+        #{fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="fucedesc != null">
+        #{fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceresource != null">
+        #{fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceiconurl != null">
+        #{fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="fucedefaultpage != null">
+        #{fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceindex != null">
+        #{fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifierid != null">
+        #{fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifytime != null">
+        #{fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatorid != null">
+        #{fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatetime != null">
+        #{fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceparentcode != null">
+        #{fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceismenu != null">
+        #{fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="fuceneedlog != null">
+        #{fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="fucessxt != null">
+        #{fucessxt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample" resultType="java.lang.Integer">
+    select count(*) from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMFUNCTIONCELL
+    <set>
+      <if test="record.fuceid != null">
+        FUCEID = #{record.fuceid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecode != null">
+        FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucename != null">
+        FUCENAME = #{record.fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucelevel != null">
+        FUCELEVEL = #{record.fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="record.fucedesc != null">
+        FUCEDESC = #{record.fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceresource != null">
+        FUCERESOURCE = #{record.fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceiconurl != null">
+        FUCEICONURL = #{record.fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucedefaultpage != null">
+        FUCEDEFAULTPAGE = #{record.fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceindex != null">
+        FUCEINDEX = #{record.fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucemodifierid != null">
+        FUCEMODIFIERID = #{record.fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucemodifytime != null">
+        FUCEMODIFYTIME = #{record.fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecreatorid != null">
+        FUCECREATORID = #{record.fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecreatetime != null">
+        FUCECREATETIME = #{record.fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceparentcode != null">
+        FUCEPARENTCODE = #{record.fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceismenu != null">
+        FUCEISMENU = #{record.fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="record.fuceneedlog != null">
+        FUCENEEDLOG = #{record.fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="record.fucessxt != null">
+        FUCESSXT = #{record.fucessxt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMFUNCTIONCELL
+    set FUCEID = #{record.fuceid,jdbcType=VARCHAR},
+      FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      FUCENAME = #{record.fucename,jdbcType=VARCHAR},
+      FUCELEVEL = #{record.fucelevel,jdbcType=CHAR},
+      FUCEDESC = #{record.fucedesc,jdbcType=VARCHAR},
+      FUCERESOURCE = #{record.fuceresource,jdbcType=VARCHAR},
+      FUCEICONURL = #{record.fuceiconurl,jdbcType=VARCHAR},
+      FUCEDEFAULTPAGE = #{record.fucedefaultpage,jdbcType=VARCHAR},
+      FUCEINDEX = #{record.fuceindex,jdbcType=VARCHAR},
+      FUCEMODIFIERID = #{record.fucemodifierid,jdbcType=VARCHAR},
+      FUCEMODIFYTIME = #{record.fucemodifytime,jdbcType=VARCHAR},
+      FUCECREATORID = #{record.fucecreatorid,jdbcType=VARCHAR},
+      FUCECREATETIME = #{record.fucecreatetime,jdbcType=VARCHAR},
+      FUCEPARENTCODE = #{record.fuceparentcode,jdbcType=VARCHAR},
+      FUCEISMENU = #{record.fuceismenu,jdbcType=CHAR},
+      FUCENEEDLOG = #{record.fuceneedlog,jdbcType=CHAR},
+      FUCESSXT = #{record.fucessxt,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    update FRMFUNCTIONCELL
+    <set>
+      <if test="fucecode != null">
+        FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="fucename != null">
+        FUCENAME = #{fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="fucelevel != null">
+        FUCELEVEL = #{fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="fucedesc != null">
+        FUCEDESC = #{fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceresource != null">
+        FUCERESOURCE = #{fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceiconurl != null">
+        FUCEICONURL = #{fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="fucedefaultpage != null">
+        FUCEDEFAULTPAGE = #{fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceindex != null">
+        FUCEINDEX = #{fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifierid != null">
+        FUCEMODIFIERID = #{fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifytime != null">
+        FUCEMODIFYTIME = #{fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatorid != null">
+        FUCECREATORID = #{fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatetime != null">
+        FUCECREATETIME = #{fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceparentcode != null">
+        FUCEPARENTCODE = #{fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceismenu != null">
+        FUCEISMENU = #{fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="fuceneedlog != null">
+        FUCENEEDLOG = #{fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="fucessxt != null">
+        FUCESSXT = #{fucessxt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    update FRMFUNCTIONCELL
+    set FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      FUCENAME = #{fucename,jdbcType=VARCHAR},
+      FUCELEVEL = #{fucelevel,jdbcType=CHAR},
+      FUCEDESC = #{fucedesc,jdbcType=VARCHAR},
+      FUCERESOURCE = #{fuceresource,jdbcType=VARCHAR},
+      FUCEICONURL = #{fuceiconurl,jdbcType=VARCHAR},
+      FUCEDEFAULTPAGE = #{fucedefaultpage,jdbcType=VARCHAR},
+      FUCEINDEX = #{fuceindex,jdbcType=VARCHAR},
+      FUCEMODIFIERID = #{fucemodifierid,jdbcType=VARCHAR},
+      FUCEMODIFYTIME = #{fucemodifytime,jdbcType=VARCHAR},
+      FUCECREATORID = #{fucecreatorid,jdbcType=VARCHAR},
+      FUCECREATETIME = #{fucecreatetime,jdbcType=VARCHAR},
+      FUCEPARENTCODE = #{fuceparentcode,jdbcType=VARCHAR},
+      FUCEISMENU = #{fuceismenu,jdbcType=CHAR},
+      FUCENEEDLOG = #{fuceneedlog,jdbcType=CHAR},
+      FUCESSXT = #{fucessxt,jdbcType=VARCHAR}
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    <id column="FUCEID" jdbcType="VARCHAR" property="fuceid" />
+    <result column="FUCECODE" jdbcType="VARCHAR" property="fucecode" />
+    <result column="FUCENAME" jdbcType="VARCHAR" property="fucename" />
+    <result column="FUCELEVEL" jdbcType="CHAR" property="fucelevel" />
+    <result column="FUCEDESC" jdbcType="VARCHAR" property="fucedesc" />
+    <result column="FUCERESOURCE" jdbcType="VARCHAR" property="fuceresource" />
+    <result column="FUCEICONURL" jdbcType="VARCHAR" property="fuceiconurl" />
+    <result column="FUCEDEFAULTPAGE" jdbcType="VARCHAR" property="fucedefaultpage" />
+    <result column="FUCEINDEX" jdbcType="VARCHAR" property="fuceindex" />
+    <result column="FUCEMODIFIERID" jdbcType="VARCHAR" property="fucemodifierid" />
+    <result column="FUCEMODIFYTIME" jdbcType="VARCHAR" property="fucemodifytime" />
+    <result column="FUCECREATORID" jdbcType="VARCHAR" property="fucecreatorid" />
+    <result column="FUCECREATETIME" jdbcType="VARCHAR" property="fucecreatetime" />
+    <result column="FUCEPARENTCODE" jdbcType="VARCHAR" property="fuceparentcode" />
+    <result column="FUCEISMENU" jdbcType="CHAR" property="fuceismenu" />
+    <result column="FUCENEEDLOG" jdbcType="CHAR" property="fuceneedlog" />
+    <result column="FUCESSXT" jdbcType="VARCHAR" property="fucessxt" />
+    <result column="PAGEID" jdbcType="DECIMAL" property="pageid" />
+    <result column="SYSID" jdbcType="VARCHAR" property="sysid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FUCEID, FUCECODE, FUCENAME, FUCELEVEL, FUCEDESC, FUCERESOURCE, FUCEICONURL, FUCEDEFAULTPAGE, 
+    FUCEINDEX, FUCEMODIFIERID, FUCEMODIFYTIME, FUCECREATORID, FUCECREATETIME, FUCEPARENTCODE, 
+    FUCEISMENU, FUCENEEDLOG, FUCESSXT, PAGEID, SYSID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMFUNCTIONCELL
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMFUNCTIONCELL
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample">
+    delete from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    insert into FRMFUNCTIONCELL (FUCEID, FUCECODE, FUCENAME, 
+      FUCELEVEL, FUCEDESC, FUCERESOURCE, 
+      FUCEICONURL, FUCEDEFAULTPAGE, FUCEINDEX, 
+      FUCEMODIFIERID, FUCEMODIFYTIME, FUCECREATORID, 
+      FUCECREATETIME, FUCEPARENTCODE, FUCEISMENU, 
+      FUCENEEDLOG, FUCESSXT, PAGEID, 
+      SYSID)
+    values (#{fuceid,jdbcType=VARCHAR}, #{fucecode,jdbcType=VARCHAR}, #{fucename,jdbcType=VARCHAR}, 
+      #{fucelevel,jdbcType=CHAR}, #{fucedesc,jdbcType=VARCHAR}, #{fuceresource,jdbcType=VARCHAR}, 
+      #{fuceiconurl,jdbcType=VARCHAR}, #{fucedefaultpage,jdbcType=VARCHAR}, #{fuceindex,jdbcType=VARCHAR}, 
+      #{fucemodifierid,jdbcType=VARCHAR}, #{fucemodifytime,jdbcType=VARCHAR}, #{fucecreatorid,jdbcType=VARCHAR}, 
+      #{fucecreatetime,jdbcType=VARCHAR}, #{fuceparentcode,jdbcType=VARCHAR}, #{fuceismenu,jdbcType=CHAR}, 
+      #{fuceneedlog,jdbcType=CHAR}, #{fucessxt,jdbcType=VARCHAR}, #{pageid,jdbcType=DECIMAL}, 
+      #{sysid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    insert into FRMFUNCTIONCELL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fuceid != null">
+        FUCEID,
+      </if>
+      <if test="fucecode != null">
+        FUCECODE,
+      </if>
+      <if test="fucename != null">
+        FUCENAME,
+      </if>
+      <if test="fucelevel != null">
+        FUCELEVEL,
+      </if>
+      <if test="fucedesc != null">
+        FUCEDESC,
+      </if>
+      <if test="fuceresource != null">
+        FUCERESOURCE,
+      </if>
+      <if test="fuceiconurl != null">
+        FUCEICONURL,
+      </if>
+      <if test="fucedefaultpage != null">
+        FUCEDEFAULTPAGE,
+      </if>
+      <if test="fuceindex != null">
+        FUCEINDEX,
+      </if>
+      <if test="fucemodifierid != null">
+        FUCEMODIFIERID,
+      </if>
+      <if test="fucemodifytime != null">
+        FUCEMODIFYTIME,
+      </if>
+      <if test="fucecreatorid != null">
+        FUCECREATORID,
+      </if>
+      <if test="fucecreatetime != null">
+        FUCECREATETIME,
+      </if>
+      <if test="fuceparentcode != null">
+        FUCEPARENTCODE,
+      </if>
+      <if test="fuceismenu != null">
+        FUCEISMENU,
+      </if>
+      <if test="fuceneedlog != null">
+        FUCENEEDLOG,
+      </if>
+      <if test="fucessxt != null">
+        FUCESSXT,
+      </if>
+      <if test="pageid != null">
+        PAGEID,
+      </if>
+      <if test="sysid != null">
+        SYSID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fuceid != null">
+        #{fuceid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecode != null">
+        #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="fucename != null">
+        #{fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="fucelevel != null">
+        #{fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="fucedesc != null">
+        #{fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceresource != null">
+        #{fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceiconurl != null">
+        #{fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="fucedefaultpage != null">
+        #{fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceindex != null">
+        #{fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifierid != null">
+        #{fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifytime != null">
+        #{fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatorid != null">
+        #{fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatetime != null">
+        #{fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceparentcode != null">
+        #{fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceismenu != null">
+        #{fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="fuceneedlog != null">
+        #{fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="fucessxt != null">
+        #{fucessxt,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        #{sysid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample" resultType="java.lang.Integer">
+    select count(*) from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMFUNCTIONCELL
+    <set>
+      <if test="record.fuceid != null">
+        FUCEID = #{record.fuceid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecode != null">
+        FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucename != null">
+        FUCENAME = #{record.fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucelevel != null">
+        FUCELEVEL = #{record.fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="record.fucedesc != null">
+        FUCEDESC = #{record.fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceresource != null">
+        FUCERESOURCE = #{record.fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceiconurl != null">
+        FUCEICONURL = #{record.fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucedefaultpage != null">
+        FUCEDEFAULTPAGE = #{record.fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceindex != null">
+        FUCEINDEX = #{record.fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucemodifierid != null">
+        FUCEMODIFIERID = #{record.fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucemodifytime != null">
+        FUCEMODIFYTIME = #{record.fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecreatorid != null">
+        FUCECREATORID = #{record.fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecreatetime != null">
+        FUCECREATETIME = #{record.fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceparentcode != null">
+        FUCEPARENTCODE = #{record.fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceismenu != null">
+        FUCEISMENU = #{record.fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="record.fuceneedlog != null">
+        FUCENEEDLOG = #{record.fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="record.fucessxt != null">
+        FUCESSXT = #{record.fucessxt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pageid != null">
+        PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sysid != null">
+        SYSID = #{record.sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMFUNCTIONCELL
+    set FUCEID = #{record.fuceid,jdbcType=VARCHAR},
+      FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      FUCENAME = #{record.fucename,jdbcType=VARCHAR},
+      FUCELEVEL = #{record.fucelevel,jdbcType=CHAR},
+      FUCEDESC = #{record.fucedesc,jdbcType=VARCHAR},
+      FUCERESOURCE = #{record.fuceresource,jdbcType=VARCHAR},
+      FUCEICONURL = #{record.fuceiconurl,jdbcType=VARCHAR},
+      FUCEDEFAULTPAGE = #{record.fucedefaultpage,jdbcType=VARCHAR},
+      FUCEINDEX = #{record.fuceindex,jdbcType=VARCHAR},
+      FUCEMODIFIERID = #{record.fucemodifierid,jdbcType=VARCHAR},
+      FUCEMODIFYTIME = #{record.fucemodifytime,jdbcType=VARCHAR},
+      FUCECREATORID = #{record.fucecreatorid,jdbcType=VARCHAR},
+      FUCECREATETIME = #{record.fucecreatetime,jdbcType=VARCHAR},
+      FUCEPARENTCODE = #{record.fuceparentcode,jdbcType=VARCHAR},
+      FUCEISMENU = #{record.fuceismenu,jdbcType=CHAR},
+      FUCENEEDLOG = #{record.fuceneedlog,jdbcType=CHAR},
+      FUCESSXT = #{record.fucessxt,jdbcType=VARCHAR},
+      PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      SYSID = #{record.sysid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    update FRMFUNCTIONCELL
+    <set>
+      <if test="fucecode != null">
+        FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="fucename != null">
+        FUCENAME = #{fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="fucelevel != null">
+        FUCELEVEL = #{fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="fucedesc != null">
+        FUCEDESC = #{fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceresource != null">
+        FUCERESOURCE = #{fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceiconurl != null">
+        FUCEICONURL = #{fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="fucedefaultpage != null">
+        FUCEDEFAULTPAGE = #{fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceindex != null">
+        FUCEINDEX = #{fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifierid != null">
+        FUCEMODIFIERID = #{fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifytime != null">
+        FUCEMODIFYTIME = #{fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatorid != null">
+        FUCECREATORID = #{fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatetime != null">
+        FUCECREATETIME = #{fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceparentcode != null">
+        FUCEPARENTCODE = #{fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceismenu != null">
+        FUCEISMENU = #{fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="fuceneedlog != null">
+        FUCENEEDLOG = #{fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="fucessxt != null">
+        FUCESSXT = #{fucessxt,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        PAGEID = #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        SYSID = #{sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    update FRMFUNCTIONCELL
+    set FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      FUCENAME = #{fucename,jdbcType=VARCHAR},
+      FUCELEVEL = #{fucelevel,jdbcType=CHAR},
+      FUCEDESC = #{fucedesc,jdbcType=VARCHAR},
+      FUCERESOURCE = #{fuceresource,jdbcType=VARCHAR},
+      FUCEICONURL = #{fuceiconurl,jdbcType=VARCHAR},
+      FUCEDEFAULTPAGE = #{fucedefaultpage,jdbcType=VARCHAR},
+      FUCEINDEX = #{fuceindex,jdbcType=VARCHAR},
+      FUCEMODIFIERID = #{fucemodifierid,jdbcType=VARCHAR},
+      FUCEMODIFYTIME = #{fucemodifytime,jdbcType=VARCHAR},
+      FUCECREATORID = #{fucecreatorid,jdbcType=VARCHAR},
+      FUCECREATETIME = #{fucecreatetime,jdbcType=VARCHAR},
+      FUCEPARENTCODE = #{fuceparentcode,jdbcType=VARCHAR},
+      FUCEISMENU = #{fuceismenu,jdbcType=CHAR},
+      FUCENEEDLOG = #{fuceneedlog,jdbcType=CHAR},
+      FUCESSXT = #{fucessxt,jdbcType=VARCHAR},
+      PAGEID = #{pageid,jdbcType=DECIMAL},
+      SYSID = #{sysid,jdbcType=VARCHAR}
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    <id column="FUCEID" jdbcType="VARCHAR" property="fuceid" />
+    <result column="FUCECODE" jdbcType="VARCHAR" property="fucecode" />
+    <result column="FUCENAME" jdbcType="VARCHAR" property="fucename" />
+    <result column="FUCELEVEL" jdbcType="CHAR" property="fucelevel" />
+    <result column="FUCEDESC" jdbcType="VARCHAR" property="fucedesc" />
+    <result column="FUCERESOURCE" jdbcType="VARCHAR" property="fuceresource" />
+    <result column="FUCEICONURL" jdbcType="VARCHAR" property="fuceiconurl" />
+    <result column="FUCEDEFAULTPAGE" jdbcType="VARCHAR" property="fucedefaultpage" />
+    <result column="FUCEINDEX" jdbcType="VARCHAR" property="fuceindex" />
+    <result column="FUCEMODIFIERID" jdbcType="VARCHAR" property="fucemodifierid" />
+    <result column="FUCEMODIFYTIME" jdbcType="VARCHAR" property="fucemodifytime" />
+    <result column="FUCECREATORID" jdbcType="VARCHAR" property="fucecreatorid" />
+    <result column="FUCECREATETIME" jdbcType="VARCHAR" property="fucecreatetime" />
+    <result column="FUCEPARENTCODE" jdbcType="VARCHAR" property="fuceparentcode" />
+    <result column="FUCEISMENU" jdbcType="CHAR" property="fuceismenu" />
+    <result column="FUCENEEDLOG" jdbcType="CHAR" property="fuceneedlog" />
+    <result column="FUCESSXT" jdbcType="VARCHAR" property="fucessxt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FUCEID, FUCECODE, FUCENAME, FUCELEVEL, FUCEDESC, FUCERESOURCE, FUCEICONURL, FUCEDEFAULTPAGE, 
+    FUCEINDEX, FUCEMODIFIERID, FUCEMODIFYTIME, FUCECREATORID, FUCECREATETIME, FUCEPARENTCODE, 
+    FUCEISMENU, FUCENEEDLOG, FUCESSXT
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMFUNCTIONCELL
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMFUNCTIONCELL
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample">
+    delete from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    insert into FRMFUNCTIONCELL (FUCEID, FUCECODE, FUCENAME, 
+      FUCELEVEL, FUCEDESC, FUCERESOURCE, 
+      FUCEICONURL, FUCEDEFAULTPAGE, FUCEINDEX, 
+      FUCEMODIFIERID, FUCEMODIFYTIME, FUCECREATORID, 
+      FUCECREATETIME, FUCEPARENTCODE, FUCEISMENU, 
+      FUCENEEDLOG, FUCESSXT)
+    values (#{fuceid,jdbcType=VARCHAR}, #{fucecode,jdbcType=VARCHAR}, #{fucename,jdbcType=VARCHAR}, 
+      #{fucelevel,jdbcType=CHAR}, #{fucedesc,jdbcType=VARCHAR}, #{fuceresource,jdbcType=VARCHAR}, 
+      #{fuceiconurl,jdbcType=VARCHAR}, #{fucedefaultpage,jdbcType=VARCHAR}, #{fuceindex,jdbcType=VARCHAR}, 
+      #{fucemodifierid,jdbcType=VARCHAR}, #{fucemodifytime,jdbcType=VARCHAR}, #{fucecreatorid,jdbcType=VARCHAR}, 
+      #{fucecreatetime,jdbcType=VARCHAR}, #{fuceparentcode,jdbcType=VARCHAR}, #{fuceismenu,jdbcType=CHAR}, 
+      #{fuceneedlog,jdbcType=CHAR}, #{fucessxt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    insert into FRMFUNCTIONCELL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fuceid != null">
+        FUCEID,
+      </if>
+      <if test="fucecode != null">
+        FUCECODE,
+      </if>
+      <if test="fucename != null">
+        FUCENAME,
+      </if>
+      <if test="fucelevel != null">
+        FUCELEVEL,
+      </if>
+      <if test="fucedesc != null">
+        FUCEDESC,
+      </if>
+      <if test="fuceresource != null">
+        FUCERESOURCE,
+      </if>
+      <if test="fuceiconurl != null">
+        FUCEICONURL,
+      </if>
+      <if test="fucedefaultpage != null">
+        FUCEDEFAULTPAGE,
+      </if>
+      <if test="fuceindex != null">
+        FUCEINDEX,
+      </if>
+      <if test="fucemodifierid != null">
+        FUCEMODIFIERID,
+      </if>
+      <if test="fucemodifytime != null">
+        FUCEMODIFYTIME,
+      </if>
+      <if test="fucecreatorid != null">
+        FUCECREATORID,
+      </if>
+      <if test="fucecreatetime != null">
+        FUCECREATETIME,
+      </if>
+      <if test="fuceparentcode != null">
+        FUCEPARENTCODE,
+      </if>
+      <if test="fuceismenu != null">
+        FUCEISMENU,
+      </if>
+      <if test="fuceneedlog != null">
+        FUCENEEDLOG,
+      </if>
+      <if test="fucessxt != null">
+        FUCESSXT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fuceid != null">
+        #{fuceid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecode != null">
+        #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="fucename != null">
+        #{fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="fucelevel != null">
+        #{fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="fucedesc != null">
+        #{fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceresource != null">
+        #{fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceiconurl != null">
+        #{fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="fucedefaultpage != null">
+        #{fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceindex != null">
+        #{fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifierid != null">
+        #{fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifytime != null">
+        #{fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatorid != null">
+        #{fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatetime != null">
+        #{fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceparentcode != null">
+        #{fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceismenu != null">
+        #{fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="fuceneedlog != null">
+        #{fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="fucessxt != null">
+        #{fucessxt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample" resultType="java.lang.Integer">
+    select count(*) from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMFUNCTIONCELL
+    <set>
+      <if test="record.fuceid != null">
+        FUCEID = #{record.fuceid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecode != null">
+        FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucename != null">
+        FUCENAME = #{record.fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucelevel != null">
+        FUCELEVEL = #{record.fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="record.fucedesc != null">
+        FUCEDESC = #{record.fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceresource != null">
+        FUCERESOURCE = #{record.fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceiconurl != null">
+        FUCEICONURL = #{record.fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucedefaultpage != null">
+        FUCEDEFAULTPAGE = #{record.fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceindex != null">
+        FUCEINDEX = #{record.fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucemodifierid != null">
+        FUCEMODIFIERID = #{record.fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucemodifytime != null">
+        FUCEMODIFYTIME = #{record.fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecreatorid != null">
+        FUCECREATORID = #{record.fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecreatetime != null">
+        FUCECREATETIME = #{record.fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceparentcode != null">
+        FUCEPARENTCODE = #{record.fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceismenu != null">
+        FUCEISMENU = #{record.fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="record.fuceneedlog != null">
+        FUCENEEDLOG = #{record.fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="record.fucessxt != null">
+        FUCESSXT = #{record.fucessxt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMFUNCTIONCELL
+    set FUCEID = #{record.fuceid,jdbcType=VARCHAR},
+      FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      FUCENAME = #{record.fucename,jdbcType=VARCHAR},
+      FUCELEVEL = #{record.fucelevel,jdbcType=CHAR},
+      FUCEDESC = #{record.fucedesc,jdbcType=VARCHAR},
+      FUCERESOURCE = #{record.fuceresource,jdbcType=VARCHAR},
+      FUCEICONURL = #{record.fuceiconurl,jdbcType=VARCHAR},
+      FUCEDEFAULTPAGE = #{record.fucedefaultpage,jdbcType=VARCHAR},
+      FUCEINDEX = #{record.fuceindex,jdbcType=VARCHAR},
+      FUCEMODIFIERID = #{record.fucemodifierid,jdbcType=VARCHAR},
+      FUCEMODIFYTIME = #{record.fucemodifytime,jdbcType=VARCHAR},
+      FUCECREATORID = #{record.fucecreatorid,jdbcType=VARCHAR},
+      FUCECREATETIME = #{record.fucecreatetime,jdbcType=VARCHAR},
+      FUCEPARENTCODE = #{record.fuceparentcode,jdbcType=VARCHAR},
+      FUCEISMENU = #{record.fuceismenu,jdbcType=CHAR},
+      FUCENEEDLOG = #{record.fuceneedlog,jdbcType=CHAR},
+      FUCESSXT = #{record.fucessxt,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    update FRMFUNCTIONCELL
+    <set>
+      <if test="fucecode != null">
+        FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="fucename != null">
+        FUCENAME = #{fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="fucelevel != null">
+        FUCELEVEL = #{fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="fucedesc != null">
+        FUCEDESC = #{fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceresource != null">
+        FUCERESOURCE = #{fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceiconurl != null">
+        FUCEICONURL = #{fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="fucedefaultpage != null">
+        FUCEDEFAULTPAGE = #{fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceindex != null">
+        FUCEINDEX = #{fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifierid != null">
+        FUCEMODIFIERID = #{fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifytime != null">
+        FUCEMODIFYTIME = #{fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatorid != null">
+        FUCECREATORID = #{fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatetime != null">
+        FUCECREATETIME = #{fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceparentcode != null">
+        FUCEPARENTCODE = #{fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceismenu != null">
+        FUCEISMENU = #{fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="fuceneedlog != null">
+        FUCENEEDLOG = #{fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="fucessxt != null">
+        FUCESSXT = #{fucessxt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    update FRMFUNCTIONCELL
+    set FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      FUCENAME = #{fucename,jdbcType=VARCHAR},
+      FUCELEVEL = #{fucelevel,jdbcType=CHAR},
+      FUCEDESC = #{fucedesc,jdbcType=VARCHAR},
+      FUCERESOURCE = #{fuceresource,jdbcType=VARCHAR},
+      FUCEICONURL = #{fuceiconurl,jdbcType=VARCHAR},
+      FUCEDEFAULTPAGE = #{fucedefaultpage,jdbcType=VARCHAR},
+      FUCEINDEX = #{fuceindex,jdbcType=VARCHAR},
+      FUCEMODIFIERID = #{fucemodifierid,jdbcType=VARCHAR},
+      FUCEMODIFYTIME = #{fucemodifytime,jdbcType=VARCHAR},
+      FUCECREATORID = #{fucecreatorid,jdbcType=VARCHAR},
+      FUCECREATETIME = #{fucecreatetime,jdbcType=VARCHAR},
+      FUCEPARENTCODE = #{fuceparentcode,jdbcType=VARCHAR},
+      FUCEISMENU = #{fuceismenu,jdbcType=CHAR},
+      FUCENEEDLOG = #{fuceneedlog,jdbcType=CHAR},
+      FUCESSXT = #{fucessxt,jdbcType=VARCHAR}
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    <id column="FUCEID" jdbcType="VARCHAR" property="fuceid" />
+    <result column="FUCECODE" jdbcType="VARCHAR" property="fucecode" />
+    <result column="FUCENAME" jdbcType="VARCHAR" property="fucename" />
+    <result column="FUCELEVEL" jdbcType="CHAR" property="fucelevel" />
+    <result column="FUCEDESC" jdbcType="VARCHAR" property="fucedesc" />
+    <result column="FUCERESOURCE" jdbcType="VARCHAR" property="fuceresource" />
+    <result column="FUCEICONURL" jdbcType="VARCHAR" property="fuceiconurl" />
+    <result column="FUCEDEFAULTPAGE" jdbcType="VARCHAR" property="fucedefaultpage" />
+    <result column="FUCEINDEX" jdbcType="VARCHAR" property="fuceindex" />
+    <result column="FUCEMODIFIERID" jdbcType="VARCHAR" property="fucemodifierid" />
+    <result column="FUCEMODIFYTIME" jdbcType="VARCHAR" property="fucemodifytime" />
+    <result column="FUCECREATORID" jdbcType="VARCHAR" property="fucecreatorid" />
+    <result column="FUCECREATETIME" jdbcType="VARCHAR" property="fucecreatetime" />
+    <result column="FUCEPARENTCODE" jdbcType="VARCHAR" property="fuceparentcode" />
+    <result column="FUCEISMENU" jdbcType="CHAR" property="fuceismenu" />
+    <result column="FUCENEEDLOG" jdbcType="CHAR" property="fuceneedlog" />
+    <result column="FUCESSXT" jdbcType="VARCHAR" property="fucessxt" />
+    <result column="PAGEID" jdbcType="DECIMAL" property="pageid" />
+    <result column="SYSID" jdbcType="VARCHAR" property="sysid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FUCEID, FUCECODE, FUCENAME, FUCELEVEL, FUCEDESC, FUCERESOURCE, FUCEICONURL, FUCEDEFAULTPAGE, 
+    FUCEINDEX, FUCEMODIFIERID, FUCEMODIFYTIME, FUCECREATORID, FUCECREATETIME, FUCEPARENTCODE, 
+    FUCEISMENU, FUCENEEDLOG, FUCESSXT, PAGEID, SYSID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMFUNCTIONCELL
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMFUNCTIONCELL
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample">
+    delete from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    insert into FRMFUNCTIONCELL (FUCEID, FUCECODE, FUCENAME, 
+      FUCELEVEL, FUCEDESC, FUCERESOURCE, 
+      FUCEICONURL, FUCEDEFAULTPAGE, FUCEINDEX, 
+      FUCEMODIFIERID, FUCEMODIFYTIME, FUCECREATORID, 
+      FUCECREATETIME, FUCEPARENTCODE, FUCEISMENU, 
+      FUCENEEDLOG, FUCESSXT, PAGEID, 
+      SYSID)
+    values (#{fuceid,jdbcType=VARCHAR}, #{fucecode,jdbcType=VARCHAR}, #{fucename,jdbcType=VARCHAR}, 
+      #{fucelevel,jdbcType=CHAR}, #{fucedesc,jdbcType=VARCHAR}, #{fuceresource,jdbcType=VARCHAR}, 
+      #{fuceiconurl,jdbcType=VARCHAR}, #{fucedefaultpage,jdbcType=VARCHAR}, #{fuceindex,jdbcType=VARCHAR}, 
+      #{fucemodifierid,jdbcType=VARCHAR}, #{fucemodifytime,jdbcType=VARCHAR}, #{fucecreatorid,jdbcType=VARCHAR}, 
+      #{fucecreatetime,jdbcType=VARCHAR}, #{fuceparentcode,jdbcType=VARCHAR}, #{fuceismenu,jdbcType=CHAR}, 
+      #{fuceneedlog,jdbcType=CHAR}, #{fucessxt,jdbcType=VARCHAR}, #{pageid,jdbcType=DECIMAL}, 
+      #{sysid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    insert into FRMFUNCTIONCELL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fuceid != null">
+        FUCEID,
+      </if>
+      <if test="fucecode != null">
+        FUCECODE,
+      </if>
+      <if test="fucename != null">
+        FUCENAME,
+      </if>
+      <if test="fucelevel != null">
+        FUCELEVEL,
+      </if>
+      <if test="fucedesc != null">
+        FUCEDESC,
+      </if>
+      <if test="fuceresource != null">
+        FUCERESOURCE,
+      </if>
+      <if test="fuceiconurl != null">
+        FUCEICONURL,
+      </if>
+      <if test="fucedefaultpage != null">
+        FUCEDEFAULTPAGE,
+      </if>
+      <if test="fuceindex != null">
+        FUCEINDEX,
+      </if>
+      <if test="fucemodifierid != null">
+        FUCEMODIFIERID,
+      </if>
+      <if test="fucemodifytime != null">
+        FUCEMODIFYTIME,
+      </if>
+      <if test="fucecreatorid != null">
+        FUCECREATORID,
+      </if>
+      <if test="fucecreatetime != null">
+        FUCECREATETIME,
+      </if>
+      <if test="fuceparentcode != null">
+        FUCEPARENTCODE,
+      </if>
+      <if test="fuceismenu != null">
+        FUCEISMENU,
+      </if>
+      <if test="fuceneedlog != null">
+        FUCENEEDLOG,
+      </if>
+      <if test="fucessxt != null">
+        FUCESSXT,
+      </if>
+      <if test="pageid != null">
+        PAGEID,
+      </if>
+      <if test="sysid != null">
+        SYSID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fuceid != null">
+        #{fuceid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecode != null">
+        #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="fucename != null">
+        #{fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="fucelevel != null">
+        #{fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="fucedesc != null">
+        #{fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceresource != null">
+        #{fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceiconurl != null">
+        #{fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="fucedefaultpage != null">
+        #{fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceindex != null">
+        #{fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifierid != null">
+        #{fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifytime != null">
+        #{fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatorid != null">
+        #{fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatetime != null">
+        #{fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceparentcode != null">
+        #{fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceismenu != null">
+        #{fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="fuceneedlog != null">
+        #{fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="fucessxt != null">
+        #{fucessxt,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        #{sysid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellExample" resultType="java.lang.Integer">
+    select count(*) from FRMFUNCTIONCELL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMFUNCTIONCELL
+    <set>
+      <if test="record.fuceid != null">
+        FUCEID = #{record.fuceid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecode != null">
+        FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucename != null">
+        FUCENAME = #{record.fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucelevel != null">
+        FUCELEVEL = #{record.fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="record.fucedesc != null">
+        FUCEDESC = #{record.fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceresource != null">
+        FUCERESOURCE = #{record.fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceiconurl != null">
+        FUCEICONURL = #{record.fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucedefaultpage != null">
+        FUCEDEFAULTPAGE = #{record.fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceindex != null">
+        FUCEINDEX = #{record.fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucemodifierid != null">
+        FUCEMODIFIERID = #{record.fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucemodifytime != null">
+        FUCEMODIFYTIME = #{record.fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecreatorid != null">
+        FUCECREATORID = #{record.fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecreatetime != null">
+        FUCECREATETIME = #{record.fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceparentcode != null">
+        FUCEPARENTCODE = #{record.fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuceismenu != null">
+        FUCEISMENU = #{record.fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="record.fuceneedlog != null">
+        FUCENEEDLOG = #{record.fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="record.fucessxt != null">
+        FUCESSXT = #{record.fucessxt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pageid != null">
+        PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sysid != null">
+        SYSID = #{record.sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMFUNCTIONCELL
+    set FUCEID = #{record.fuceid,jdbcType=VARCHAR},
+      FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      FUCENAME = #{record.fucename,jdbcType=VARCHAR},
+      FUCELEVEL = #{record.fucelevel,jdbcType=CHAR},
+      FUCEDESC = #{record.fucedesc,jdbcType=VARCHAR},
+      FUCERESOURCE = #{record.fuceresource,jdbcType=VARCHAR},
+      FUCEICONURL = #{record.fuceiconurl,jdbcType=VARCHAR},
+      FUCEDEFAULTPAGE = #{record.fucedefaultpage,jdbcType=VARCHAR},
+      FUCEINDEX = #{record.fuceindex,jdbcType=VARCHAR},
+      FUCEMODIFIERID = #{record.fucemodifierid,jdbcType=VARCHAR},
+      FUCEMODIFYTIME = #{record.fucemodifytime,jdbcType=VARCHAR},
+      FUCECREATORID = #{record.fucecreatorid,jdbcType=VARCHAR},
+      FUCECREATETIME = #{record.fucecreatetime,jdbcType=VARCHAR},
+      FUCEPARENTCODE = #{record.fuceparentcode,jdbcType=VARCHAR},
+      FUCEISMENU = #{record.fuceismenu,jdbcType=CHAR},
+      FUCENEEDLOG = #{record.fuceneedlog,jdbcType=CHAR},
+      FUCESSXT = #{record.fucessxt,jdbcType=VARCHAR},
+      PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      SYSID = #{record.sysid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    update FRMFUNCTIONCELL
+    <set>
+      <if test="fucecode != null">
+        FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="fucename != null">
+        FUCENAME = #{fucename,jdbcType=VARCHAR},
+      </if>
+      <if test="fucelevel != null">
+        FUCELEVEL = #{fucelevel,jdbcType=CHAR},
+      </if>
+      <if test="fucedesc != null">
+        FUCEDESC = #{fucedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceresource != null">
+        FUCERESOURCE = #{fuceresource,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceiconurl != null">
+        FUCEICONURL = #{fuceiconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="fucedefaultpage != null">
+        FUCEDEFAULTPAGE = #{fucedefaultpage,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceindex != null">
+        FUCEINDEX = #{fuceindex,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifierid != null">
+        FUCEMODIFIERID = #{fucemodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucemodifytime != null">
+        FUCEMODIFYTIME = #{fucemodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatorid != null">
+        FUCECREATORID = #{fucecreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecreatetime != null">
+        FUCECREATETIME = #{fucecreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceparentcode != null">
+        FUCEPARENTCODE = #{fuceparentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fuceismenu != null">
+        FUCEISMENU = #{fuceismenu,jdbcType=CHAR},
+      </if>
+      <if test="fuceneedlog != null">
+        FUCENEEDLOG = #{fuceneedlog,jdbcType=CHAR},
+      </if>
+      <if test="fucessxt != null">
+        FUCESSXT = #{fucessxt,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        PAGEID = #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        SYSID = #{sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCell">
+    update FRMFUNCTIONCELL
+    set FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      FUCENAME = #{fucename,jdbcType=VARCHAR},
+      FUCELEVEL = #{fucelevel,jdbcType=CHAR},
+      FUCEDESC = #{fucedesc,jdbcType=VARCHAR},
+      FUCERESOURCE = #{fuceresource,jdbcType=VARCHAR},
+      FUCEICONURL = #{fuceiconurl,jdbcType=VARCHAR},
+      FUCEDEFAULTPAGE = #{fucedefaultpage,jdbcType=VARCHAR},
+      FUCEINDEX = #{fuceindex,jdbcType=VARCHAR},
+      FUCEMODIFIERID = #{fucemodifierid,jdbcType=VARCHAR},
+      FUCEMODIFYTIME = #{fucemodifytime,jdbcType=VARCHAR},
+      FUCECREATORID = #{fucecreatorid,jdbcType=VARCHAR},
+      FUCECREATETIME = #{fucecreatetime,jdbcType=VARCHAR},
+      FUCEPARENTCODE = #{fuceparentcode,jdbcType=VARCHAR},
+      FUCEISMENU = #{fuceismenu,jdbcType=CHAR},
+      FUCENEEDLOG = #{fuceneedlog,jdbcType=CHAR},
+      FUCESSXT = #{fucessxt,jdbcType=VARCHAR},
+      PAGEID = #{pageid,jdbcType=DECIMAL},
+      SYSID = #{sysid,jdbcType=VARCHAR}
+    where FUCEID = #{fuceid,jdbcType=VARCHAR}
+  </update>
+</mapper>

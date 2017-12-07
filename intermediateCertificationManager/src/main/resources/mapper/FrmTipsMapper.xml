@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmTipsMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    <result column="TIPINFO" jdbcType="VARCHAR" property="tipinfo" />
+    <result column="TIPURL" jdbcType="VARCHAR" property="tipurl" />
+    <result column="ISENFORCE" jdbcType="DECIMAL" property="isenforce" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="ISSHOWED" jdbcType="VARCHAR" property="isshowed" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    TIPINFO, TIPURL, ISENFORCE, USERID, ISSHOWED, CREATETIME
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample">
+    delete from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    insert into FRMTIPS (TIPINFO, TIPURL, ISENFORCE, 
+      USERID, ISSHOWED, CREATETIME
+      )
+    values (#{tipinfo,jdbcType=VARCHAR}, #{tipurl,jdbcType=VARCHAR}, #{isenforce,jdbcType=DECIMAL}, 
+      #{userid,jdbcType=VARCHAR}, #{isshowed,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    insert into FRMTIPS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tipinfo != null">
+        TIPINFO,
+      </if>
+      <if test="tipurl != null">
+        TIPURL,
+      </if>
+      <if test="isenforce != null">
+        ISENFORCE,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="isshowed != null">
+        ISSHOWED,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tipinfo != null">
+        #{tipinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tipurl != null">
+        #{tipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="isenforce != null">
+        #{isenforce,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="isshowed != null">
+        #{isshowed,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultType="java.lang.Integer">
+    select count(*) from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMTIPS
+    <set>
+      <if test="record.tipinfo != null">
+        TIPINFO = #{record.tipinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipurl != null">
+        TIPURL = #{record.tipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isenforce != null">
+        ISENFORCE = #{record.isenforce,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isshowed != null">
+        ISSHOWED = #{record.isshowed,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMTIPS
+    set TIPINFO = #{record.tipinfo,jdbcType=VARCHAR},
+      TIPURL = #{record.tipurl,jdbcType=VARCHAR},
+      ISENFORCE = #{record.isenforce,jdbcType=DECIMAL},
+      USERID = #{record.userid,jdbcType=VARCHAR},
+      ISSHOWED = #{record.isshowed,jdbcType=VARCHAR},
+      CREATETIME = #{record.createtime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    <result column="TIPINFO" jdbcType="VARCHAR" property="tipinfo" />
+    <result column="TIPURL" jdbcType="VARCHAR" property="tipurl" />
+    <result column="ISENFORCE" jdbcType="DECIMAL" property="isenforce" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="ISSHOWED" jdbcType="VARCHAR" property="isshowed" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="SYSID" jdbcType="VARCHAR" property="sysid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    TIPINFO, TIPURL, ISENFORCE, USERID, ISSHOWED, CREATETIME, SYSID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample">
+    delete from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    insert into FRMTIPS (TIPINFO, TIPURL, ISENFORCE, 
+      USERID, ISSHOWED, CREATETIME, 
+      SYSID)
+    values (#{tipinfo,jdbcType=VARCHAR}, #{tipurl,jdbcType=VARCHAR}, #{isenforce,jdbcType=DECIMAL}, 
+      #{userid,jdbcType=VARCHAR}, #{isshowed,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{sysid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    insert into FRMTIPS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tipinfo != null">
+        TIPINFO,
+      </if>
+      <if test="tipurl != null">
+        TIPURL,
+      </if>
+      <if test="isenforce != null">
+        ISENFORCE,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="isshowed != null">
+        ISSHOWED,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="sysid != null">
+        SYSID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tipinfo != null">
+        #{tipinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tipurl != null">
+        #{tipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="isenforce != null">
+        #{isenforce,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="isshowed != null">
+        #{isshowed,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="sysid != null">
+        #{sysid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultType="java.lang.Integer">
+    select count(*) from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMTIPS
+    <set>
+      <if test="record.tipinfo != null">
+        TIPINFO = #{record.tipinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipurl != null">
+        TIPURL = #{record.tipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isenforce != null">
+        ISENFORCE = #{record.isenforce,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isshowed != null">
+        ISSHOWED = #{record.isshowed,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sysid != null">
+        SYSID = #{record.sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMTIPS
+    set TIPINFO = #{record.tipinfo,jdbcType=VARCHAR},
+      TIPURL = #{record.tipurl,jdbcType=VARCHAR},
+      ISENFORCE = #{record.isenforce,jdbcType=DECIMAL},
+      USERID = #{record.userid,jdbcType=VARCHAR},
+      ISSHOWED = #{record.isshowed,jdbcType=VARCHAR},
+      CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      SYSID = #{record.sysid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    <result column="TIPINFO" jdbcType="VARCHAR" property="tipinfo" />
+    <result column="TIPURL" jdbcType="VARCHAR" property="tipurl" />
+    <result column="ISENFORCE" jdbcType="DECIMAL" property="isenforce" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="ISSHOWED" jdbcType="VARCHAR" property="isshowed" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    TIPINFO, TIPURL, ISENFORCE, USERID, ISSHOWED, CREATETIME
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample">
+    delete from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    insert into FRMTIPS (TIPINFO, TIPURL, ISENFORCE, 
+      USERID, ISSHOWED, CREATETIME
+      )
+    values (#{tipinfo,jdbcType=VARCHAR}, #{tipurl,jdbcType=VARCHAR}, #{isenforce,jdbcType=DECIMAL}, 
+      #{userid,jdbcType=VARCHAR}, #{isshowed,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    insert into FRMTIPS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tipinfo != null">
+        TIPINFO,
+      </if>
+      <if test="tipurl != null">
+        TIPURL,
+      </if>
+      <if test="isenforce != null">
+        ISENFORCE,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="isshowed != null">
+        ISSHOWED,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tipinfo != null">
+        #{tipinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tipurl != null">
+        #{tipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="isenforce != null">
+        #{isenforce,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="isshowed != null">
+        #{isshowed,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultType="java.lang.Integer">
+    select count(*) from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMTIPS
+    <set>
+      <if test="record.tipinfo != null">
+        TIPINFO = #{record.tipinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipurl != null">
+        TIPURL = #{record.tipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isenforce != null">
+        ISENFORCE = #{record.isenforce,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isshowed != null">
+        ISSHOWED = #{record.isshowed,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMTIPS
+    set TIPINFO = #{record.tipinfo,jdbcType=VARCHAR},
+      TIPURL = #{record.tipurl,jdbcType=VARCHAR},
+      ISENFORCE = #{record.isenforce,jdbcType=DECIMAL},
+      USERID = #{record.userid,jdbcType=VARCHAR},
+      ISSHOWED = #{record.isshowed,jdbcType=VARCHAR},
+      CREATETIME = #{record.createtime,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    <result column="TIPINFO" jdbcType="VARCHAR" property="tipinfo" />
+    <result column="TIPURL" jdbcType="VARCHAR" property="tipurl" />
+    <result column="ISENFORCE" jdbcType="DECIMAL" property="isenforce" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="ISSHOWED" jdbcType="VARCHAR" property="isshowed" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="SYSID" jdbcType="VARCHAR" property="sysid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    TIPINFO, TIPURL, ISENFORCE, USERID, ISSHOWED, CREATETIME, SYSID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample">
+    delete from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    insert into FRMTIPS (TIPINFO, TIPURL, ISENFORCE, 
+      USERID, ISSHOWED, CREATETIME, 
+      SYSID)
+    values (#{tipinfo,jdbcType=VARCHAR}, #{tipurl,jdbcType=VARCHAR}, #{isenforce,jdbcType=DECIMAL}, 
+      #{userid,jdbcType=VARCHAR}, #{isshowed,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{sysid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+    insert into FRMTIPS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tipinfo != null">
+        TIPINFO,
+      </if>
+      <if test="tipurl != null">
+        TIPURL,
+      </if>
+      <if test="isenforce != null">
+        ISENFORCE,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="isshowed != null">
+        ISSHOWED,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="sysid != null">
+        SYSID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tipinfo != null">
+        #{tipinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tipurl != null">
+        #{tipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="isenforce != null">
+        #{isenforce,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="isshowed != null">
+        #{isshowed,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="sysid != null">
+        #{sysid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultType="java.lang.Integer">
+    select count(*) from FRMTIPS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMTIPS
+    <set>
+      <if test="record.tipinfo != null">
+        TIPINFO = #{record.tipinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipurl != null">
+        TIPURL = #{record.tipurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isenforce != null">
+        ISENFORCE = #{record.isenforce,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isshowed != null">
+        ISSHOWED = #{record.isshowed,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sysid != null">
+        SYSID = #{record.sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMTIPS
+    set TIPINFO = #{record.tipinfo,jdbcType=VARCHAR},
+      TIPURL = #{record.tipurl,jdbcType=VARCHAR},
+      ISENFORCE = #{record.isenforce,jdbcType=DECIMAL},
+      USERID = #{record.userid,jdbcType=VARCHAR},
+      ISSHOWED = #{record.isshowed,jdbcType=VARCHAR},
+      CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      SYSID = #{record.sysid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

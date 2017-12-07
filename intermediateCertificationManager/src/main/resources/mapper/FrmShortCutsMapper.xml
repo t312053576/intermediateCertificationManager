@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmShortCutsMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCuts">
+    <id column="FRMSHORTCUTSID" jdbcType="VARCHAR" property="frmshortcutsid" />
+    <result column="FUCECODE" jdbcType="VARCHAR" property="fucecode" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="ICOURL" jdbcType="VARCHAR" property="icourl" />
+    <result column="ORDERINDEX" jdbcType="DECIMAL" property="orderindex" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FRMSHORTCUTSID, FUCECODE, USERID, ICOURL, ORDERINDEX
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCutsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMSHORTCUTS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMSHORTCUTS
+    where FRMSHORTCUTSID = #{frmshortcutsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMSHORTCUTS
+    where FRMSHORTCUTSID = #{frmshortcutsid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCutsExample">
+    delete from FRMSHORTCUTS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCuts">
+    insert into FRMSHORTCUTS (FRMSHORTCUTSID, FUCECODE, USERID, 
+      ICOURL, ORDERINDEX)
+    values (#{frmshortcutsid,jdbcType=VARCHAR}, #{fucecode,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{icourl,jdbcType=VARCHAR}, #{orderindex,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCuts">
+    insert into FRMSHORTCUTS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="frmshortcutsid != null">
+        FRMSHORTCUTSID,
+      </if>
+      <if test="fucecode != null">
+        FUCECODE,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="icourl != null">
+        ICOURL,
+      </if>
+      <if test="orderindex != null">
+        ORDERINDEX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="frmshortcutsid != null">
+        #{frmshortcutsid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecode != null">
+        #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="icourl != null">
+        #{icourl,jdbcType=VARCHAR},
+      </if>
+      <if test="orderindex != null">
+        #{orderindex,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCutsExample" resultType="java.lang.Integer">
+    select count(*) from FRMSHORTCUTS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMSHORTCUTS
+    <set>
+      <if test="record.frmshortcutsid != null">
+        FRMSHORTCUTSID = #{record.frmshortcutsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecode != null">
+        FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icourl != null">
+        ICOURL = #{record.icourl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderindex != null">
+        ORDERINDEX = #{record.orderindex,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMSHORTCUTS
+    set FRMSHORTCUTSID = #{record.frmshortcutsid,jdbcType=VARCHAR},
+      FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      USERID = #{record.userid,jdbcType=VARCHAR},
+      ICOURL = #{record.icourl,jdbcType=VARCHAR},
+      ORDERINDEX = #{record.orderindex,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCuts">
+    update FRMSHORTCUTS
+    <set>
+      <if test="fucecode != null">
+        FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="icourl != null">
+        ICOURL = #{icourl,jdbcType=VARCHAR},
+      </if>
+      <if test="orderindex != null">
+        ORDERINDEX = #{orderindex,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where FRMSHORTCUTSID = #{frmshortcutsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCuts">
+    update FRMSHORTCUTS
+    set FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      USERID = #{userid,jdbcType=VARCHAR},
+      ICOURL = #{icourl,jdbcType=VARCHAR},
+      ORDERINDEX = #{orderindex,jdbcType=DECIMAL}
+    where FRMSHORTCUTSID = #{frmshortcutsid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCuts">
+    <id column="FRMSHORTCUTSID" jdbcType="VARCHAR" property="frmshortcutsid" />
+    <result column="FUCECODE" jdbcType="VARCHAR" property="fucecode" />
+    <result column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="ICOURL" jdbcType="VARCHAR" property="icourl" />
+    <result column="ORDERINDEX" jdbcType="DECIMAL" property="orderindex" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FRMSHORTCUTSID, FUCECODE, USERID, ICOURL, ORDERINDEX
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCutsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMSHORTCUTS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMSHORTCUTS
+    where FRMSHORTCUTSID = #{frmshortcutsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMSHORTCUTS
+    where FRMSHORTCUTSID = #{frmshortcutsid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCutsExample">
+    delete from FRMSHORTCUTS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCuts">
+    insert into FRMSHORTCUTS (FRMSHORTCUTSID, FUCECODE, USERID, 
+      ICOURL, ORDERINDEX)
+    values (#{frmshortcutsid,jdbcType=VARCHAR}, #{fucecode,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{icourl,jdbcType=VARCHAR}, #{orderindex,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCuts">
+    insert into FRMSHORTCUTS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="frmshortcutsid != null">
+        FRMSHORTCUTSID,
+      </if>
+      <if test="fucecode != null">
+        FUCECODE,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="icourl != null">
+        ICOURL,
+      </if>
+      <if test="orderindex != null">
+        ORDERINDEX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="frmshortcutsid != null">
+        #{frmshortcutsid,jdbcType=VARCHAR},
+      </if>
+      <if test="fucecode != null">
+        #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="icourl != null">
+        #{icourl,jdbcType=VARCHAR},
+      </if>
+      <if test="orderindex != null">
+        #{orderindex,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCutsExample" resultType="java.lang.Integer">
+    select count(*) from FRMSHORTCUTS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMSHORTCUTS
+    <set>
+      <if test="record.frmshortcutsid != null">
+        FRMSHORTCUTSID = #{record.frmshortcutsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fucecode != null">
+        FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icourl != null">
+        ICOURL = #{record.icourl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderindex != null">
+        ORDERINDEX = #{record.orderindex,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMSHORTCUTS
+    set FRMSHORTCUTSID = #{record.frmshortcutsid,jdbcType=VARCHAR},
+      FUCECODE = #{record.fucecode,jdbcType=VARCHAR},
+      USERID = #{record.userid,jdbcType=VARCHAR},
+      ICOURL = #{record.icourl,jdbcType=VARCHAR},
+      ORDERINDEX = #{record.orderindex,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCuts">
+    update FRMSHORTCUTS
+    <set>
+      <if test="fucecode != null">
+        FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="icourl != null">
+        ICOURL = #{icourl,jdbcType=VARCHAR},
+      </if>
+      <if test="orderindex != null">
+        ORDERINDEX = #{orderindex,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where FRMSHORTCUTSID = #{frmshortcutsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmShortCuts">
+    update FRMSHORTCUTS
+    set FUCECODE = #{fucecode,jdbcType=VARCHAR},
+      USERID = #{userid,jdbcType=VARCHAR},
+      ICOURL = #{icourl,jdbcType=VARCHAR},
+      ORDERINDEX = #{orderindex,jdbcType=DECIMAL}
+    where FRMSHORTCUTSID = #{frmshortcutsid,jdbcType=VARCHAR}
+  </update>
+</mapper>

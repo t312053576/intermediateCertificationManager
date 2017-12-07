@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmManageTableMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+    <id column="TABLEID" jdbcType="VARCHAR" property="tableid" />
+    <result column="TABLEXSZT" jdbcType="VARCHAR" property="tablexszt" />
+    <result column="TABLEFIELD" jdbcType="VARCHAR" property="tablefield" />
+    <result column="TABLENAME" jdbcType="VARCHAR" property="tablename" />
+    <result column="TABLEINDEX" jdbcType="DECIMAL" property="tableindex" />
+    <result column="TABLEURL" jdbcType="VARCHAR" property="tableurl" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    TABLEID, TABLEXSZT, TABLEFIELD, TABLENAME, TABLEINDEX, TABLEURL
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMMANAGETABLE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMMANAGETABLE
+    where TABLEID = #{tableid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMMANAGETABLE
+    where TABLEID = #{tableid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample">
+    delete from FRMMANAGETABLE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+    insert into FRMMANAGETABLE (TABLEID, TABLEXSZT, TABLEFIELD, 
+      TABLENAME, TABLEINDEX, TABLEURL
+      )
+    values (#{tableid,jdbcType=VARCHAR}, #{tablexszt,jdbcType=VARCHAR}, #{tablefield,jdbcType=VARCHAR}, 
+      #{tablename,jdbcType=VARCHAR}, #{tableindex,jdbcType=DECIMAL}, #{tableurl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+    insert into FRMMANAGETABLE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableid != null">
+        TABLEID,
+      </if>
+      <if test="tablexszt != null">
+        TABLEXSZT,
+      </if>
+      <if test="tablefield != null">
+        TABLEFIELD,
+      </if>
+      <if test="tablename != null">
+        TABLENAME,
+      </if>
+      <if test="tableindex != null">
+        TABLEINDEX,
+      </if>
+      <if test="tableurl != null">
+        TABLEURL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableid != null">
+        #{tableid,jdbcType=VARCHAR},
+      </if>
+      <if test="tablexszt != null">
+        #{tablexszt,jdbcType=VARCHAR},
+      </if>
+      <if test="tablefield != null">
+        #{tablefield,jdbcType=VARCHAR},
+      </if>
+      <if test="tablename != null">
+        #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="tableindex != null">
+        #{tableindex,jdbcType=DECIMAL},
+      </if>
+      <if test="tableurl != null">
+        #{tableurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample" resultType="java.lang.Integer">
+    select count(*) from FRMMANAGETABLE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMMANAGETABLE
+    <set>
+      <if test="record.tableid != null">
+        TABLEID = #{record.tableid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tablexszt != null">
+        TABLEXSZT = #{record.tablexszt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tablefield != null">
+        TABLEFIELD = #{record.tablefield,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tablename != null">
+        TABLENAME = #{record.tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableindex != null">
+        TABLEINDEX = #{record.tableindex,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tableurl != null">
+        TABLEURL = #{record.tableurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMMANAGETABLE
+    set TABLEID = #{record.tableid,jdbcType=VARCHAR},
+      TABLEXSZT = #{record.tablexszt,jdbcType=VARCHAR},
+      TABLEFIELD = #{record.tablefield,jdbcType=VARCHAR},
+      TABLENAME = #{record.tablename,jdbcType=VARCHAR},
+      TABLEINDEX = #{record.tableindex,jdbcType=DECIMAL},
+      TABLEURL = #{record.tableurl,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+    update FRMMANAGETABLE
+    <set>
+      <if test="tablexszt != null">
+        TABLEXSZT = #{tablexszt,jdbcType=VARCHAR},
+      </if>
+      <if test="tablefield != null">
+        TABLEFIELD = #{tablefield,jdbcType=VARCHAR},
+      </if>
+      <if test="tablename != null">
+        TABLENAME = #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="tableindex != null">
+        TABLEINDEX = #{tableindex,jdbcType=DECIMAL},
+      </if>
+      <if test="tableurl != null">
+        TABLEURL = #{tableurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TABLEID = #{tableid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+    update FRMMANAGETABLE
+    set TABLEXSZT = #{tablexszt,jdbcType=VARCHAR},
+      TABLEFIELD = #{tablefield,jdbcType=VARCHAR},
+      TABLENAME = #{tablename,jdbcType=VARCHAR},
+      TABLEINDEX = #{tableindex,jdbcType=DECIMAL},
+      TABLEURL = #{tableurl,jdbcType=VARCHAR}
+    where TABLEID = #{tableid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+    <id column="TABLEID" jdbcType="VARCHAR" property="tableid" />
+    <result column="TABLEXSZT" jdbcType="VARCHAR" property="tablexszt" />
+    <result column="TABLEFIELD" jdbcType="VARCHAR" property="tablefield" />
+    <result column="TABLENAME" jdbcType="VARCHAR" property="tablename" />
+    <result column="TABLEINDEX" jdbcType="DECIMAL" property="tableindex" />
+    <result column="TABLEURL" jdbcType="VARCHAR" property="tableurl" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    TABLEID, TABLEXSZT, TABLEFIELD, TABLENAME, TABLEINDEX, TABLEURL
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMMANAGETABLE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMMANAGETABLE
+    where TABLEID = #{tableid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMMANAGETABLE
+    where TABLEID = #{tableid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample">
+    delete from FRMMANAGETABLE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+    insert into FRMMANAGETABLE (TABLEID, TABLEXSZT, TABLEFIELD, 
+      TABLENAME, TABLEINDEX, TABLEURL
+      )
+    values (#{tableid,jdbcType=VARCHAR}, #{tablexszt,jdbcType=VARCHAR}, #{tablefield,jdbcType=VARCHAR}, 
+      #{tablename,jdbcType=VARCHAR}, #{tableindex,jdbcType=DECIMAL}, #{tableurl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+    insert into FRMMANAGETABLE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableid != null">
+        TABLEID,
+      </if>
+      <if test="tablexszt != null">
+        TABLEXSZT,
+      </if>
+      <if test="tablefield != null">
+        TABLEFIELD,
+      </if>
+      <if test="tablename != null">
+        TABLENAME,
+      </if>
+      <if test="tableindex != null">
+        TABLEINDEX,
+      </if>
+      <if test="tableurl != null">
+        TABLEURL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableid != null">
+        #{tableid,jdbcType=VARCHAR},
+      </if>
+      <if test="tablexszt != null">
+        #{tablexszt,jdbcType=VARCHAR},
+      </if>
+      <if test="tablefield != null">
+        #{tablefield,jdbcType=VARCHAR},
+      </if>
+      <if test="tablename != null">
+        #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="tableindex != null">
+        #{tableindex,jdbcType=DECIMAL},
+      </if>
+      <if test="tableurl != null">
+        #{tableurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample" resultType="java.lang.Integer">
+    select count(*) from FRMMANAGETABLE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMMANAGETABLE
+    <set>
+      <if test="record.tableid != null">
+        TABLEID = #{record.tableid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tablexszt != null">
+        TABLEXSZT = #{record.tablexszt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tablefield != null">
+        TABLEFIELD = #{record.tablefield,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tablename != null">
+        TABLENAME = #{record.tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableindex != null">
+        TABLEINDEX = #{record.tableindex,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tableurl != null">
+        TABLEURL = #{record.tableurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMMANAGETABLE
+    set TABLEID = #{record.tableid,jdbcType=VARCHAR},
+      TABLEXSZT = #{record.tablexszt,jdbcType=VARCHAR},
+      TABLEFIELD = #{record.tablefield,jdbcType=VARCHAR},
+      TABLENAME = #{record.tablename,jdbcType=VARCHAR},
+      TABLEINDEX = #{record.tableindex,jdbcType=DECIMAL},
+      TABLEURL = #{record.tableurl,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+    update FRMMANAGETABLE
+    <set>
+      <if test="tablexszt != null">
+        TABLEXSZT = #{tablexszt,jdbcType=VARCHAR},
+      </if>
+      <if test="tablefield != null">
+        TABLEFIELD = #{tablefield,jdbcType=VARCHAR},
+      </if>
+      <if test="tablename != null">
+        TABLENAME = #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="tableindex != null">
+        TABLEINDEX = #{tableindex,jdbcType=DECIMAL},
+      </if>
+      <if test="tableurl != null">
+        TABLEURL = #{tableurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TABLEID = #{tableid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+    update FRMMANAGETABLE
+    set TABLEXSZT = #{tablexszt,jdbcType=VARCHAR},
+      TABLEFIELD = #{tablefield,jdbcType=VARCHAR},
+      TABLENAME = #{tablename,jdbcType=VARCHAR},
+      TABLEINDEX = #{tableindex,jdbcType=DECIMAL},
+      TABLEURL = #{tableurl,jdbcType=VARCHAR}
+    where TABLEID = #{tableid,jdbcType=VARCHAR}
+  </update>
+</mapper>

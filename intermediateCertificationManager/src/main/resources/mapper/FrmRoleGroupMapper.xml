@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmRoleGroupMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    <id column="ROLEGROUPID" jdbcType="VARCHAR" property="rolegroupid" />
+    <result column="ROLEGROUPNAME" jdbcType="VARCHAR" property="rolegroupname" />
+    <result column="SYSID" jdbcType="VARCHAR" property="sysid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ROLEGROUPID, ROLEGROUPNAME, SYSID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMROLEGROUP
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMROLEGROUP
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample">
+    delete from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    insert into FRMROLEGROUP (ROLEGROUPID, ROLEGROUPNAME, SYSID
+      )
+    values (#{rolegroupid,jdbcType=VARCHAR}, #{rolegroupname,jdbcType=VARCHAR}, #{sysid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    insert into FRMROLEGROUP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rolegroupid != null">
+        ROLEGROUPID,
+      </if>
+      <if test="rolegroupname != null">
+        ROLEGROUPNAME,
+      </if>
+      <if test="sysid != null">
+        SYSID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rolegroupid != null">
+        #{rolegroupid,jdbcType=VARCHAR},
+      </if>
+      <if test="rolegroupname != null">
+        #{rolegroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="sysid != null">
+        #{sysid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample" resultType="java.lang.Integer">
+    select count(*) from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMROLEGROUP
+    <set>
+      <if test="record.rolegroupid != null">
+        ROLEGROUPID = #{record.rolegroupid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rolegroupname != null">
+        ROLEGROUPNAME = #{record.rolegroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sysid != null">
+        SYSID = #{record.sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMROLEGROUP
+    set ROLEGROUPID = #{record.rolegroupid,jdbcType=VARCHAR},
+      ROLEGROUPNAME = #{record.rolegroupname,jdbcType=VARCHAR},
+      SYSID = #{record.sysid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    update FRMROLEGROUP
+    <set>
+      <if test="rolegroupname != null">
+        ROLEGROUPNAME = #{rolegroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="sysid != null">
+        SYSID = #{sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    update FRMROLEGROUP
+    set ROLEGROUPNAME = #{rolegroupname,jdbcType=VARCHAR},
+      SYSID = #{sysid,jdbcType=VARCHAR}
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    <id column="ROLEGROUPID" jdbcType="VARCHAR" property="rolegroupid" />
+    <result column="ROLEGROUPNAME" jdbcType="VARCHAR" property="rolegroupname" />
+    <result column="SYSID" jdbcType="VARCHAR" property="sysid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ROLEGROUPID, ROLEGROUPNAME, SYSID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMROLEGROUP
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMROLEGROUP
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample">
+    delete from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    insert into FRMROLEGROUP (ROLEGROUPID, ROLEGROUPNAME, SYSID
+      )
+    values (#{rolegroupid,jdbcType=VARCHAR}, #{rolegroupname,jdbcType=VARCHAR}, #{sysid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    insert into FRMROLEGROUP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rolegroupid != null">
+        ROLEGROUPID,
+      </if>
+      <if test="rolegroupname != null">
+        ROLEGROUPNAME,
+      </if>
+      <if test="sysid != null">
+        SYSID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rolegroupid != null">
+        #{rolegroupid,jdbcType=VARCHAR},
+      </if>
+      <if test="rolegroupname != null">
+        #{rolegroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="sysid != null">
+        #{sysid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample" resultType="java.lang.Integer">
+    select count(*) from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMROLEGROUP
+    <set>
+      <if test="record.rolegroupid != null">
+        ROLEGROUPID = #{record.rolegroupid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rolegroupname != null">
+        ROLEGROUPNAME = #{record.rolegroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sysid != null">
+        SYSID = #{record.sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMROLEGROUP
+    set ROLEGROUPID = #{record.rolegroupid,jdbcType=VARCHAR},
+      ROLEGROUPNAME = #{record.rolegroupname,jdbcType=VARCHAR},
+      SYSID = #{record.sysid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    update FRMROLEGROUP
+    <set>
+      <if test="rolegroupname != null">
+        ROLEGROUPNAME = #{rolegroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="sysid != null">
+        SYSID = #{sysid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    update FRMROLEGROUP
+    set ROLEGROUPNAME = #{rolegroupname,jdbcType=VARCHAR},
+      SYSID = #{sysid,jdbcType=VARCHAR}
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    <id column="ROLEGROUPID" jdbcType="VARCHAR" property="rolegroupid" />
+    <result column="ROLEGROUPNAME" jdbcType="VARCHAR" property="rolegroupname" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ROLEGROUPID, ROLEGROUPNAME
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMROLEGROUP
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMROLEGROUP
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample">
+    delete from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    insert into FRMROLEGROUP (ROLEGROUPID, ROLEGROUPNAME)
+    values (#{rolegroupid,jdbcType=VARCHAR}, #{rolegroupname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    insert into FRMROLEGROUP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rolegroupid != null">
+        ROLEGROUPID,
+      </if>
+      <if test="rolegroupname != null">
+        ROLEGROUPNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rolegroupid != null">
+        #{rolegroupid,jdbcType=VARCHAR},
+      </if>
+      <if test="rolegroupname != null">
+        #{rolegroupname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample" resultType="java.lang.Integer">
+    select count(*) from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMROLEGROUP
+    <set>
+      <if test="record.rolegroupid != null">
+        ROLEGROUPID = #{record.rolegroupid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rolegroupname != null">
+        ROLEGROUPNAME = #{record.rolegroupname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMROLEGROUP
+    set ROLEGROUPID = #{record.rolegroupid,jdbcType=VARCHAR},
+      ROLEGROUPNAME = #{record.rolegroupname,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    update FRMROLEGROUP
+    <set>
+      <if test="rolegroupname != null">
+        ROLEGROUPNAME = #{rolegroupname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    update FRMROLEGROUP
+    set ROLEGROUPNAME = #{rolegroupname,jdbcType=VARCHAR}
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    <id column="ROLEGROUPID" jdbcType="VARCHAR" property="rolegroupid" />
+    <result column="ROLEGROUPNAME" jdbcType="VARCHAR" property="rolegroupname" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ROLEGROUPID, ROLEGROUPNAME
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMROLEGROUP
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMROLEGROUP
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample">
+    delete from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    insert into FRMROLEGROUP (ROLEGROUPID, ROLEGROUPNAME)
+    values (#{rolegroupid,jdbcType=VARCHAR}, #{rolegroupname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    insert into FRMROLEGROUP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rolegroupid != null">
+        ROLEGROUPID,
+      </if>
+      <if test="rolegroupname != null">
+        ROLEGROUPNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rolegroupid != null">
+        #{rolegroupid,jdbcType=VARCHAR},
+      </if>
+      <if test="rolegroupname != null">
+        #{rolegroupname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroupExample" resultType="java.lang.Integer">
+    select count(*) from FRMROLEGROUP
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMROLEGROUP
+    <set>
+      <if test="record.rolegroupid != null">
+        ROLEGROUPID = #{record.rolegroupid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rolegroupname != null">
+        ROLEGROUPNAME = #{record.rolegroupname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMROLEGROUP
+    set ROLEGROUPID = #{record.rolegroupid,jdbcType=VARCHAR},
+      ROLEGROUPNAME = #{record.rolegroupname,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    update FRMROLEGROUP
+    <set>
+      <if test="rolegroupname != null">
+        ROLEGROUPNAME = #{rolegroupname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleGroup">
+    update FRMROLEGROUP
+    set ROLEGROUPNAME = #{rolegroupname,jdbcType=VARCHAR}
+    where ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
+  </update>
+</mapper>

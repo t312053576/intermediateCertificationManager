@@ -1,0 +1,2432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmUserMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    <id column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="USERPASSWD" jdbcType="VARCHAR" property="userpasswd" />
+    <result column="USERACCOUNT" jdbcType="VARCHAR" property="useraccount" />
+    <result column="USERREALNAME" jdbcType="VARCHAR" property="userrealname" />
+    <result column="USERACCOUNTTYPE" jdbcType="VARCHAR" property="useraccounttype" />
+    <result column="USERLASTLOGINDATE" jdbcType="VARCHAR" property="userlastlogindate" />
+    <result column="USERLASTLOGINTIME" jdbcType="VARCHAR" property="userlastlogintime" />
+    <result column="USERPWDQUESTION1" jdbcType="VARCHAR" property="userpwdquestion1" />
+    <result column="USERPWDANSWER1" jdbcType="VARCHAR" property="userpwdanswer1" />
+    <result column="USERPWDQUESTION2" jdbcType="VARCHAR" property="userpwdquestion2" />
+    <result column="USERPWDANSWER2" jdbcType="VARCHAR" property="userpwdanswer2" />
+    <result column="USERPWDEMAIL" jdbcType="VARCHAR" property="userpwdemail" />
+    <result column="USEREMAIL" jdbcType="VARCHAR" property="useremail" />
+    <result column="USERSTARTTIME" jdbcType="VARCHAR" property="userstarttime" />
+    <result column="USERENDTIME" jdbcType="VARCHAR" property="userendtime" />
+    <result column="USERENABLE" jdbcType="CHAR" property="userenable" />
+    <result column="USERDEPARTMENTID" jdbcType="VARCHAR" property="userdepartmentid" />
+    <result column="USERCREATORID" jdbcType="VARCHAR" property="usercreatorid" />
+    <result column="USERCREATETIME" jdbcType="VARCHAR" property="usercreatetime" />
+    <result column="USERMODIFIERID" jdbcType="VARCHAR" property="usermodifierid" />
+    <result column="USERMODIFYTIME" jdbcType="VARCHAR" property="usermodifytime" />
+    <result column="USERPAGESIZE" jdbcType="DECIMAL" property="userpagesize" />
+    <result column="USERMOBILE" jdbcType="VARCHAR" property="usermobile" />
+    <result column="IDCARD" jdbcType="VARCHAR" property="idcard" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="PAGEID" jdbcType="DECIMAL" property="pageid" />
+    <result column="LOGINCOUNT" jdbcType="DECIMAL" property="logincount" />
+    <result column="SYSID" jdbcType="VARCHAR" property="sysid" />
+    <result column="ORDERBY" jdbcType="DECIMAL" property="orderby" />
+    <result column="USERPASSWD1" jdbcType="VARCHAR" property="userpasswd1" />
+    <result column="ISFIRST" jdbcType="CHAR" property="isfirst" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    USERID, USERPASSWD, USERACCOUNT, USERREALNAME, USERACCOUNTTYPE, USERLASTLOGINDATE, 
+    USERLASTLOGINTIME, USERPWDQUESTION1, USERPWDANSWER1, USERPWDQUESTION2, USERPWDANSWER2, 
+    USERPWDEMAIL, USEREMAIL, USERSTARTTIME, USERENDTIME, USERENABLE, USERDEPARTMENTID, 
+    USERCREATORID, USERCREATETIME, USERMODIFIERID, USERMODIFYTIME, USERPAGESIZE, USERMOBILE, 
+    IDCARD, SEX, ADDRESS, PAGEID, LOGINCOUNT, SYSID, ORDERBY, USERPASSWD1, ISFIRST
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMUSER
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMUSER
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample">
+    delete from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    insert into FRMUSER (USERID, USERPASSWD, USERACCOUNT, 
+      USERREALNAME, USERACCOUNTTYPE, USERLASTLOGINDATE, 
+      USERLASTLOGINTIME, USERPWDQUESTION1, USERPWDANSWER1, 
+      USERPWDQUESTION2, USERPWDANSWER2, USERPWDEMAIL, 
+      USEREMAIL, USERSTARTTIME, USERENDTIME, 
+      USERENABLE, USERDEPARTMENTID, USERCREATORID, 
+      USERCREATETIME, USERMODIFIERID, USERMODIFYTIME, 
+      USERPAGESIZE, USERMOBILE, IDCARD, 
+      SEX, ADDRESS, PAGEID, 
+      LOGINCOUNT, SYSID, ORDERBY, 
+      USERPASSWD1, ISFIRST)
+    values (#{userid,jdbcType=VARCHAR}, #{userpasswd,jdbcType=VARCHAR}, #{useraccount,jdbcType=VARCHAR}, 
+      #{userrealname,jdbcType=VARCHAR}, #{useraccounttype,jdbcType=VARCHAR}, #{userlastlogindate,jdbcType=VARCHAR}, 
+      #{userlastlogintime,jdbcType=VARCHAR}, #{userpwdquestion1,jdbcType=VARCHAR}, #{userpwdanswer1,jdbcType=VARCHAR}, 
+      #{userpwdquestion2,jdbcType=VARCHAR}, #{userpwdanswer2,jdbcType=VARCHAR}, #{userpwdemail,jdbcType=VARCHAR}, 
+      #{useremail,jdbcType=VARCHAR}, #{userstarttime,jdbcType=VARCHAR}, #{userendtime,jdbcType=VARCHAR}, 
+      #{userenable,jdbcType=CHAR}, #{userdepartmentid,jdbcType=VARCHAR}, #{usercreatorid,jdbcType=VARCHAR}, 
+      #{usercreatetime,jdbcType=VARCHAR}, #{usermodifierid,jdbcType=VARCHAR}, #{usermodifytime,jdbcType=VARCHAR}, 
+      #{userpagesize,jdbcType=DECIMAL}, #{usermobile,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{pageid,jdbcType=DECIMAL}, 
+      #{logincount,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR}, #{orderby,jdbcType=DECIMAL}, 
+      #{userpasswd1,jdbcType=VARCHAR}, #{isfirst,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    insert into FRMUSER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="userpasswd != null">
+        USERPASSWD,
+      </if>
+      <if test="useraccount != null">
+        USERACCOUNT,
+      </if>
+      <if test="userrealname != null">
+        USERREALNAME,
+      </if>
+      <if test="useraccounttype != null">
+        USERACCOUNTTYPE,
+      </if>
+      <if test="userlastlogindate != null">
+        USERLASTLOGINDATE,
+      </if>
+      <if test="userlastlogintime != null">
+        USERLASTLOGINTIME,
+      </if>
+      <if test="userpwdquestion1 != null">
+        USERPWDQUESTION1,
+      </if>
+      <if test="userpwdanswer1 != null">
+        USERPWDANSWER1,
+      </if>
+      <if test="userpwdquestion2 != null">
+        USERPWDQUESTION2,
+      </if>
+      <if test="userpwdanswer2 != null">
+        USERPWDANSWER2,
+      </if>
+      <if test="userpwdemail != null">
+        USERPWDEMAIL,
+      </if>
+      <if test="useremail != null">
+        USEREMAIL,
+      </if>
+      <if test="userstarttime != null">
+        USERSTARTTIME,
+      </if>
+      <if test="userendtime != null">
+        USERENDTIME,
+      </if>
+      <if test="userenable != null">
+        USERENABLE,
+      </if>
+      <if test="userdepartmentid != null">
+        USERDEPARTMENTID,
+      </if>
+      <if test="usercreatorid != null">
+        USERCREATORID,
+      </if>
+      <if test="usercreatetime != null">
+        USERCREATETIME,
+      </if>
+      <if test="usermodifierid != null">
+        USERMODIFIERID,
+      </if>
+      <if test="usermodifytime != null">
+        USERMODIFYTIME,
+      </if>
+      <if test="userpagesize != null">
+        USERPAGESIZE,
+      </if>
+      <if test="usermobile != null">
+        USERMOBILE,
+      </if>
+      <if test="idcard != null">
+        IDCARD,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="pageid != null">
+        PAGEID,
+      </if>
+      <if test="logincount != null">
+        LOGINCOUNT,
+      </if>
+      <if test="sysid != null">
+        SYSID,
+      </if>
+      <if test="orderby != null">
+        ORDERBY,
+      </if>
+      <if test="userpasswd1 != null">
+        USERPASSWD1,
+      </if>
+      <if test="isfirst != null">
+        ISFIRST,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswd != null">
+        #{userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccount != null">
+        #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userrealname != null">
+        #{userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccounttype != null">
+        #{useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogindate != null">
+        #{userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogintime != null">
+        #{userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion1 != null">
+        #{userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer1 != null">
+        #{userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion2 != null">
+        #{userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer2 != null">
+        #{userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdemail != null">
+        #{userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userstarttime != null">
+        #{userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="userendtime != null">
+        #{userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userenable != null">
+        #{userenable,jdbcType=CHAR},
+      </if>
+      <if test="userdepartmentid != null">
+        #{userdepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatorid != null">
+        #{usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatetime != null">
+        #{usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifierid != null">
+        #{usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifytime != null">
+        #{usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpagesize != null">
+        #{userpagesize,jdbcType=DECIMAL},
+      </if>
+      <if test="usermobile != null">
+        #{usermobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="logincount != null">
+        #{logincount,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        #{sysid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderby != null">
+        #{orderby,jdbcType=DECIMAL},
+      </if>
+      <if test="userpasswd1 != null">
+        #{userpasswd1,jdbcType=VARCHAR},
+      </if>
+      <if test="isfirst != null">
+        #{isfirst,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultType="java.lang.Integer">
+    select count(*) from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMUSER
+    <set>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpasswd != null">
+        USERPASSWD = #{record.userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useraccount != null">
+        USERACCOUNT = #{record.useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userrealname != null">
+        USERREALNAME = #{record.userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useraccounttype != null">
+        USERACCOUNTTYPE = #{record.useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userlastlogindate != null">
+        USERLASTLOGINDATE = #{record.userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userlastlogintime != null">
+        USERLASTLOGINTIME = #{record.userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdquestion1 != null">
+        USERPWDQUESTION1 = #{record.userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdanswer1 != null">
+        USERPWDANSWER1 = #{record.userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdquestion2 != null">
+        USERPWDQUESTION2 = #{record.userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdanswer2 != null">
+        USERPWDANSWER2 = #{record.userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdemail != null">
+        USERPWDEMAIL = #{record.userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useremail != null">
+        USEREMAIL = #{record.useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userstarttime != null">
+        USERSTARTTIME = #{record.userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userendtime != null">
+        USERENDTIME = #{record.userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userenable != null">
+        USERENABLE = #{record.userenable,jdbcType=CHAR},
+      </if>
+      <if test="record.userdepartmentid != null">
+        USERDEPARTMENTID = #{record.userdepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercreatorid != null">
+        USERCREATORID = #{record.usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercreatetime != null">
+        USERCREATETIME = #{record.usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usermodifierid != null">
+        USERMODIFIERID = #{record.usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usermodifytime != null">
+        USERMODIFYTIME = #{record.usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpagesize != null">
+        USERPAGESIZE = #{record.userpagesize,jdbcType=DECIMAL},
+      </if>
+      <if test="record.usermobile != null">
+        USERMOBILE = #{record.usermobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null">
+        IDCARD = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        SEX = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pageid != null">
+        PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.logincount != null">
+        LOGINCOUNT = #{record.logincount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sysid != null">
+        SYSID = #{record.sysid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderby != null">
+        ORDERBY = #{record.orderby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userpasswd1 != null">
+        USERPASSWD1 = #{record.userpasswd1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isfirst != null">
+        ISFIRST = #{record.isfirst,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMUSER
+    set USERID = #{record.userid,jdbcType=VARCHAR},
+      USERPASSWD = #{record.userpasswd,jdbcType=VARCHAR},
+      USERACCOUNT = #{record.useraccount,jdbcType=VARCHAR},
+      USERREALNAME = #{record.userrealname,jdbcType=VARCHAR},
+      USERACCOUNTTYPE = #{record.useraccounttype,jdbcType=VARCHAR},
+      USERLASTLOGINDATE = #{record.userlastlogindate,jdbcType=VARCHAR},
+      USERLASTLOGINTIME = #{record.userlastlogintime,jdbcType=VARCHAR},
+      USERPWDQUESTION1 = #{record.userpwdquestion1,jdbcType=VARCHAR},
+      USERPWDANSWER1 = #{record.userpwdanswer1,jdbcType=VARCHAR},
+      USERPWDQUESTION2 = #{record.userpwdquestion2,jdbcType=VARCHAR},
+      USERPWDANSWER2 = #{record.userpwdanswer2,jdbcType=VARCHAR},
+      USERPWDEMAIL = #{record.userpwdemail,jdbcType=VARCHAR},
+      USEREMAIL = #{record.useremail,jdbcType=VARCHAR},
+      USERSTARTTIME = #{record.userstarttime,jdbcType=VARCHAR},
+      USERENDTIME = #{record.userendtime,jdbcType=VARCHAR},
+      USERENABLE = #{record.userenable,jdbcType=CHAR},
+      USERDEPARTMENTID = #{record.userdepartmentid,jdbcType=VARCHAR},
+      USERCREATORID = #{record.usercreatorid,jdbcType=VARCHAR},
+      USERCREATETIME = #{record.usercreatetime,jdbcType=VARCHAR},
+      USERMODIFIERID = #{record.usermodifierid,jdbcType=VARCHAR},
+      USERMODIFYTIME = #{record.usermodifytime,jdbcType=VARCHAR},
+      USERPAGESIZE = #{record.userpagesize,jdbcType=DECIMAL},
+      USERMOBILE = #{record.usermobile,jdbcType=VARCHAR},
+      IDCARD = #{record.idcard,jdbcType=VARCHAR},
+      SEX = #{record.sex,jdbcType=VARCHAR},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      LOGINCOUNT = #{record.logincount,jdbcType=DECIMAL},
+      SYSID = #{record.sysid,jdbcType=VARCHAR},
+      ORDERBY = #{record.orderby,jdbcType=DECIMAL},
+      USERPASSWD1 = #{record.userpasswd1,jdbcType=VARCHAR},
+      ISFIRST = #{record.isfirst,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    update FRMUSER
+    <set>
+      <if test="userpasswd != null">
+        USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccount != null">
+        USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userrealname != null">
+        USERREALNAME = #{userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccounttype != null">
+        USERACCOUNTTYPE = #{useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogindate != null">
+        USERLASTLOGINDATE = #{userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogintime != null">
+        USERLASTLOGINTIME = #{userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion1 != null">
+        USERPWDQUESTION1 = #{userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer1 != null">
+        USERPWDANSWER1 = #{userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion2 != null">
+        USERPWDQUESTION2 = #{userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer2 != null">
+        USERPWDANSWER2 = #{userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdemail != null">
+        USERPWDEMAIL = #{userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        USEREMAIL = #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userstarttime != null">
+        USERSTARTTIME = #{userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="userendtime != null">
+        USERENDTIME = #{userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userenable != null">
+        USERENABLE = #{userenable,jdbcType=CHAR},
+      </if>
+      <if test="userdepartmentid != null">
+        USERDEPARTMENTID = #{userdepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatorid != null">
+        USERCREATORID = #{usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatetime != null">
+        USERCREATETIME = #{usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifierid != null">
+        USERMODIFIERID = #{usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifytime != null">
+        USERMODIFYTIME = #{usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpagesize != null">
+        USERPAGESIZE = #{userpagesize,jdbcType=DECIMAL},
+      </if>
+      <if test="usermobile != null">
+        USERMOBILE = #{usermobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        IDCARD = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        PAGEID = #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="logincount != null">
+        LOGINCOUNT = #{logincount,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        SYSID = #{sysid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderby != null">
+        ORDERBY = #{orderby,jdbcType=DECIMAL},
+      </if>
+      <if test="userpasswd1 != null">
+        USERPASSWD1 = #{userpasswd1,jdbcType=VARCHAR},
+      </if>
+      <if test="isfirst != null">
+        ISFIRST = #{isfirst,jdbcType=CHAR},
+      </if>
+    </set>
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    update FRMUSER
+    set USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
+      USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
+      USERREALNAME = #{userrealname,jdbcType=VARCHAR},
+      USERACCOUNTTYPE = #{useraccounttype,jdbcType=VARCHAR},
+      USERLASTLOGINDATE = #{userlastlogindate,jdbcType=VARCHAR},
+      USERLASTLOGINTIME = #{userlastlogintime,jdbcType=VARCHAR},
+      USERPWDQUESTION1 = #{userpwdquestion1,jdbcType=VARCHAR},
+      USERPWDANSWER1 = #{userpwdanswer1,jdbcType=VARCHAR},
+      USERPWDQUESTION2 = #{userpwdquestion2,jdbcType=VARCHAR},
+      USERPWDANSWER2 = #{userpwdanswer2,jdbcType=VARCHAR},
+      USERPWDEMAIL = #{userpwdemail,jdbcType=VARCHAR},
+      USEREMAIL = #{useremail,jdbcType=VARCHAR},
+      USERSTARTTIME = #{userstarttime,jdbcType=VARCHAR},
+      USERENDTIME = #{userendtime,jdbcType=VARCHAR},
+      USERENABLE = #{userenable,jdbcType=CHAR},
+      USERDEPARTMENTID = #{userdepartmentid,jdbcType=VARCHAR},
+      USERCREATORID = #{usercreatorid,jdbcType=VARCHAR},
+      USERCREATETIME = #{usercreatetime,jdbcType=VARCHAR},
+      USERMODIFIERID = #{usermodifierid,jdbcType=VARCHAR},
+      USERMODIFYTIME = #{usermodifytime,jdbcType=VARCHAR},
+      USERPAGESIZE = #{userpagesize,jdbcType=DECIMAL},
+      USERMOBILE = #{usermobile,jdbcType=VARCHAR},
+      IDCARD = #{idcard,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      PAGEID = #{pageid,jdbcType=DECIMAL},
+      LOGINCOUNT = #{logincount,jdbcType=DECIMAL},
+      SYSID = #{sysid,jdbcType=VARCHAR},
+      ORDERBY = #{orderby,jdbcType=DECIMAL},
+      USERPASSWD1 = #{userpasswd1,jdbcType=VARCHAR},
+      ISFIRST = #{isfirst,jdbcType=CHAR}
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    <id column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="USERPASSWD" jdbcType="VARCHAR" property="userpasswd" />
+    <result column="USERACCOUNT" jdbcType="VARCHAR" property="useraccount" />
+    <result column="USERREALNAME" jdbcType="VARCHAR" property="userrealname" />
+    <result column="USERACCOUNTTYPE" jdbcType="VARCHAR" property="useraccounttype" />
+    <result column="USERLASTLOGINDATE" jdbcType="VARCHAR" property="userlastlogindate" />
+    <result column="USERLASTLOGINTIME" jdbcType="VARCHAR" property="userlastlogintime" />
+    <result column="USERPWDQUESTION1" jdbcType="VARCHAR" property="userpwdquestion1" />
+    <result column="USERPWDANSWER1" jdbcType="VARCHAR" property="userpwdanswer1" />
+    <result column="USERPWDQUESTION2" jdbcType="VARCHAR" property="userpwdquestion2" />
+    <result column="USERPWDANSWER2" jdbcType="VARCHAR" property="userpwdanswer2" />
+    <result column="USERPWDEMAIL" jdbcType="VARCHAR" property="userpwdemail" />
+    <result column="USEREMAIL" jdbcType="VARCHAR" property="useremail" />
+    <result column="USERSTARTTIME" jdbcType="VARCHAR" property="userstarttime" />
+    <result column="USERENDTIME" jdbcType="VARCHAR" property="userendtime" />
+    <result column="USERENABLE" jdbcType="CHAR" property="userenable" />
+    <result column="USERDEPARTMENTID" jdbcType="VARCHAR" property="userdepartmentid" />
+    <result column="USERCREATORID" jdbcType="VARCHAR" property="usercreatorid" />
+    <result column="USERCREATETIME" jdbcType="VARCHAR" property="usercreatetime" />
+    <result column="USERMODIFIERID" jdbcType="VARCHAR" property="usermodifierid" />
+    <result column="USERMODIFYTIME" jdbcType="VARCHAR" property="usermodifytime" />
+    <result column="USERPAGESIZE" jdbcType="DECIMAL" property="userpagesize" />
+    <result column="USERDOGCODE" jdbcType="VARCHAR" property="userdogcode" />
+    <result column="USERPASSWORDBAK" jdbcType="VARCHAR" property="userpasswordbak" />
+    <result column="XS0101ORJG0101ID" jdbcType="VARCHAR" property="xs0101orjg0101id" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    USERID, USERPASSWD, USERACCOUNT, USERREALNAME, USERACCOUNTTYPE, USERLASTLOGINDATE, 
+    USERLASTLOGINTIME, USERPWDQUESTION1, USERPWDANSWER1, USERPWDQUESTION2, USERPWDANSWER2, 
+    USERPWDEMAIL, USEREMAIL, USERSTARTTIME, USERENDTIME, USERENABLE, USERDEPARTMENTID, 
+    USERCREATORID, USERCREATETIME, USERMODIFIERID, USERMODIFYTIME, USERPAGESIZE, USERDOGCODE, 
+    USERPASSWORDBAK, XS0101ORJG0101ID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMUSER
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMUSER
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample">
+    delete from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    insert into FRMUSER (USERID, USERPASSWD, USERACCOUNT, 
+      USERREALNAME, USERACCOUNTTYPE, USERLASTLOGINDATE, 
+      USERLASTLOGINTIME, USERPWDQUESTION1, USERPWDANSWER1, 
+      USERPWDQUESTION2, USERPWDANSWER2, USERPWDEMAIL, 
+      USEREMAIL, USERSTARTTIME, USERENDTIME, 
+      USERENABLE, USERDEPARTMENTID, USERCREATORID, 
+      USERCREATETIME, USERMODIFIERID, USERMODIFYTIME, 
+      USERPAGESIZE, USERDOGCODE, USERPASSWORDBAK, 
+      XS0101ORJG0101ID)
+    values (#{userid,jdbcType=VARCHAR}, #{userpasswd,jdbcType=VARCHAR}, #{useraccount,jdbcType=VARCHAR}, 
+      #{userrealname,jdbcType=VARCHAR}, #{useraccounttype,jdbcType=VARCHAR}, #{userlastlogindate,jdbcType=VARCHAR}, 
+      #{userlastlogintime,jdbcType=VARCHAR}, #{userpwdquestion1,jdbcType=VARCHAR}, #{userpwdanswer1,jdbcType=VARCHAR}, 
+      #{userpwdquestion2,jdbcType=VARCHAR}, #{userpwdanswer2,jdbcType=VARCHAR}, #{userpwdemail,jdbcType=VARCHAR}, 
+      #{useremail,jdbcType=VARCHAR}, #{userstarttime,jdbcType=VARCHAR}, #{userendtime,jdbcType=VARCHAR}, 
+      #{userenable,jdbcType=CHAR}, #{userdepartmentid,jdbcType=VARCHAR}, #{usercreatorid,jdbcType=VARCHAR}, 
+      #{usercreatetime,jdbcType=VARCHAR}, #{usermodifierid,jdbcType=VARCHAR}, #{usermodifytime,jdbcType=VARCHAR}, 
+      #{userpagesize,jdbcType=DECIMAL}, #{userdogcode,jdbcType=VARCHAR}, #{userpasswordbak,jdbcType=VARCHAR}, 
+      #{xs0101orjg0101id,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    insert into FRMUSER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="userpasswd != null">
+        USERPASSWD,
+      </if>
+      <if test="useraccount != null">
+        USERACCOUNT,
+      </if>
+      <if test="userrealname != null">
+        USERREALNAME,
+      </if>
+      <if test="useraccounttype != null">
+        USERACCOUNTTYPE,
+      </if>
+      <if test="userlastlogindate != null">
+        USERLASTLOGINDATE,
+      </if>
+      <if test="userlastlogintime != null">
+        USERLASTLOGINTIME,
+      </if>
+      <if test="userpwdquestion1 != null">
+        USERPWDQUESTION1,
+      </if>
+      <if test="userpwdanswer1 != null">
+        USERPWDANSWER1,
+      </if>
+      <if test="userpwdquestion2 != null">
+        USERPWDQUESTION2,
+      </if>
+      <if test="userpwdanswer2 != null">
+        USERPWDANSWER2,
+      </if>
+      <if test="userpwdemail != null">
+        USERPWDEMAIL,
+      </if>
+      <if test="useremail != null">
+        USEREMAIL,
+      </if>
+      <if test="userstarttime != null">
+        USERSTARTTIME,
+      </if>
+      <if test="userendtime != null">
+        USERENDTIME,
+      </if>
+      <if test="userenable != null">
+        USERENABLE,
+      </if>
+      <if test="userdepartmentid != null">
+        USERDEPARTMENTID,
+      </if>
+      <if test="usercreatorid != null">
+        USERCREATORID,
+      </if>
+      <if test="usercreatetime != null">
+        USERCREATETIME,
+      </if>
+      <if test="usermodifierid != null">
+        USERMODIFIERID,
+      </if>
+      <if test="usermodifytime != null">
+        USERMODIFYTIME,
+      </if>
+      <if test="userpagesize != null">
+        USERPAGESIZE,
+      </if>
+      <if test="userdogcode != null">
+        USERDOGCODE,
+      </if>
+      <if test="userpasswordbak != null">
+        USERPASSWORDBAK,
+      </if>
+      <if test="xs0101orjg0101id != null">
+        XS0101ORJG0101ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswd != null">
+        #{userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccount != null">
+        #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userrealname != null">
+        #{userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccounttype != null">
+        #{useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogindate != null">
+        #{userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogintime != null">
+        #{userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion1 != null">
+        #{userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer1 != null">
+        #{userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion2 != null">
+        #{userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer2 != null">
+        #{userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdemail != null">
+        #{userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userstarttime != null">
+        #{userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="userendtime != null">
+        #{userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userenable != null">
+        #{userenable,jdbcType=CHAR},
+      </if>
+      <if test="userdepartmentid != null">
+        #{userdepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatorid != null">
+        #{usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatetime != null">
+        #{usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifierid != null">
+        #{usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifytime != null">
+        #{usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpagesize != null">
+        #{userpagesize,jdbcType=DECIMAL},
+      </if>
+      <if test="userdogcode != null">
+        #{userdogcode,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswordbak != null">
+        #{userpasswordbak,jdbcType=VARCHAR},
+      </if>
+      <if test="xs0101orjg0101id != null">
+        #{xs0101orjg0101id,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultType="java.lang.Integer">
+    select count(*) from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMUSER
+    <set>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpasswd != null">
+        USERPASSWD = #{record.userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useraccount != null">
+        USERACCOUNT = #{record.useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userrealname != null">
+        USERREALNAME = #{record.userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useraccounttype != null">
+        USERACCOUNTTYPE = #{record.useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userlastlogindate != null">
+        USERLASTLOGINDATE = #{record.userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userlastlogintime != null">
+        USERLASTLOGINTIME = #{record.userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdquestion1 != null">
+        USERPWDQUESTION1 = #{record.userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdanswer1 != null">
+        USERPWDANSWER1 = #{record.userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdquestion2 != null">
+        USERPWDQUESTION2 = #{record.userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdanswer2 != null">
+        USERPWDANSWER2 = #{record.userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdemail != null">
+        USERPWDEMAIL = #{record.userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useremail != null">
+        USEREMAIL = #{record.useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userstarttime != null">
+        USERSTARTTIME = #{record.userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userendtime != null">
+        USERENDTIME = #{record.userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userenable != null">
+        USERENABLE = #{record.userenable,jdbcType=CHAR},
+      </if>
+      <if test="record.userdepartmentid != null">
+        USERDEPARTMENTID = #{record.userdepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercreatorid != null">
+        USERCREATORID = #{record.usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercreatetime != null">
+        USERCREATETIME = #{record.usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usermodifierid != null">
+        USERMODIFIERID = #{record.usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usermodifytime != null">
+        USERMODIFYTIME = #{record.usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpagesize != null">
+        USERPAGESIZE = #{record.userpagesize,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userdogcode != null">
+        USERDOGCODE = #{record.userdogcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpasswordbak != null">
+        USERPASSWORDBAK = #{record.userpasswordbak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xs0101orjg0101id != null">
+        XS0101ORJG0101ID = #{record.xs0101orjg0101id,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMUSER
+    set USERID = #{record.userid,jdbcType=VARCHAR},
+      USERPASSWD = #{record.userpasswd,jdbcType=VARCHAR},
+      USERACCOUNT = #{record.useraccount,jdbcType=VARCHAR},
+      USERREALNAME = #{record.userrealname,jdbcType=VARCHAR},
+      USERACCOUNTTYPE = #{record.useraccounttype,jdbcType=VARCHAR},
+      USERLASTLOGINDATE = #{record.userlastlogindate,jdbcType=VARCHAR},
+      USERLASTLOGINTIME = #{record.userlastlogintime,jdbcType=VARCHAR},
+      USERPWDQUESTION1 = #{record.userpwdquestion1,jdbcType=VARCHAR},
+      USERPWDANSWER1 = #{record.userpwdanswer1,jdbcType=VARCHAR},
+      USERPWDQUESTION2 = #{record.userpwdquestion2,jdbcType=VARCHAR},
+      USERPWDANSWER2 = #{record.userpwdanswer2,jdbcType=VARCHAR},
+      USERPWDEMAIL = #{record.userpwdemail,jdbcType=VARCHAR},
+      USEREMAIL = #{record.useremail,jdbcType=VARCHAR},
+      USERSTARTTIME = #{record.userstarttime,jdbcType=VARCHAR},
+      USERENDTIME = #{record.userendtime,jdbcType=VARCHAR},
+      USERENABLE = #{record.userenable,jdbcType=CHAR},
+      USERDEPARTMENTID = #{record.userdepartmentid,jdbcType=VARCHAR},
+      USERCREATORID = #{record.usercreatorid,jdbcType=VARCHAR},
+      USERCREATETIME = #{record.usercreatetime,jdbcType=VARCHAR},
+      USERMODIFIERID = #{record.usermodifierid,jdbcType=VARCHAR},
+      USERMODIFYTIME = #{record.usermodifytime,jdbcType=VARCHAR},
+      USERPAGESIZE = #{record.userpagesize,jdbcType=DECIMAL},
+      USERDOGCODE = #{record.userdogcode,jdbcType=VARCHAR},
+      USERPASSWORDBAK = #{record.userpasswordbak,jdbcType=VARCHAR},
+      XS0101ORJG0101ID = #{record.xs0101orjg0101id,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    update FRMUSER
+    <set>
+      <if test="userpasswd != null">
+        USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccount != null">
+        USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userrealname != null">
+        USERREALNAME = #{userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccounttype != null">
+        USERACCOUNTTYPE = #{useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogindate != null">
+        USERLASTLOGINDATE = #{userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogintime != null">
+        USERLASTLOGINTIME = #{userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion1 != null">
+        USERPWDQUESTION1 = #{userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer1 != null">
+        USERPWDANSWER1 = #{userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion2 != null">
+        USERPWDQUESTION2 = #{userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer2 != null">
+        USERPWDANSWER2 = #{userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdemail != null">
+        USERPWDEMAIL = #{userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        USEREMAIL = #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userstarttime != null">
+        USERSTARTTIME = #{userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="userendtime != null">
+        USERENDTIME = #{userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userenable != null">
+        USERENABLE = #{userenable,jdbcType=CHAR},
+      </if>
+      <if test="userdepartmentid != null">
+        USERDEPARTMENTID = #{userdepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatorid != null">
+        USERCREATORID = #{usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatetime != null">
+        USERCREATETIME = #{usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifierid != null">
+        USERMODIFIERID = #{usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifytime != null">
+        USERMODIFYTIME = #{usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpagesize != null">
+        USERPAGESIZE = #{userpagesize,jdbcType=DECIMAL},
+      </if>
+      <if test="userdogcode != null">
+        USERDOGCODE = #{userdogcode,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswordbak != null">
+        USERPASSWORDBAK = #{userpasswordbak,jdbcType=VARCHAR},
+      </if>
+      <if test="xs0101orjg0101id != null">
+        XS0101ORJG0101ID = #{xs0101orjg0101id,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    update FRMUSER
+    set USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
+      USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
+      USERREALNAME = #{userrealname,jdbcType=VARCHAR},
+      USERACCOUNTTYPE = #{useraccounttype,jdbcType=VARCHAR},
+      USERLASTLOGINDATE = #{userlastlogindate,jdbcType=VARCHAR},
+      USERLASTLOGINTIME = #{userlastlogintime,jdbcType=VARCHAR},
+      USERPWDQUESTION1 = #{userpwdquestion1,jdbcType=VARCHAR},
+      USERPWDANSWER1 = #{userpwdanswer1,jdbcType=VARCHAR},
+      USERPWDQUESTION2 = #{userpwdquestion2,jdbcType=VARCHAR},
+      USERPWDANSWER2 = #{userpwdanswer2,jdbcType=VARCHAR},
+      USERPWDEMAIL = #{userpwdemail,jdbcType=VARCHAR},
+      USEREMAIL = #{useremail,jdbcType=VARCHAR},
+      USERSTARTTIME = #{userstarttime,jdbcType=VARCHAR},
+      USERENDTIME = #{userendtime,jdbcType=VARCHAR},
+      USERENABLE = #{userenable,jdbcType=CHAR},
+      USERDEPARTMENTID = #{userdepartmentid,jdbcType=VARCHAR},
+      USERCREATORID = #{usercreatorid,jdbcType=VARCHAR},
+      USERCREATETIME = #{usercreatetime,jdbcType=VARCHAR},
+      USERMODIFIERID = #{usermodifierid,jdbcType=VARCHAR},
+      USERMODIFYTIME = #{usermodifytime,jdbcType=VARCHAR},
+      USERPAGESIZE = #{userpagesize,jdbcType=DECIMAL},
+      USERDOGCODE = #{userdogcode,jdbcType=VARCHAR},
+      USERPASSWORDBAK = #{userpasswordbak,jdbcType=VARCHAR},
+      XS0101ORJG0101ID = #{xs0101orjg0101id,jdbcType=VARCHAR}
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    <id column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="USERPASSWD" jdbcType="VARCHAR" property="userpasswd" />
+    <result column="USERACCOUNT" jdbcType="VARCHAR" property="useraccount" />
+    <result column="USERREALNAME" jdbcType="VARCHAR" property="userrealname" />
+    <result column="USERACCOUNTTYPE" jdbcType="VARCHAR" property="useraccounttype" />
+    <result column="USERLASTLOGINDATE" jdbcType="VARCHAR" property="userlastlogindate" />
+    <result column="USERLASTLOGINTIME" jdbcType="VARCHAR" property="userlastlogintime" />
+    <result column="USERPWDQUESTION1" jdbcType="VARCHAR" property="userpwdquestion1" />
+    <result column="USERPWDANSWER1" jdbcType="VARCHAR" property="userpwdanswer1" />
+    <result column="USERPWDQUESTION2" jdbcType="VARCHAR" property="userpwdquestion2" />
+    <result column="USERPWDANSWER2" jdbcType="VARCHAR" property="userpwdanswer2" />
+    <result column="USERPWDEMAIL" jdbcType="VARCHAR" property="userpwdemail" />
+    <result column="USEREMAIL" jdbcType="VARCHAR" property="useremail" />
+    <result column="USERSTARTTIME" jdbcType="VARCHAR" property="userstarttime" />
+    <result column="USERENDTIME" jdbcType="VARCHAR" property="userendtime" />
+    <result column="USERENABLE" jdbcType="CHAR" property="userenable" />
+    <result column="USERDEPARTMENTID" jdbcType="VARCHAR" property="userdepartmentid" />
+    <result column="USERCREATORID" jdbcType="VARCHAR" property="usercreatorid" />
+    <result column="USERCREATETIME" jdbcType="VARCHAR" property="usercreatetime" />
+    <result column="USERMODIFIERID" jdbcType="VARCHAR" property="usermodifierid" />
+    <result column="USERMODIFYTIME" jdbcType="VARCHAR" property="usermodifytime" />
+    <result column="USERPAGESIZE" jdbcType="DECIMAL" property="userpagesize" />
+    <result column="USERMOBILE" jdbcType="VARCHAR" property="usermobile" />
+    <result column="IDCARD" jdbcType="VARCHAR" property="idcard" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="PAGEID" jdbcType="DECIMAL" property="pageid" />
+    <result column="LOGINCOUNT" jdbcType="DECIMAL" property="logincount" />
+    <result column="SYSID" jdbcType="VARCHAR" property="sysid" />
+    <result column="ORDERBY" jdbcType="DECIMAL" property="orderby" />
+    <result column="USERPASSWD1" jdbcType="VARCHAR" property="userpasswd1" />
+    <result column="ISFIRST" jdbcType="CHAR" property="isfirst" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    USERID, USERPASSWD, USERACCOUNT, USERREALNAME, USERACCOUNTTYPE, USERLASTLOGINDATE, 
+    USERLASTLOGINTIME, USERPWDQUESTION1, USERPWDANSWER1, USERPWDQUESTION2, USERPWDANSWER2, 
+    USERPWDEMAIL, USEREMAIL, USERSTARTTIME, USERENDTIME, USERENABLE, USERDEPARTMENTID, 
+    USERCREATORID, USERCREATETIME, USERMODIFIERID, USERMODIFYTIME, USERPAGESIZE, USERMOBILE, 
+    IDCARD, SEX, ADDRESS, PAGEID, LOGINCOUNT, SYSID, ORDERBY, USERPASSWD1, ISFIRST
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMUSER
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMUSER
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample">
+    delete from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    insert into FRMUSER (USERID, USERPASSWD, USERACCOUNT, 
+      USERREALNAME, USERACCOUNTTYPE, USERLASTLOGINDATE, 
+      USERLASTLOGINTIME, USERPWDQUESTION1, USERPWDANSWER1, 
+      USERPWDQUESTION2, USERPWDANSWER2, USERPWDEMAIL, 
+      USEREMAIL, USERSTARTTIME, USERENDTIME, 
+      USERENABLE, USERDEPARTMENTID, USERCREATORID, 
+      USERCREATETIME, USERMODIFIERID, USERMODIFYTIME, 
+      USERPAGESIZE, USERMOBILE, IDCARD, 
+      SEX, ADDRESS, PAGEID, 
+      LOGINCOUNT, SYSID, ORDERBY, 
+      USERPASSWD1, ISFIRST)
+    values (#{userid,jdbcType=VARCHAR}, #{userpasswd,jdbcType=VARCHAR}, #{useraccount,jdbcType=VARCHAR}, 
+      #{userrealname,jdbcType=VARCHAR}, #{useraccounttype,jdbcType=VARCHAR}, #{userlastlogindate,jdbcType=VARCHAR}, 
+      #{userlastlogintime,jdbcType=VARCHAR}, #{userpwdquestion1,jdbcType=VARCHAR}, #{userpwdanswer1,jdbcType=VARCHAR}, 
+      #{userpwdquestion2,jdbcType=VARCHAR}, #{userpwdanswer2,jdbcType=VARCHAR}, #{userpwdemail,jdbcType=VARCHAR}, 
+      #{useremail,jdbcType=VARCHAR}, #{userstarttime,jdbcType=VARCHAR}, #{userendtime,jdbcType=VARCHAR}, 
+      #{userenable,jdbcType=CHAR}, #{userdepartmentid,jdbcType=VARCHAR}, #{usercreatorid,jdbcType=VARCHAR}, 
+      #{usercreatetime,jdbcType=VARCHAR}, #{usermodifierid,jdbcType=VARCHAR}, #{usermodifytime,jdbcType=VARCHAR}, 
+      #{userpagesize,jdbcType=DECIMAL}, #{usermobile,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{pageid,jdbcType=DECIMAL}, 
+      #{logincount,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR}, #{orderby,jdbcType=DECIMAL}, 
+      #{userpasswd1,jdbcType=VARCHAR}, #{isfirst,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    insert into FRMUSER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="userpasswd != null">
+        USERPASSWD,
+      </if>
+      <if test="useraccount != null">
+        USERACCOUNT,
+      </if>
+      <if test="userrealname != null">
+        USERREALNAME,
+      </if>
+      <if test="useraccounttype != null">
+        USERACCOUNTTYPE,
+      </if>
+      <if test="userlastlogindate != null">
+        USERLASTLOGINDATE,
+      </if>
+      <if test="userlastlogintime != null">
+        USERLASTLOGINTIME,
+      </if>
+      <if test="userpwdquestion1 != null">
+        USERPWDQUESTION1,
+      </if>
+      <if test="userpwdanswer1 != null">
+        USERPWDANSWER1,
+      </if>
+      <if test="userpwdquestion2 != null">
+        USERPWDQUESTION2,
+      </if>
+      <if test="userpwdanswer2 != null">
+        USERPWDANSWER2,
+      </if>
+      <if test="userpwdemail != null">
+        USERPWDEMAIL,
+      </if>
+      <if test="useremail != null">
+        USEREMAIL,
+      </if>
+      <if test="userstarttime != null">
+        USERSTARTTIME,
+      </if>
+      <if test="userendtime != null">
+        USERENDTIME,
+      </if>
+      <if test="userenable != null">
+        USERENABLE,
+      </if>
+      <if test="userdepartmentid != null">
+        USERDEPARTMENTID,
+      </if>
+      <if test="usercreatorid != null">
+        USERCREATORID,
+      </if>
+      <if test="usercreatetime != null">
+        USERCREATETIME,
+      </if>
+      <if test="usermodifierid != null">
+        USERMODIFIERID,
+      </if>
+      <if test="usermodifytime != null">
+        USERMODIFYTIME,
+      </if>
+      <if test="userpagesize != null">
+        USERPAGESIZE,
+      </if>
+      <if test="usermobile != null">
+        USERMOBILE,
+      </if>
+      <if test="idcard != null">
+        IDCARD,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="pageid != null">
+        PAGEID,
+      </if>
+      <if test="logincount != null">
+        LOGINCOUNT,
+      </if>
+      <if test="sysid != null">
+        SYSID,
+      </if>
+      <if test="orderby != null">
+        ORDERBY,
+      </if>
+      <if test="userpasswd1 != null">
+        USERPASSWD1,
+      </if>
+      <if test="isfirst != null">
+        ISFIRST,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswd != null">
+        #{userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccount != null">
+        #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userrealname != null">
+        #{userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccounttype != null">
+        #{useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogindate != null">
+        #{userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogintime != null">
+        #{userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion1 != null">
+        #{userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer1 != null">
+        #{userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion2 != null">
+        #{userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer2 != null">
+        #{userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdemail != null">
+        #{userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userstarttime != null">
+        #{userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="userendtime != null">
+        #{userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userenable != null">
+        #{userenable,jdbcType=CHAR},
+      </if>
+      <if test="userdepartmentid != null">
+        #{userdepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatorid != null">
+        #{usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatetime != null">
+        #{usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifierid != null">
+        #{usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifytime != null">
+        #{usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpagesize != null">
+        #{userpagesize,jdbcType=DECIMAL},
+      </if>
+      <if test="usermobile != null">
+        #{usermobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="logincount != null">
+        #{logincount,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        #{sysid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderby != null">
+        #{orderby,jdbcType=DECIMAL},
+      </if>
+      <if test="userpasswd1 != null">
+        #{userpasswd1,jdbcType=VARCHAR},
+      </if>
+      <if test="isfirst != null">
+        #{isfirst,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultType="java.lang.Integer">
+    select count(*) from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMUSER
+    <set>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpasswd != null">
+        USERPASSWD = #{record.userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useraccount != null">
+        USERACCOUNT = #{record.useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userrealname != null">
+        USERREALNAME = #{record.userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useraccounttype != null">
+        USERACCOUNTTYPE = #{record.useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userlastlogindate != null">
+        USERLASTLOGINDATE = #{record.userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userlastlogintime != null">
+        USERLASTLOGINTIME = #{record.userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdquestion1 != null">
+        USERPWDQUESTION1 = #{record.userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdanswer1 != null">
+        USERPWDANSWER1 = #{record.userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdquestion2 != null">
+        USERPWDQUESTION2 = #{record.userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdanswer2 != null">
+        USERPWDANSWER2 = #{record.userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdemail != null">
+        USERPWDEMAIL = #{record.userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useremail != null">
+        USEREMAIL = #{record.useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userstarttime != null">
+        USERSTARTTIME = #{record.userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userendtime != null">
+        USERENDTIME = #{record.userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userenable != null">
+        USERENABLE = #{record.userenable,jdbcType=CHAR},
+      </if>
+      <if test="record.userdepartmentid != null">
+        USERDEPARTMENTID = #{record.userdepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercreatorid != null">
+        USERCREATORID = #{record.usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercreatetime != null">
+        USERCREATETIME = #{record.usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usermodifierid != null">
+        USERMODIFIERID = #{record.usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usermodifytime != null">
+        USERMODIFYTIME = #{record.usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpagesize != null">
+        USERPAGESIZE = #{record.userpagesize,jdbcType=DECIMAL},
+      </if>
+      <if test="record.usermobile != null">
+        USERMOBILE = #{record.usermobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null">
+        IDCARD = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        SEX = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pageid != null">
+        PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.logincount != null">
+        LOGINCOUNT = #{record.logincount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sysid != null">
+        SYSID = #{record.sysid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderby != null">
+        ORDERBY = #{record.orderby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userpasswd1 != null">
+        USERPASSWD1 = #{record.userpasswd1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isfirst != null">
+        ISFIRST = #{record.isfirst,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMUSER
+    set USERID = #{record.userid,jdbcType=VARCHAR},
+      USERPASSWD = #{record.userpasswd,jdbcType=VARCHAR},
+      USERACCOUNT = #{record.useraccount,jdbcType=VARCHAR},
+      USERREALNAME = #{record.userrealname,jdbcType=VARCHAR},
+      USERACCOUNTTYPE = #{record.useraccounttype,jdbcType=VARCHAR},
+      USERLASTLOGINDATE = #{record.userlastlogindate,jdbcType=VARCHAR},
+      USERLASTLOGINTIME = #{record.userlastlogintime,jdbcType=VARCHAR},
+      USERPWDQUESTION1 = #{record.userpwdquestion1,jdbcType=VARCHAR},
+      USERPWDANSWER1 = #{record.userpwdanswer1,jdbcType=VARCHAR},
+      USERPWDQUESTION2 = #{record.userpwdquestion2,jdbcType=VARCHAR},
+      USERPWDANSWER2 = #{record.userpwdanswer2,jdbcType=VARCHAR},
+      USERPWDEMAIL = #{record.userpwdemail,jdbcType=VARCHAR},
+      USEREMAIL = #{record.useremail,jdbcType=VARCHAR},
+      USERSTARTTIME = #{record.userstarttime,jdbcType=VARCHAR},
+      USERENDTIME = #{record.userendtime,jdbcType=VARCHAR},
+      USERENABLE = #{record.userenable,jdbcType=CHAR},
+      USERDEPARTMENTID = #{record.userdepartmentid,jdbcType=VARCHAR},
+      USERCREATORID = #{record.usercreatorid,jdbcType=VARCHAR},
+      USERCREATETIME = #{record.usercreatetime,jdbcType=VARCHAR},
+      USERMODIFIERID = #{record.usermodifierid,jdbcType=VARCHAR},
+      USERMODIFYTIME = #{record.usermodifytime,jdbcType=VARCHAR},
+      USERPAGESIZE = #{record.userpagesize,jdbcType=DECIMAL},
+      USERMOBILE = #{record.usermobile,jdbcType=VARCHAR},
+      IDCARD = #{record.idcard,jdbcType=VARCHAR},
+      SEX = #{record.sex,jdbcType=VARCHAR},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      PAGEID = #{record.pageid,jdbcType=DECIMAL},
+      LOGINCOUNT = #{record.logincount,jdbcType=DECIMAL},
+      SYSID = #{record.sysid,jdbcType=VARCHAR},
+      ORDERBY = #{record.orderby,jdbcType=DECIMAL},
+      USERPASSWD1 = #{record.userpasswd1,jdbcType=VARCHAR},
+      ISFIRST = #{record.isfirst,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    update FRMUSER
+    <set>
+      <if test="userpasswd != null">
+        USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccount != null">
+        USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userrealname != null">
+        USERREALNAME = #{userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccounttype != null">
+        USERACCOUNTTYPE = #{useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogindate != null">
+        USERLASTLOGINDATE = #{userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogintime != null">
+        USERLASTLOGINTIME = #{userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion1 != null">
+        USERPWDQUESTION1 = #{userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer1 != null">
+        USERPWDANSWER1 = #{userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion2 != null">
+        USERPWDQUESTION2 = #{userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer2 != null">
+        USERPWDANSWER2 = #{userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdemail != null">
+        USERPWDEMAIL = #{userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        USEREMAIL = #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userstarttime != null">
+        USERSTARTTIME = #{userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="userendtime != null">
+        USERENDTIME = #{userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userenable != null">
+        USERENABLE = #{userenable,jdbcType=CHAR},
+      </if>
+      <if test="userdepartmentid != null">
+        USERDEPARTMENTID = #{userdepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatorid != null">
+        USERCREATORID = #{usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatetime != null">
+        USERCREATETIME = #{usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifierid != null">
+        USERMODIFIERID = #{usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifytime != null">
+        USERMODIFYTIME = #{usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpagesize != null">
+        USERPAGESIZE = #{userpagesize,jdbcType=DECIMAL},
+      </if>
+      <if test="usermobile != null">
+        USERMOBILE = #{usermobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        IDCARD = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="pageid != null">
+        PAGEID = #{pageid,jdbcType=DECIMAL},
+      </if>
+      <if test="logincount != null">
+        LOGINCOUNT = #{logincount,jdbcType=DECIMAL},
+      </if>
+      <if test="sysid != null">
+        SYSID = #{sysid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderby != null">
+        ORDERBY = #{orderby,jdbcType=DECIMAL},
+      </if>
+      <if test="userpasswd1 != null">
+        USERPASSWD1 = #{userpasswd1,jdbcType=VARCHAR},
+      </if>
+      <if test="isfirst != null">
+        ISFIRST = #{isfirst,jdbcType=CHAR},
+      </if>
+    </set>
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    update FRMUSER
+    set USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
+      USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
+      USERREALNAME = #{userrealname,jdbcType=VARCHAR},
+      USERACCOUNTTYPE = #{useraccounttype,jdbcType=VARCHAR},
+      USERLASTLOGINDATE = #{userlastlogindate,jdbcType=VARCHAR},
+      USERLASTLOGINTIME = #{userlastlogintime,jdbcType=VARCHAR},
+      USERPWDQUESTION1 = #{userpwdquestion1,jdbcType=VARCHAR},
+      USERPWDANSWER1 = #{userpwdanswer1,jdbcType=VARCHAR},
+      USERPWDQUESTION2 = #{userpwdquestion2,jdbcType=VARCHAR},
+      USERPWDANSWER2 = #{userpwdanswer2,jdbcType=VARCHAR},
+      USERPWDEMAIL = #{userpwdemail,jdbcType=VARCHAR},
+      USEREMAIL = #{useremail,jdbcType=VARCHAR},
+      USERSTARTTIME = #{userstarttime,jdbcType=VARCHAR},
+      USERENDTIME = #{userendtime,jdbcType=VARCHAR},
+      USERENABLE = #{userenable,jdbcType=CHAR},
+      USERDEPARTMENTID = #{userdepartmentid,jdbcType=VARCHAR},
+      USERCREATORID = #{usercreatorid,jdbcType=VARCHAR},
+      USERCREATETIME = #{usercreatetime,jdbcType=VARCHAR},
+      USERMODIFIERID = #{usermodifierid,jdbcType=VARCHAR},
+      USERMODIFYTIME = #{usermodifytime,jdbcType=VARCHAR},
+      USERPAGESIZE = #{userpagesize,jdbcType=DECIMAL},
+      USERMOBILE = #{usermobile,jdbcType=VARCHAR},
+      IDCARD = #{idcard,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      PAGEID = #{pageid,jdbcType=DECIMAL},
+      LOGINCOUNT = #{logincount,jdbcType=DECIMAL},
+      SYSID = #{sysid,jdbcType=VARCHAR},
+      ORDERBY = #{orderby,jdbcType=DECIMAL},
+      USERPASSWD1 = #{userpasswd1,jdbcType=VARCHAR},
+      ISFIRST = #{isfirst,jdbcType=CHAR}
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    <id column="USERID" jdbcType="VARCHAR" property="userid" />
+    <result column="DEPARTMENTID" jdbcType="VARCHAR" property="departmentid" />
+    <result column="PREPARE" jdbcType="VARCHAR" property="prepare" />
+    <result column="POLITICAL_STATUS" jdbcType="VARCHAR" property="politicalStatus" />
+    <result column="TITLE" jdbcType="VARCHAR" property="title" />
+    <result column="ADMINISTRATIVE_LEVEL" jdbcType="VARCHAR" property="administrativeLevel" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="TEL" jdbcType="VARCHAR" property="tel" />
+    <result column="USERPASSWD" jdbcType="VARCHAR" property="userpasswd" />
+    <result column="USERACCOUNT" jdbcType="VARCHAR" property="useraccount" />
+    <result column="USERREALNAME" jdbcType="VARCHAR" property="userrealname" />
+    <result column="USERACCOUNTTYPE" jdbcType="VARCHAR" property="useraccounttype" />
+    <result column="USERLASTLOGINDATE" jdbcType="VARCHAR" property="userlastlogindate" />
+    <result column="USERLASTLOGINTIME" jdbcType="VARCHAR" property="userlastlogintime" />
+    <result column="USERPWDQUESTION1" jdbcType="VARCHAR" property="userpwdquestion1" />
+    <result column="USERPWDANSWER1" jdbcType="VARCHAR" property="userpwdanswer1" />
+    <result column="USERPWDQUESTION2" jdbcType="VARCHAR" property="userpwdquestion2" />
+    <result column="USERPWDANSWER2" jdbcType="VARCHAR" property="userpwdanswer2" />
+    <result column="USERPWDEMAIL" jdbcType="VARCHAR" property="userpwdemail" />
+    <result column="USEREMAIL" jdbcType="VARCHAR" property="useremail" />
+    <result column="USERSTARTTIME" jdbcType="VARCHAR" property="userstarttime" />
+    <result column="USERENDTIME" jdbcType="VARCHAR" property="userendtime" />
+    <result column="USERENABLE" jdbcType="CHAR" property="userenable" />
+    <result column="USERCREATORID" jdbcType="VARCHAR" property="usercreatorid" />
+    <result column="USERCREATETIME" jdbcType="VARCHAR" property="usercreatetime" />
+    <result column="USERMODIFIERID" jdbcType="VARCHAR" property="usermodifierid" />
+    <result column="USERPAGESIZE" jdbcType="VARCHAR" property="userpagesize" />
+    <result column="USERDOGCODE" jdbcType="VARCHAR" property="userdogcode" />
+    <result column="USERPASSWORDBAK" jdbcType="VARCHAR" property="userpasswordbak" />
+    <result column="XS0101ORJG0101ID" jdbcType="VARCHAR" property="xs0101orjg0101id" />
+    <result column="USERMODIFYTIME" jdbcType="VARCHAR" property="usermodifytime" />
+    <result column="USERDEPARTMENTID" jdbcType="VARCHAR" property="userdepartmentid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    USERID, DEPARTMENTID, PREPARE, POLITICAL_STATUS, TITLE, ADMINISTRATIVE_LEVEL, SEX, 
+    TEL, USERPASSWD, USERACCOUNT, USERREALNAME, USERACCOUNTTYPE, USERLASTLOGINDATE, USERLASTLOGINTIME, 
+    USERPWDQUESTION1, USERPWDANSWER1, USERPWDQUESTION2, USERPWDANSWER2, USERPWDEMAIL, 
+    USEREMAIL, USERSTARTTIME, USERENDTIME, USERENABLE, USERCREATORID, USERCREATETIME, 
+    USERMODIFIERID, USERPAGESIZE, USERDOGCODE, USERPASSWORDBAK, XS0101ORJG0101ID, USERMODIFYTIME, 
+    USERDEPARTMENTID
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FRMUSER
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FRMUSER
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample">
+    delete from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    insert into FRMUSER (USERID, DEPARTMENTID, PREPARE, 
+      POLITICAL_STATUS, TITLE, ADMINISTRATIVE_LEVEL, 
+      SEX, TEL, USERPASSWD, 
+      USERACCOUNT, USERREALNAME, USERACCOUNTTYPE, 
+      USERLASTLOGINDATE, USERLASTLOGINTIME, USERPWDQUESTION1, 
+      USERPWDANSWER1, USERPWDQUESTION2, USERPWDANSWER2, 
+      USERPWDEMAIL, USEREMAIL, USERSTARTTIME, 
+      USERENDTIME, USERENABLE, USERCREATORID, 
+      USERCREATETIME, USERMODIFIERID, USERPAGESIZE, 
+      USERDOGCODE, USERPASSWORDBAK, XS0101ORJG0101ID, 
+      USERMODIFYTIME, USERDEPARTMENTID)
+    values (#{userid,jdbcType=VARCHAR}, #{departmentid,jdbcType=VARCHAR}, #{prepare,jdbcType=VARCHAR}, 
+      #{politicalStatus,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{administrativeLevel,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{userpasswd,jdbcType=VARCHAR}, 
+      #{useraccount,jdbcType=VARCHAR}, #{userrealname,jdbcType=VARCHAR}, #{useraccounttype,jdbcType=VARCHAR}, 
+      #{userlastlogindate,jdbcType=VARCHAR}, #{userlastlogintime,jdbcType=VARCHAR}, #{userpwdquestion1,jdbcType=VARCHAR}, 
+      #{userpwdanswer1,jdbcType=VARCHAR}, #{userpwdquestion2,jdbcType=VARCHAR}, #{userpwdanswer2,jdbcType=VARCHAR}, 
+      #{userpwdemail,jdbcType=VARCHAR}, #{useremail,jdbcType=VARCHAR}, #{userstarttime,jdbcType=VARCHAR}, 
+      #{userendtime,jdbcType=VARCHAR}, #{userenable,jdbcType=CHAR}, #{usercreatorid,jdbcType=VARCHAR}, 
+      #{usercreatetime,jdbcType=VARCHAR}, #{usermodifierid,jdbcType=VARCHAR}, #{userpagesize,jdbcType=VARCHAR}, 
+      #{userdogcode,jdbcType=VARCHAR}, #{userpasswordbak,jdbcType=VARCHAR}, #{xs0101orjg0101id,jdbcType=VARCHAR}, 
+      #{usermodifytime,jdbcType=VARCHAR}, #{userdepartmentid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    insert into FRMUSER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="departmentid != null">
+        DEPARTMENTID,
+      </if>
+      <if test="prepare != null">
+        PREPARE,
+      </if>
+      <if test="politicalStatus != null">
+        POLITICAL_STATUS,
+      </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="administrativeLevel != null">
+        ADMINISTRATIVE_LEVEL,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="tel != null">
+        TEL,
+      </if>
+      <if test="userpasswd != null">
+        USERPASSWD,
+      </if>
+      <if test="useraccount != null">
+        USERACCOUNT,
+      </if>
+      <if test="userrealname != null">
+        USERREALNAME,
+      </if>
+      <if test="useraccounttype != null">
+        USERACCOUNTTYPE,
+      </if>
+      <if test="userlastlogindate != null">
+        USERLASTLOGINDATE,
+      </if>
+      <if test="userlastlogintime != null">
+        USERLASTLOGINTIME,
+      </if>
+      <if test="userpwdquestion1 != null">
+        USERPWDQUESTION1,
+      </if>
+      <if test="userpwdanswer1 != null">
+        USERPWDANSWER1,
+      </if>
+      <if test="userpwdquestion2 != null">
+        USERPWDQUESTION2,
+      </if>
+      <if test="userpwdanswer2 != null">
+        USERPWDANSWER2,
+      </if>
+      <if test="userpwdemail != null">
+        USERPWDEMAIL,
+      </if>
+      <if test="useremail != null">
+        USEREMAIL,
+      </if>
+      <if test="userstarttime != null">
+        USERSTARTTIME,
+      </if>
+      <if test="userendtime != null">
+        USERENDTIME,
+      </if>
+      <if test="userenable != null">
+        USERENABLE,
+      </if>
+      <if test="usercreatorid != null">
+        USERCREATORID,
+      </if>
+      <if test="usercreatetime != null">
+        USERCREATETIME,
+      </if>
+      <if test="usermodifierid != null">
+        USERMODIFIERID,
+      </if>
+      <if test="userpagesize != null">
+        USERPAGESIZE,
+      </if>
+      <if test="userdogcode != null">
+        USERDOGCODE,
+      </if>
+      <if test="userpasswordbak != null">
+        USERPASSWORDBAK,
+      </if>
+      <if test="xs0101orjg0101id != null">
+        XS0101ORJG0101ID,
+      </if>
+      <if test="usermodifytime != null">
+        USERMODIFYTIME,
+      </if>
+      <if test="userdepartmentid != null">
+        USERDEPARTMENTID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null">
+        #{departmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="prepare != null">
+        #{prepare,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalStatus != null">
+        #{politicalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="administrativeLevel != null">
+        #{administrativeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswd != null">
+        #{userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccount != null">
+        #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userrealname != null">
+        #{userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccounttype != null">
+        #{useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogindate != null">
+        #{userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogintime != null">
+        #{userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion1 != null">
+        #{userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer1 != null">
+        #{userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion2 != null">
+        #{userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer2 != null">
+        #{userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdemail != null">
+        #{userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userstarttime != null">
+        #{userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="userendtime != null">
+        #{userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userenable != null">
+        #{userenable,jdbcType=CHAR},
+      </if>
+      <if test="usercreatorid != null">
+        #{usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatetime != null">
+        #{usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifierid != null">
+        #{usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpagesize != null">
+        #{userpagesize,jdbcType=VARCHAR},
+      </if>
+      <if test="userdogcode != null">
+        #{userdogcode,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswordbak != null">
+        #{userpasswordbak,jdbcType=VARCHAR},
+      </if>
+      <if test="xs0101orjg0101id != null">
+        #{xs0101orjg0101id,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifytime != null">
+        #{usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userdepartmentid != null">
+        #{userdepartmentid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultType="java.lang.Integer">
+    select count(*) from FRMUSER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update FRMUSER
+    <set>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.departmentid != null">
+        DEPARTMENTID = #{record.departmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prepare != null">
+        PREPARE = #{record.prepare,jdbcType=VARCHAR},
+      </if>
+      <if test="record.politicalStatus != null">
+        POLITICAL_STATUS = #{record.politicalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null">
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.administrativeLevel != null">
+        ADMINISTRATIVE_LEVEL = #{record.administrativeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        SEX = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null">
+        TEL = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpasswd != null">
+        USERPASSWD = #{record.userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useraccount != null">
+        USERACCOUNT = #{record.useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userrealname != null">
+        USERREALNAME = #{record.userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useraccounttype != null">
+        USERACCOUNTTYPE = #{record.useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userlastlogindate != null">
+        USERLASTLOGINDATE = #{record.userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userlastlogintime != null">
+        USERLASTLOGINTIME = #{record.userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdquestion1 != null">
+        USERPWDQUESTION1 = #{record.userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdanswer1 != null">
+        USERPWDANSWER1 = #{record.userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdquestion2 != null">
+        USERPWDQUESTION2 = #{record.userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdanswer2 != null">
+        USERPWDANSWER2 = #{record.userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpwdemail != null">
+        USERPWDEMAIL = #{record.userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useremail != null">
+        USEREMAIL = #{record.useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userstarttime != null">
+        USERSTARTTIME = #{record.userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userendtime != null">
+        USERENDTIME = #{record.userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userenable != null">
+        USERENABLE = #{record.userenable,jdbcType=CHAR},
+      </if>
+      <if test="record.usercreatorid != null">
+        USERCREATORID = #{record.usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercreatetime != null">
+        USERCREATETIME = #{record.usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usermodifierid != null">
+        USERMODIFIERID = #{record.usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpagesize != null">
+        USERPAGESIZE = #{record.userpagesize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userdogcode != null">
+        USERDOGCODE = #{record.userdogcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpasswordbak != null">
+        USERPASSWORDBAK = #{record.userpasswordbak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xs0101orjg0101id != null">
+        XS0101ORJG0101ID = #{record.xs0101orjg0101id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usermodifytime != null">
+        USERMODIFYTIME = #{record.usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userdepartmentid != null">
+        USERDEPARTMENTID = #{record.userdepartmentid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update FRMUSER
+    set USERID = #{record.userid,jdbcType=VARCHAR},
+      DEPARTMENTID = #{record.departmentid,jdbcType=VARCHAR},
+      PREPARE = #{record.prepare,jdbcType=VARCHAR},
+      POLITICAL_STATUS = #{record.politicalStatus,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      ADMINISTRATIVE_LEVEL = #{record.administrativeLevel,jdbcType=VARCHAR},
+      SEX = #{record.sex,jdbcType=VARCHAR},
+      TEL = #{record.tel,jdbcType=VARCHAR},
+      USERPASSWD = #{record.userpasswd,jdbcType=VARCHAR},
+      USERACCOUNT = #{record.useraccount,jdbcType=VARCHAR},
+      USERREALNAME = #{record.userrealname,jdbcType=VARCHAR},
+      USERACCOUNTTYPE = #{record.useraccounttype,jdbcType=VARCHAR},
+      USERLASTLOGINDATE = #{record.userlastlogindate,jdbcType=VARCHAR},
+      USERLASTLOGINTIME = #{record.userlastlogintime,jdbcType=VARCHAR},
+      USERPWDQUESTION1 = #{record.userpwdquestion1,jdbcType=VARCHAR},
+      USERPWDANSWER1 = #{record.userpwdanswer1,jdbcType=VARCHAR},
+      USERPWDQUESTION2 = #{record.userpwdquestion2,jdbcType=VARCHAR},
+      USERPWDANSWER2 = #{record.userpwdanswer2,jdbcType=VARCHAR},
+      USERPWDEMAIL = #{record.userpwdemail,jdbcType=VARCHAR},
+      USEREMAIL = #{record.useremail,jdbcType=VARCHAR},
+      USERSTARTTIME = #{record.userstarttime,jdbcType=VARCHAR},
+      USERENDTIME = #{record.userendtime,jdbcType=VARCHAR},
+      USERENABLE = #{record.userenable,jdbcType=CHAR},
+      USERCREATORID = #{record.usercreatorid,jdbcType=VARCHAR},
+      USERCREATETIME = #{record.usercreatetime,jdbcType=VARCHAR},
+      USERMODIFIERID = #{record.usermodifierid,jdbcType=VARCHAR},
+      USERPAGESIZE = #{record.userpagesize,jdbcType=VARCHAR},
+      USERDOGCODE = #{record.userdogcode,jdbcType=VARCHAR},
+      USERPASSWORDBAK = #{record.userpasswordbak,jdbcType=VARCHAR},
+      XS0101ORJG0101ID = #{record.xs0101orjg0101id,jdbcType=VARCHAR},
+      USERMODIFYTIME = #{record.usermodifytime,jdbcType=VARCHAR},
+      USERDEPARTMENTID = #{record.userdepartmentid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    update FRMUSER
+    <set>
+      <if test="departmentid != null">
+        DEPARTMENTID = #{departmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="prepare != null">
+        PREPARE = #{prepare,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalStatus != null">
+        POLITICAL_STATUS = #{politicalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="administrativeLevel != null">
+        ADMINISTRATIVE_LEVEL = #{administrativeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        TEL = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswd != null">
+        USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccount != null">
+        USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userrealname != null">
+        USERREALNAME = #{userrealname,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccounttype != null">
+        USERACCOUNTTYPE = #{useraccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogindate != null">
+        USERLASTLOGINDATE = #{userlastlogindate,jdbcType=VARCHAR},
+      </if>
+      <if test="userlastlogintime != null">
+        USERLASTLOGINTIME = #{userlastlogintime,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion1 != null">
+        USERPWDQUESTION1 = #{userpwdquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer1 != null">
+        USERPWDANSWER1 = #{userpwdanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdquestion2 != null">
+        USERPWDQUESTION2 = #{userpwdquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdanswer2 != null">
+        USERPWDANSWER2 = #{userpwdanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwdemail != null">
+        USERPWDEMAIL = #{userpwdemail,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        USEREMAIL = #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userstarttime != null">
+        USERSTARTTIME = #{userstarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="userendtime != null">
+        USERENDTIME = #{userendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="userenable != null">
+        USERENABLE = #{userenable,jdbcType=CHAR},
+      </if>
+      <if test="usercreatorid != null">
+        USERCREATORID = #{usercreatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="usercreatetime != null">
+        USERCREATETIME = #{usercreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifierid != null">
+        USERMODIFIERID = #{usermodifierid,jdbcType=VARCHAR},
+      </if>
+      <if test="userpagesize != null">
+        USERPAGESIZE = #{userpagesize,jdbcType=VARCHAR},
+      </if>
+      <if test="userdogcode != null">
+        USERDOGCODE = #{userdogcode,jdbcType=VARCHAR},
+      </if>
+      <if test="userpasswordbak != null">
+        USERPASSWORDBAK = #{userpasswordbak,jdbcType=VARCHAR},
+      </if>
+      <if test="xs0101orjg0101id != null">
+        XS0101ORJG0101ID = #{xs0101orjg0101id,jdbcType=VARCHAR},
+      </if>
+      <if test="usermodifytime != null">
+        USERMODIFYTIME = #{usermodifytime,jdbcType=VARCHAR},
+      </if>
+      <if test="userdepartmentid != null">
+        USERDEPARTMENTID = #{userdepartmentid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+    update FRMUSER
+    set DEPARTMENTID = #{departmentid,jdbcType=VARCHAR},
+      PREPARE = #{prepare,jdbcType=VARCHAR},
+      POLITICAL_STATUS = #{politicalStatus,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      ADMINISTRATIVE_LEVEL = #{administrativeLevel,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      TEL = #{tel,jdbcType=VARCHAR},
+      USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
+      USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
+      USERREALNAME = #{userrealname,jdbcType=VARCHAR},
+      USERACCOUNTTYPE = #{useraccounttype,jdbcType=VARCHAR},
+      USERLASTLOGINDATE = #{userlastlogindate,jdbcType=VARCHAR},
+      USERLASTLOGINTIME = #{userlastlogintime,jdbcType=VARCHAR},
+      USERPWDQUESTION1 = #{userpwdquestion1,jdbcType=VARCHAR},
+      USERPWDANSWER1 = #{userpwdanswer1,jdbcType=VARCHAR},
+      USERPWDQUESTION2 = #{userpwdquestion2,jdbcType=VARCHAR},
+      USERPWDANSWER2 = #{userpwdanswer2,jdbcType=VARCHAR},
+      USERPWDEMAIL = #{userpwdemail,jdbcType=VARCHAR},
+      USEREMAIL = #{useremail,jdbcType=VARCHAR},
+      USERSTARTTIME = #{userstarttime,jdbcType=VARCHAR},
+      USERENDTIME = #{userendtime,jdbcType=VARCHAR},
+      USERENABLE = #{userenable,jdbcType=CHAR},
+      USERCREATORID = #{usercreatorid,jdbcType=VARCHAR},
+      USERCREATETIME = #{usercreatetime,jdbcType=VARCHAR},
+      USERMODIFIERID = #{usermodifierid,jdbcType=VARCHAR},
+      USERPAGESIZE = #{userpagesize,jdbcType=VARCHAR},
+      USERDOGCODE = #{userdogcode,jdbcType=VARCHAR},
+      USERPASSWORDBAK = #{userpasswordbak,jdbcType=VARCHAR},
+      XS0101ORJG0101ID = #{xs0101orjg0101id,jdbcType=VARCHAR},
+      USERMODIFYTIME = #{usermodifytime,jdbcType=VARCHAR},
+      USERDEPARTMENTID = #{userdepartmentid,jdbcType=VARCHAR}
+    where USERID = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>
