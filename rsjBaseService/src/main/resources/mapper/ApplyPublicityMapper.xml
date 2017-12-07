@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.ApplyPublicityMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.ApplyPublicity" >
+    <id column="AID" property="aid" jdbcType="VARCHAR" />
+    <result column="INDEXCODE" property="indexcode" jdbcType="VARCHAR" />
+    <result column="APPLYDESC" property="applydesc" jdbcType="VARCHAR" />
+    <result column="PURPOSE" property="purpose" jdbcType="VARCHAR" />
+    <result column="APPLYERTYPE" property="applyertype" jdbcType="CHAR" />
+    <result column="APPLYERID" property="applyerid" jdbcType="VARCHAR" />
+    <result column="SEARCHCODE" property="searchcode" jdbcType="VARCHAR" />
+    <result column="REPLYSTATUS" property="replystatus" jdbcType="VARCHAR" />
+    <result column="REPLYCONTENT" property="replycontent" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+    <result column="REPLYTIME" property="replytime" jdbcType="VARCHAR" />
+    <result column="ISINOA" property="isinoa" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    AID, INDEXCODE, APPLYDESC, PURPOSE, APPLYERTYPE, APPLYERID, SEARCHCODE, REPLYSTATUS, 
+    REPLYCONTENT, CREATETIME, REPLYTIME, ISINOA
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyPublicityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from APPLYPUBLICITY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from APPLYPUBLICITY
+    where AID = #{aid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from APPLYPUBLICITY
+    where AID = #{aid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyPublicityExample" >
+    delete from APPLYPUBLICITY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyPublicity" >
+    insert into APPLYPUBLICITY (AID, INDEXCODE, APPLYDESC, 
+      PURPOSE, APPLYERTYPE, APPLYERID, 
+      SEARCHCODE, REPLYSTATUS, REPLYCONTENT, 
+      CREATETIME, REPLYTIME, ISINOA
+      )
+    values (#{aid,jdbcType=VARCHAR}, #{indexcode,jdbcType=VARCHAR}, #{applydesc,jdbcType=VARCHAR}, 
+      #{purpose,jdbcType=VARCHAR}, #{applyertype,jdbcType=CHAR}, #{applyerid,jdbcType=VARCHAR}, 
+      #{searchcode,jdbcType=VARCHAR}, #{replystatus,jdbcType=VARCHAR}, #{replycontent,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{replytime,jdbcType=VARCHAR}, #{isinoa,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyPublicity" >
+    insert into APPLYPUBLICITY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        AID,
+      </if>
+      <if test="indexcode != null" >
+        INDEXCODE,
+      </if>
+      <if test="applydesc != null" >
+        APPLYDESC,
+      </if>
+      <if test="purpose != null" >
+        PURPOSE,
+      </if>
+      <if test="applyertype != null" >
+        APPLYERTYPE,
+      </if>
+      <if test="applyerid != null" >
+        APPLYERID,
+      </if>
+      <if test="searchcode != null" >
+        SEARCHCODE,
+      </if>
+      <if test="replystatus != null" >
+        REPLYSTATUS,
+      </if>
+      <if test="replycontent != null" >
+        REPLYCONTENT,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="replytime != null" >
+        REPLYTIME,
+      </if>
+      <if test="isinoa != null" >
+        ISINOA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=VARCHAR},
+      </if>
+      <if test="indexcode != null" >
+        #{indexcode,jdbcType=VARCHAR},
+      </if>
+      <if test="applydesc != null" >
+        #{applydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null" >
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="applyertype != null" >
+        #{applyertype,jdbcType=CHAR},
+      </if>
+      <if test="applyerid != null" >
+        #{applyerid,jdbcType=VARCHAR},
+      </if>
+      <if test="searchcode != null" >
+        #{searchcode,jdbcType=VARCHAR},
+      </if>
+      <if test="replystatus != null" >
+        #{replystatus,jdbcType=VARCHAR},
+      </if>
+      <if test="replycontent != null" >
+        #{replycontent,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="replytime != null" >
+        #{replytime,jdbcType=VARCHAR},
+      </if>
+      <if test="isinoa != null" >
+        #{isinoa,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyPublicityExample" resultType="java.lang.Integer" >
+    select count(*) from APPLYPUBLICITY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update APPLYPUBLICITY
+    <set >
+      <if test="record.aid != null" >
+        AID = #{record.aid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.indexcode != null" >
+        INDEXCODE = #{record.indexcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applydesc != null" >
+        APPLYDESC = #{record.applydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.purpose != null" >
+        PURPOSE = #{record.purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyertype != null" >
+        APPLYERTYPE = #{record.applyertype,jdbcType=CHAR},
+      </if>
+      <if test="record.applyerid != null" >
+        APPLYERID = #{record.applyerid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.searchcode != null" >
+        SEARCHCODE = #{record.searchcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replystatus != null" >
+        REPLYSTATUS = #{record.replystatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replycontent != null" >
+        REPLYCONTENT = #{record.replycontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replytime != null" >
+        REPLYTIME = #{record.replytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isinoa != null" >
+        ISINOA = #{record.isinoa,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update APPLYPUBLICITY
+    set AID = #{record.aid,jdbcType=VARCHAR},
+      INDEXCODE = #{record.indexcode,jdbcType=VARCHAR},
+      APPLYDESC = #{record.applydesc,jdbcType=VARCHAR},
+      PURPOSE = #{record.purpose,jdbcType=VARCHAR},
+      APPLYERTYPE = #{record.applyertype,jdbcType=CHAR},
+      APPLYERID = #{record.applyerid,jdbcType=VARCHAR},
+      SEARCHCODE = #{record.searchcode,jdbcType=VARCHAR},
+      REPLYSTATUS = #{record.replystatus,jdbcType=VARCHAR},
+      REPLYCONTENT = #{record.replycontent,jdbcType=VARCHAR},
+      CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      REPLYTIME = #{record.replytime,jdbcType=VARCHAR},
+      ISINOA = #{record.isinoa,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyPublicity" >
+    update APPLYPUBLICITY
+    <set >
+      <if test="indexcode != null" >
+        INDEXCODE = #{indexcode,jdbcType=VARCHAR},
+      </if>
+      <if test="applydesc != null" >
+        APPLYDESC = #{applydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null" >
+        PURPOSE = #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="applyertype != null" >
+        APPLYERTYPE = #{applyertype,jdbcType=CHAR},
+      </if>
+      <if test="applyerid != null" >
+        APPLYERID = #{applyerid,jdbcType=VARCHAR},
+      </if>
+      <if test="searchcode != null" >
+        SEARCHCODE = #{searchcode,jdbcType=VARCHAR},
+      </if>
+      <if test="replystatus != null" >
+        REPLYSTATUS = #{replystatus,jdbcType=VARCHAR},
+      </if>
+      <if test="replycontent != null" >
+        REPLYCONTENT = #{replycontent,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="replytime != null" >
+        REPLYTIME = #{replytime,jdbcType=VARCHAR},
+      </if>
+      <if test="isinoa != null" >
+        ISINOA = #{isinoa,jdbcType=CHAR},
+      </if>
+    </set>
+    where AID = #{aid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyPublicity" >
+    update APPLYPUBLICITY
+    set INDEXCODE = #{indexcode,jdbcType=VARCHAR},
+      APPLYDESC = #{applydesc,jdbcType=VARCHAR},
+      PURPOSE = #{purpose,jdbcType=VARCHAR},
+      APPLYERTYPE = #{applyertype,jdbcType=CHAR},
+      APPLYERID = #{applyerid,jdbcType=VARCHAR},
+      SEARCHCODE = #{searchcode,jdbcType=VARCHAR},
+      REPLYSTATUS = #{replystatus,jdbcType=VARCHAR},
+      REPLYCONTENT = #{replycontent,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      REPLYTIME = #{replytime,jdbcType=VARCHAR},
+      ISINOA = #{isinoa,jdbcType=CHAR}
+    where AID = #{aid,jdbcType=VARCHAR}
+  </update>
+</mapper>

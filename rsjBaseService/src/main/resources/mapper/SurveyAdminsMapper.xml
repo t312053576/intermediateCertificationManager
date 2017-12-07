@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.SurveyAdminsMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.SurveyAdmins" >
+    <id column="A_ID" property="aId" jdbcType="VARCHAR" />
+    <result column="A_USER" property="aUser" jdbcType="VARCHAR" />
+    <result column="A_PASS" property="aPass" jdbcType="VARCHAR" />
+    <result column="A_NAME" property="aName" jdbcType="VARCHAR" />
+    <result column="A_ISLOCK" property="aIslock" jdbcType="CHAR" />
+    <result column="A_LASTLOGTIME" property="aLastlogtime" jdbcType="VARCHAR" />
+    <result column="A_LOGTIMES" property="aLogtimes" jdbcType="VARCHAR" />
+    <result column="A_LOGINIP" property="aLoginip" jdbcType="VARCHAR" />
+    <result column="A_ADDTIME" property="aAddtime" jdbcType="VARCHAR" />
+    <result column="A_EMAIL" property="aEmail" jdbcType="VARCHAR" />
+    <result column="A_INFO" property="aInfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    A_ID, A_USER, A_PASS, A_NAME, A_ISLOCK, A_LASTLOGTIME, A_LOGTIMES, A_LOGINIP, A_ADDTIME, 
+    A_EMAIL, A_INFO
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyAdminsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SURVEY_ADMINS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SURVEY_ADMINS
+    where A_ID = #{aId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SURVEY_ADMINS
+    where A_ID = #{aId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyAdminsExample" >
+    delete from SURVEY_ADMINS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyAdmins" >
+    insert into SURVEY_ADMINS (A_ID, A_USER, A_PASS, 
+      A_NAME, A_ISLOCK, A_LASTLOGTIME, 
+      A_LOGTIMES, A_LOGINIP, A_ADDTIME, 
+      A_EMAIL, A_INFO)
+    values (#{aId,jdbcType=VARCHAR}, #{aUser,jdbcType=VARCHAR}, #{aPass,jdbcType=VARCHAR}, 
+      #{aName,jdbcType=VARCHAR}, #{aIslock,jdbcType=CHAR}, #{aLastlogtime,jdbcType=VARCHAR}, 
+      #{aLogtimes,jdbcType=VARCHAR}, #{aLoginip,jdbcType=VARCHAR}, #{aAddtime,jdbcType=VARCHAR}, 
+      #{aEmail,jdbcType=VARCHAR}, #{aInfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyAdmins" >
+    insert into SURVEY_ADMINS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aId != null" >
+        A_ID,
+      </if>
+      <if test="aUser != null" >
+        A_USER,
+      </if>
+      <if test="aPass != null" >
+        A_PASS,
+      </if>
+      <if test="aName != null" >
+        A_NAME,
+      </if>
+      <if test="aIslock != null" >
+        A_ISLOCK,
+      </if>
+      <if test="aLastlogtime != null" >
+        A_LASTLOGTIME,
+      </if>
+      <if test="aLogtimes != null" >
+        A_LOGTIMES,
+      </if>
+      <if test="aLoginip != null" >
+        A_LOGINIP,
+      </if>
+      <if test="aAddtime != null" >
+        A_ADDTIME,
+      </if>
+      <if test="aEmail != null" >
+        A_EMAIL,
+      </if>
+      <if test="aInfo != null" >
+        A_INFO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aId != null" >
+        #{aId,jdbcType=VARCHAR},
+      </if>
+      <if test="aUser != null" >
+        #{aUser,jdbcType=VARCHAR},
+      </if>
+      <if test="aPass != null" >
+        #{aPass,jdbcType=VARCHAR},
+      </if>
+      <if test="aName != null" >
+        #{aName,jdbcType=VARCHAR},
+      </if>
+      <if test="aIslock != null" >
+        #{aIslock,jdbcType=CHAR},
+      </if>
+      <if test="aLastlogtime != null" >
+        #{aLastlogtime,jdbcType=VARCHAR},
+      </if>
+      <if test="aLogtimes != null" >
+        #{aLogtimes,jdbcType=VARCHAR},
+      </if>
+      <if test="aLoginip != null" >
+        #{aLoginip,jdbcType=VARCHAR},
+      </if>
+      <if test="aAddtime != null" >
+        #{aAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="aEmail != null" >
+        #{aEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="aInfo != null" >
+        #{aInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyAdminsExample" resultType="java.lang.Integer" >
+    select count(*) from SURVEY_ADMINS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SURVEY_ADMINS
+    <set >
+      <if test="record.aId != null" >
+        A_ID = #{record.aId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aUser != null" >
+        A_USER = #{record.aUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aPass != null" >
+        A_PASS = #{record.aPass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aName != null" >
+        A_NAME = #{record.aName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aIslock != null" >
+        A_ISLOCK = #{record.aIslock,jdbcType=CHAR},
+      </if>
+      <if test="record.aLastlogtime != null" >
+        A_LASTLOGTIME = #{record.aLastlogtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aLogtimes != null" >
+        A_LOGTIMES = #{record.aLogtimes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aLoginip != null" >
+        A_LOGINIP = #{record.aLoginip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aAddtime != null" >
+        A_ADDTIME = #{record.aAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aEmail != null" >
+        A_EMAIL = #{record.aEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aInfo != null" >
+        A_INFO = #{record.aInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SURVEY_ADMINS
+    set A_ID = #{record.aId,jdbcType=VARCHAR},
+      A_USER = #{record.aUser,jdbcType=VARCHAR},
+      A_PASS = #{record.aPass,jdbcType=VARCHAR},
+      A_NAME = #{record.aName,jdbcType=VARCHAR},
+      A_ISLOCK = #{record.aIslock,jdbcType=CHAR},
+      A_LASTLOGTIME = #{record.aLastlogtime,jdbcType=VARCHAR},
+      A_LOGTIMES = #{record.aLogtimes,jdbcType=VARCHAR},
+      A_LOGINIP = #{record.aLoginip,jdbcType=VARCHAR},
+      A_ADDTIME = #{record.aAddtime,jdbcType=VARCHAR},
+      A_EMAIL = #{record.aEmail,jdbcType=VARCHAR},
+      A_INFO = #{record.aInfo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyAdmins" >
+    update SURVEY_ADMINS
+    <set >
+      <if test="aUser != null" >
+        A_USER = #{aUser,jdbcType=VARCHAR},
+      </if>
+      <if test="aPass != null" >
+        A_PASS = #{aPass,jdbcType=VARCHAR},
+      </if>
+      <if test="aName != null" >
+        A_NAME = #{aName,jdbcType=VARCHAR},
+      </if>
+      <if test="aIslock != null" >
+        A_ISLOCK = #{aIslock,jdbcType=CHAR},
+      </if>
+      <if test="aLastlogtime != null" >
+        A_LASTLOGTIME = #{aLastlogtime,jdbcType=VARCHAR},
+      </if>
+      <if test="aLogtimes != null" >
+        A_LOGTIMES = #{aLogtimes,jdbcType=VARCHAR},
+      </if>
+      <if test="aLoginip != null" >
+        A_LOGINIP = #{aLoginip,jdbcType=VARCHAR},
+      </if>
+      <if test="aAddtime != null" >
+        A_ADDTIME = #{aAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="aEmail != null" >
+        A_EMAIL = #{aEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="aInfo != null" >
+        A_INFO = #{aInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where A_ID = #{aId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyAdmins" >
+    update SURVEY_ADMINS
+    set A_USER = #{aUser,jdbcType=VARCHAR},
+      A_PASS = #{aPass,jdbcType=VARCHAR},
+      A_NAME = #{aName,jdbcType=VARCHAR},
+      A_ISLOCK = #{aIslock,jdbcType=CHAR},
+      A_LASTLOGTIME = #{aLastlogtime,jdbcType=VARCHAR},
+      A_LOGTIMES = #{aLogtimes,jdbcType=VARCHAR},
+      A_LOGINIP = #{aLoginip,jdbcType=VARCHAR},
+      A_ADDTIME = #{aAddtime,jdbcType=VARCHAR},
+      A_EMAIL = #{aEmail,jdbcType=VARCHAR},
+      A_INFO = #{aInfo,jdbcType=VARCHAR}
+    where A_ID = #{aId,jdbcType=VARCHAR}
+  </update>
+</mapper>

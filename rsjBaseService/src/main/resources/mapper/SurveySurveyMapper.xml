@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.SurveySurveyMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.SurveySurvey" >
+    <id column="S_ID" property="sId" jdbcType="VARCHAR" />
+    <result column="TEMPLET_ID" property="templetId" jdbcType="VARCHAR" />
+    <result column="S_NAME" property="sName" jdbcType="VARCHAR" />
+    <result column="S_DESC" property="sDesc" jdbcType="VARCHAR" />
+    <result column="S_AUTHOR" property="sAuthor" jdbcType="VARCHAR" />
+    <result column="S_IMG" property="sImg" jdbcType="VARCHAR" />
+    <result column="S_IPREPEAT" property="sIprepeat" jdbcType="CHAR" />
+    <result column="S_CREATEDATE" property="sCreatedate" jdbcType="VARCHAR" />
+    <result column="S_IPLIMITTYPE" property="sIplimittype" jdbcType="VARCHAR" />
+    <result column="S_IPRANGE" property="sIprange" jdbcType="VARCHAR" />
+    <result column="S_PASSWORD" property="sPassword" jdbcType="VARCHAR" />
+    <result column="S_ISOPEN" property="sIsopen" jdbcType="CHAR" />
+    <result column="S_EXPIREDATE" property="sExpiredate" jdbcType="VARCHAR" />
+    <result column="S_ISAUDITED" property="sIsaudited" jdbcType="CHAR" />
+    <result column="S_HITS" property="sHits" jdbcType="VARCHAR" />
+    <result column="S_USEHITS" property="sUsehits" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    S_ID, TEMPLET_ID, S_NAME, S_DESC, S_AUTHOR, S_IMG, S_IPREPEAT, S_CREATEDATE, S_IPLIMITTYPE, 
+    S_IPRANGE, S_PASSWORD, S_ISOPEN, S_EXPIREDATE, S_ISAUDITED, S_HITS, S_USEHITS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.SurveySurveyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SURVEY_SURVEY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SURVEY_SURVEY
+    where S_ID = #{sId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SURVEY_SURVEY
+    where S_ID = #{sId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveySurveyExample" >
+    delete from SURVEY_SURVEY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.SurveySurvey" >
+    insert into SURVEY_SURVEY (S_ID, TEMPLET_ID, S_NAME, 
+      S_DESC, S_AUTHOR, S_IMG, 
+      S_IPREPEAT, S_CREATEDATE, S_IPLIMITTYPE, 
+      S_IPRANGE, S_PASSWORD, S_ISOPEN, 
+      S_EXPIREDATE, S_ISAUDITED, S_HITS, 
+      S_USEHITS)
+    values (#{sId,jdbcType=VARCHAR}, #{templetId,jdbcType=VARCHAR}, #{sName,jdbcType=VARCHAR}, 
+      #{sDesc,jdbcType=VARCHAR}, #{sAuthor,jdbcType=VARCHAR}, #{sImg,jdbcType=VARCHAR}, 
+      #{sIprepeat,jdbcType=CHAR}, #{sCreatedate,jdbcType=VARCHAR}, #{sIplimittype,jdbcType=VARCHAR}, 
+      #{sIprange,jdbcType=VARCHAR}, #{sPassword,jdbcType=VARCHAR}, #{sIsopen,jdbcType=CHAR}, 
+      #{sExpiredate,jdbcType=VARCHAR}, #{sIsaudited,jdbcType=CHAR}, #{sHits,jdbcType=VARCHAR}, 
+      #{sUsehits,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveySurvey" >
+    insert into SURVEY_SURVEY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        S_ID,
+      </if>
+      <if test="templetId != null" >
+        TEMPLET_ID,
+      </if>
+      <if test="sName != null" >
+        S_NAME,
+      </if>
+      <if test="sDesc != null" >
+        S_DESC,
+      </if>
+      <if test="sAuthor != null" >
+        S_AUTHOR,
+      </if>
+      <if test="sImg != null" >
+        S_IMG,
+      </if>
+      <if test="sIprepeat != null" >
+        S_IPREPEAT,
+      </if>
+      <if test="sCreatedate != null" >
+        S_CREATEDATE,
+      </if>
+      <if test="sIplimittype != null" >
+        S_IPLIMITTYPE,
+      </if>
+      <if test="sIprange != null" >
+        S_IPRANGE,
+      </if>
+      <if test="sPassword != null" >
+        S_PASSWORD,
+      </if>
+      <if test="sIsopen != null" >
+        S_ISOPEN,
+      </if>
+      <if test="sExpiredate != null" >
+        S_EXPIREDATE,
+      </if>
+      <if test="sIsaudited != null" >
+        S_ISAUDITED,
+      </if>
+      <if test="sHits != null" >
+        S_HITS,
+      </if>
+      <if test="sUsehits != null" >
+        S_USEHITS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        #{sId,jdbcType=VARCHAR},
+      </if>
+      <if test="templetId != null" >
+        #{templetId,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null" >
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sDesc != null" >
+        #{sDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="sAuthor != null" >
+        #{sAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="sImg != null" >
+        #{sImg,jdbcType=VARCHAR},
+      </if>
+      <if test="sIprepeat != null" >
+        #{sIprepeat,jdbcType=CHAR},
+      </if>
+      <if test="sCreatedate != null" >
+        #{sCreatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="sIplimittype != null" >
+        #{sIplimittype,jdbcType=VARCHAR},
+      </if>
+      <if test="sIprange != null" >
+        #{sIprange,jdbcType=VARCHAR},
+      </if>
+      <if test="sPassword != null" >
+        #{sPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sIsopen != null" >
+        #{sIsopen,jdbcType=CHAR},
+      </if>
+      <if test="sExpiredate != null" >
+        #{sExpiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="sIsaudited != null" >
+        #{sIsaudited,jdbcType=CHAR},
+      </if>
+      <if test="sHits != null" >
+        #{sHits,jdbcType=VARCHAR},
+      </if>
+      <if test="sUsehits != null" >
+        #{sUsehits,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveySurveyExample" resultType="java.lang.Integer" >
+    select count(*) from SURVEY_SURVEY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SURVEY_SURVEY
+    <set >
+      <if test="record.sId != null" >
+        S_ID = #{record.sId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.templetId != null" >
+        TEMPLET_ID = #{record.templetId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sName != null" >
+        S_NAME = #{record.sName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sDesc != null" >
+        S_DESC = #{record.sDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sAuthor != null" >
+        S_AUTHOR = #{record.sAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sImg != null" >
+        S_IMG = #{record.sImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sIprepeat != null" >
+        S_IPREPEAT = #{record.sIprepeat,jdbcType=CHAR},
+      </if>
+      <if test="record.sCreatedate != null" >
+        S_CREATEDATE = #{record.sCreatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sIplimittype != null" >
+        S_IPLIMITTYPE = #{record.sIplimittype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sIprange != null" >
+        S_IPRANGE = #{record.sIprange,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sPassword != null" >
+        S_PASSWORD = #{record.sPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sIsopen != null" >
+        S_ISOPEN = #{record.sIsopen,jdbcType=CHAR},
+      </if>
+      <if test="record.sExpiredate != null" >
+        S_EXPIREDATE = #{record.sExpiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sIsaudited != null" >
+        S_ISAUDITED = #{record.sIsaudited,jdbcType=CHAR},
+      </if>
+      <if test="record.sHits != null" >
+        S_HITS = #{record.sHits,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sUsehits != null" >
+        S_USEHITS = #{record.sUsehits,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SURVEY_SURVEY
+    set S_ID = #{record.sId,jdbcType=VARCHAR},
+      TEMPLET_ID = #{record.templetId,jdbcType=VARCHAR},
+      S_NAME = #{record.sName,jdbcType=VARCHAR},
+      S_DESC = #{record.sDesc,jdbcType=VARCHAR},
+      S_AUTHOR = #{record.sAuthor,jdbcType=VARCHAR},
+      S_IMG = #{record.sImg,jdbcType=VARCHAR},
+      S_IPREPEAT = #{record.sIprepeat,jdbcType=CHAR},
+      S_CREATEDATE = #{record.sCreatedate,jdbcType=VARCHAR},
+      S_IPLIMITTYPE = #{record.sIplimittype,jdbcType=VARCHAR},
+      S_IPRANGE = #{record.sIprange,jdbcType=VARCHAR},
+      S_PASSWORD = #{record.sPassword,jdbcType=VARCHAR},
+      S_ISOPEN = #{record.sIsopen,jdbcType=CHAR},
+      S_EXPIREDATE = #{record.sExpiredate,jdbcType=VARCHAR},
+      S_ISAUDITED = #{record.sIsaudited,jdbcType=CHAR},
+      S_HITS = #{record.sHits,jdbcType=VARCHAR},
+      S_USEHITS = #{record.sUsehits,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveySurvey" >
+    update SURVEY_SURVEY
+    <set >
+      <if test="templetId != null" >
+        TEMPLET_ID = #{templetId,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null" >
+        S_NAME = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sDesc != null" >
+        S_DESC = #{sDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="sAuthor != null" >
+        S_AUTHOR = #{sAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="sImg != null" >
+        S_IMG = #{sImg,jdbcType=VARCHAR},
+      </if>
+      <if test="sIprepeat != null" >
+        S_IPREPEAT = #{sIprepeat,jdbcType=CHAR},
+      </if>
+      <if test="sCreatedate != null" >
+        S_CREATEDATE = #{sCreatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="sIplimittype != null" >
+        S_IPLIMITTYPE = #{sIplimittype,jdbcType=VARCHAR},
+      </if>
+      <if test="sIprange != null" >
+        S_IPRANGE = #{sIprange,jdbcType=VARCHAR},
+      </if>
+      <if test="sPassword != null" >
+        S_PASSWORD = #{sPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sIsopen != null" >
+        S_ISOPEN = #{sIsopen,jdbcType=CHAR},
+      </if>
+      <if test="sExpiredate != null" >
+        S_EXPIREDATE = #{sExpiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="sIsaudited != null" >
+        S_ISAUDITED = #{sIsaudited,jdbcType=CHAR},
+      </if>
+      <if test="sHits != null" >
+        S_HITS = #{sHits,jdbcType=VARCHAR},
+      </if>
+      <if test="sUsehits != null" >
+        S_USEHITS = #{sUsehits,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where S_ID = #{sId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.SurveySurvey" >
+    update SURVEY_SURVEY
+    set TEMPLET_ID = #{templetId,jdbcType=VARCHAR},
+      S_NAME = #{sName,jdbcType=VARCHAR},
+      S_DESC = #{sDesc,jdbcType=VARCHAR},
+      S_AUTHOR = #{sAuthor,jdbcType=VARCHAR},
+      S_IMG = #{sImg,jdbcType=VARCHAR},
+      S_IPREPEAT = #{sIprepeat,jdbcType=CHAR},
+      S_CREATEDATE = #{sCreatedate,jdbcType=VARCHAR},
+      S_IPLIMITTYPE = #{sIplimittype,jdbcType=VARCHAR},
+      S_IPRANGE = #{sIprange,jdbcType=VARCHAR},
+      S_PASSWORD = #{sPassword,jdbcType=VARCHAR},
+      S_ISOPEN = #{sIsopen,jdbcType=CHAR},
+      S_EXPIREDATE = #{sExpiredate,jdbcType=VARCHAR},
+      S_ISAUDITED = #{sIsaudited,jdbcType=CHAR},
+      S_HITS = #{sHits,jdbcType=VARCHAR},
+      S_USEHITS = #{sUsehits,jdbcType=VARCHAR}
+    where S_ID = #{sId,jdbcType=VARCHAR}
+  </update>
+</mapper>

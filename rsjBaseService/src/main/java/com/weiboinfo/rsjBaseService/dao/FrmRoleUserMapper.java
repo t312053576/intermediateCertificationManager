@@ -1,10 +1,9 @@
 package com.weiboinfo.rsjBaseService.dao;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.weiboinfo.rsjBaseService.entry.FrmRoleUser;
 import com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FrmRoleUserMapper {
     int countByExample(FrmRoleUserExample example);

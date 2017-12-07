@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmPurviewMapper">
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmPurview">
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.FrmPurviewMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmPurview">
     <id column="PURVIEWID" jdbcType="VARCHAR" property="purviewid" />
     <result column="USERID" jdbcType="VARCHAR" property="userid" />
     <result column="TABLEPK" jdbcType="VARCHAR" property="tablepk" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     PURVIEWID, USERID, TABLEPK, TABLEPKVALUE
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurviewExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurviewExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from FRMPURVIEW
     where PURVIEWID = #{purviewid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurviewExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurviewExample">
     delete from FRMPURVIEW
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurview">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurview">
     insert into FRMPURVIEW (PURVIEWID, USERID, TABLEPK, 
       TABLEPKVALUE)
     values (#{purviewid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{tablepk,jdbcType=VARCHAR}, 
       #{tablepkvalue,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurview">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurview">
     insert into FRMPURVIEW
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="purviewid != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurviewExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurviewExample" resultType="java.lang.Integer">
     select count(*) from FRMPURVIEW
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurview">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurview">
     update FRMPURVIEW
     <set>
       <if test="userid != null">
@@ -186,14 +186,14 @@
     </set>
     where PURVIEWID = #{purviewid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurview">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurview">
     update FRMPURVIEW
     set USERID = #{userid,jdbcType=VARCHAR},
       TABLEPK = #{tablepk,jdbcType=VARCHAR},
       TABLEPKVALUE = #{tablepkvalue,jdbcType=VARCHAR}
     where PURVIEWID = #{purviewid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmPurview">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmPurview">
     <id column="PURVIEWID" jdbcType="VARCHAR" property="purviewid" />
     <result column="USERID" jdbcType="VARCHAR" property="userid" />
     <result column="TABLEPK" jdbcType="VARCHAR" property="tablepk" />
@@ -260,7 +260,7 @@
   <sql id="Base_Column_List">
     PURVIEWID, USERID, TABLEPK, TABLEPKVALUE
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurviewExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurviewExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -284,19 +284,19 @@
     delete from FRMPURVIEW
     where PURVIEWID = #{purviewid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurviewExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurviewExample">
     delete from FRMPURVIEW
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurview">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurview">
     insert into FRMPURVIEW (PURVIEWID, USERID, TABLEPK, 
       TABLEPKVALUE)
     values (#{purviewid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{tablepk,jdbcType=VARCHAR}, 
       #{tablepkvalue,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurview">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurview">
     insert into FRMPURVIEW
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="purviewid != null">
@@ -327,7 +327,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurviewExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurviewExample" resultType="java.lang.Integer">
     select count(*) from FRMPURVIEW
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -363,7 +363,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurview">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurview">
     update FRMPURVIEW
     <set>
       <if test="userid != null">
@@ -378,7 +378,7 @@
     </set>
     where PURVIEWID = #{purviewid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmPurview">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmPurview">
     update FRMPURVIEW
     set USERID = #{userid,jdbcType=VARCHAR},
       TABLEPK = #{tablepk,jdbcType=VARCHAR},

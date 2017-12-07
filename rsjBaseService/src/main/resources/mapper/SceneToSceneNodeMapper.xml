@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.SceneToSceneNodeMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.SceneToSceneNode" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="NODEID" property="nodeid" jdbcType="VARCHAR" />
+    <result column="SUBNODEID" property="subnodeid" jdbcType="VARCHAR" />
+    <result column="SCENEID" property="sceneid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, NODEID, SUBNODEID, SCENEID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.SceneToSceneNodeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SCENETOSCENENODE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SCENETOSCENENODE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SCENETOSCENENODE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SceneToSceneNodeExample" >
+    delete from SCENETOSCENENODE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.SceneToSceneNode" >
+    insert into SCENETOSCENENODE (ID, NODEID, SUBNODEID, 
+      SCENEID)
+    values (#{id,jdbcType=VARCHAR}, #{nodeid,jdbcType=VARCHAR}, #{subnodeid,jdbcType=VARCHAR}, 
+      #{sceneid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.SceneToSceneNode" >
+    insert into SCENETOSCENENODE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="nodeid != null" >
+        NODEID,
+      </if>
+      <if test="subnodeid != null" >
+        SUBNODEID,
+      </if>
+      <if test="sceneid != null" >
+        SCENEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeid != null" >
+        #{nodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="subnodeid != null" >
+        #{subnodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneid != null" >
+        #{sceneid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SceneToSceneNodeExample" resultType="java.lang.Integer" >
+    select count(*) from SCENETOSCENENODE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SCENETOSCENENODE
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodeid != null" >
+        NODEID = #{record.nodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subnodeid != null" >
+        SUBNODEID = #{record.subnodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sceneid != null" >
+        SCENEID = #{record.sceneid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SCENETOSCENENODE
+    set ID = #{record.id,jdbcType=VARCHAR},
+      NODEID = #{record.nodeid,jdbcType=VARCHAR},
+      SUBNODEID = #{record.subnodeid,jdbcType=VARCHAR},
+      SCENEID = #{record.sceneid,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.SceneToSceneNode" >
+    update SCENETOSCENENODE
+    <set >
+      <if test="nodeid != null" >
+        NODEID = #{nodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="subnodeid != null" >
+        SUBNODEID = #{subnodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneid != null" >
+        SCENEID = #{sceneid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.SceneToSceneNode" >
+    update SCENETOSCENENODE
+    set NODEID = #{nodeid,jdbcType=VARCHAR},
+      SUBNODEID = #{subnodeid,jdbcType=VARCHAR},
+      SCENEID = #{sceneid,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

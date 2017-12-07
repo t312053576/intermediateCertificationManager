@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.ExchangeLDBZMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZ" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="DECIMAL" />
+    <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
+    <result column="E_MAIL" property="eMail" jdbcType="VARCHAR" />
+    <result column="POST" property="post" jdbcType="DECIMAL" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="TIME" property="time" jdbcType="TIMESTAMP" />
+    <result column="ISNET" property="isnet" jdbcType="DECIMAL" />
+    <result column="LEIBEI" property="leibei" jdbcType="DECIMAL" />
+    <result column="PART" property="part" jdbcType="DECIMAL" />
+    <result column="SHENHE" property="shenhe" jdbcType="DECIMAL" />
+    <result column="NAME1" property="name1" jdbcType="VARCHAR" />
+    <result column="BJ" property="bj" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZ" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="CLOB" />
+    <result column="RESTORE" property="restore" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, NAME, SEX, TELEPHONE, E_MAIL, POST, ADDRESS, TITLE, TIME, ISNET, LEIBEI, PART, 
+    SHENHE, NAME1, BJ
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT, RESTORE
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from LDBZ_INFO_EXCHANGE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from LDBZ_INFO_EXCHANGE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from LDBZ_INFO_EXCHANGE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from LDBZ_INFO_EXCHANGE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZExample" >
+    delete from LDBZ_INFO_EXCHANGE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZ" >
+    insert into LDBZ_INFO_EXCHANGE (ID, NAME, SEX, 
+      TELEPHONE, E_MAIL, POST, 
+      ADDRESS, TITLE, TIME, 
+      ISNET, LEIBEI, PART, 
+      SHENHE, NAME1, BJ, 
+      CONTENT, RESTORE)
+    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=DECIMAL}, 
+      #{telephone,jdbcType=VARCHAR}, #{eMail,jdbcType=VARCHAR}, #{post,jdbcType=DECIMAL}, 
+      #{address,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{isnet,jdbcType=DECIMAL}, #{leibei,jdbcType=DECIMAL}, #{part,jdbcType=DECIMAL}, 
+      #{shenhe,jdbcType=DECIMAL}, #{name1,jdbcType=VARCHAR}, #{bj,jdbcType=DECIMAL}, 
+      #{content,jdbcType=CLOB}, #{restore,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZ" >
+    insert into LDBZ_INFO_EXCHANGE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE,
+      </if>
+      <if test="eMail != null" >
+        E_MAIL,
+      </if>
+      <if test="post != null" >
+        POST,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="time != null" >
+        TIME,
+      </if>
+      <if test="isnet != null" >
+        ISNET,
+      </if>
+      <if test="leibei != null" >
+        LEIBEI,
+      </if>
+      <if test="part != null" >
+        PART,
+      </if>
+      <if test="shenhe != null" >
+        SHENHE,
+      </if>
+      <if test="name1 != null" >
+        NAME1,
+      </if>
+      <if test="bj != null" >
+        BJ,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="restore != null" >
+        RESTORE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=DECIMAL},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null" >
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        #{post,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isnet != null" >
+        #{isnet,jdbcType=DECIMAL},
+      </if>
+      <if test="leibei != null" >
+        #{leibei,jdbcType=DECIMAL},
+      </if>
+      <if test="part != null" >
+        #{part,jdbcType=DECIMAL},
+      </if>
+      <if test="shenhe != null" >
+        #{shenhe,jdbcType=DECIMAL},
+      </if>
+      <if test="name1 != null" >
+        #{name1,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null" >
+        #{bj,jdbcType=DECIMAL},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=CLOB},
+      </if>
+      <if test="restore != null" >
+        #{restore,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZExample" resultType="java.lang.Integer" >
+    select count(*) from LDBZ_INFO_EXCHANGE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update LDBZ_INFO_EXCHANGE
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        SEX = #{record.sex,jdbcType=DECIMAL},
+      </if>
+      <if test="record.telephone != null" >
+        TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eMail != null" >
+        E_MAIL = #{record.eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.post != null" >
+        POST = #{record.post,jdbcType=DECIMAL},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        TIME = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isnet != null" >
+        ISNET = #{record.isnet,jdbcType=DECIMAL},
+      </if>
+      <if test="record.leibei != null" >
+        LEIBEI = #{record.leibei,jdbcType=DECIMAL},
+      </if>
+      <if test="record.part != null" >
+        PART = #{record.part,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shenhe != null" >
+        SHENHE = #{record.shenhe,jdbcType=DECIMAL},
+      </if>
+      <if test="record.name1 != null" >
+        NAME1 = #{record.name1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bj != null" >
+        BJ = #{record.bj,jdbcType=DECIMAL},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=CLOB},
+      </if>
+      <if test="record.restore != null" >
+        RESTORE = #{record.restore,jdbcType=CLOB},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update LDBZ_INFO_EXCHANGE
+    set ID = #{record.id,jdbcType=DECIMAL},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      SEX = #{record.sex,jdbcType=DECIMAL},
+      TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      E_MAIL = #{record.eMail,jdbcType=VARCHAR},
+      POST = #{record.post,jdbcType=DECIMAL},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      TIME = #{record.time,jdbcType=TIMESTAMP},
+      ISNET = #{record.isnet,jdbcType=DECIMAL},
+      LEIBEI = #{record.leibei,jdbcType=DECIMAL},
+      PART = #{record.part,jdbcType=DECIMAL},
+      SHENHE = #{record.shenhe,jdbcType=DECIMAL},
+      NAME1 = #{record.name1,jdbcType=VARCHAR},
+      BJ = #{record.bj,jdbcType=DECIMAL},
+      CONTENT = #{record.content,jdbcType=CLOB},
+      RESTORE = #{record.restore,jdbcType=CLOB}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update LDBZ_INFO_EXCHANGE
+    set ID = #{record.id,jdbcType=DECIMAL},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      SEX = #{record.sex,jdbcType=DECIMAL},
+      TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      E_MAIL = #{record.eMail,jdbcType=VARCHAR},
+      POST = #{record.post,jdbcType=DECIMAL},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      TIME = #{record.time,jdbcType=TIMESTAMP},
+      ISNET = #{record.isnet,jdbcType=DECIMAL},
+      LEIBEI = #{record.leibei,jdbcType=DECIMAL},
+      PART = #{record.part,jdbcType=DECIMAL},
+      SHENHE = #{record.shenhe,jdbcType=DECIMAL},
+      NAME1 = #{record.name1,jdbcType=VARCHAR},
+      BJ = #{record.bj,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZ" >
+    update LDBZ_INFO_EXCHANGE
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=DECIMAL},
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null" >
+        E_MAIL = #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        POST = #{post,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        TIME = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isnet != null" >
+        ISNET = #{isnet,jdbcType=DECIMAL},
+      </if>
+      <if test="leibei != null" >
+        LEIBEI = #{leibei,jdbcType=DECIMAL},
+      </if>
+      <if test="part != null" >
+        PART = #{part,jdbcType=DECIMAL},
+      </if>
+      <if test="shenhe != null" >
+        SHENHE = #{shenhe,jdbcType=DECIMAL},
+      </if>
+      <if test="name1 != null" >
+        NAME1 = #{name1,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null" >
+        BJ = #{bj,jdbcType=DECIMAL},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=CLOB},
+      </if>
+      <if test="restore != null" >
+        RESTORE = #{restore,jdbcType=CLOB},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZ" >
+    update LDBZ_INFO_EXCHANGE
+    set NAME = #{name,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=DECIMAL},
+      TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      E_MAIL = #{eMail,jdbcType=VARCHAR},
+      POST = #{post,jdbcType=DECIMAL},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      TIME = #{time,jdbcType=TIMESTAMP},
+      ISNET = #{isnet,jdbcType=DECIMAL},
+      LEIBEI = #{leibei,jdbcType=DECIMAL},
+      PART = #{part,jdbcType=DECIMAL},
+      SHENHE = #{shenhe,jdbcType=DECIMAL},
+      NAME1 = #{name1,jdbcType=VARCHAR},
+      BJ = #{bj,jdbcType=DECIMAL},
+      CONTENT = #{content,jdbcType=CLOB},
+      RESTORE = #{restore,jdbcType=CLOB}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.ExchangeLDBZ" >
+    update LDBZ_INFO_EXCHANGE
+    set NAME = #{name,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=DECIMAL},
+      TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      E_MAIL = #{eMail,jdbcType=VARCHAR},
+      POST = #{post,jdbcType=DECIMAL},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      TIME = #{time,jdbcType=TIMESTAMP},
+      ISNET = #{isnet,jdbcType=DECIMAL},
+      LEIBEI = #{leibei,jdbcType=DECIMAL},
+      PART = #{part,jdbcType=DECIMAL},
+      SHENHE = #{shenhe,jdbcType=DECIMAL},
+      NAME1 = #{name1,jdbcType=VARCHAR},
+      BJ = #{bj,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

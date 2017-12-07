@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmRoleUserMapper">
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.FrmRoleUserMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     <id column="ROLEUSERID" jdbcType="VARCHAR" property="roleuserid" />
     <result column="ROLEUSERAUTHTIME" jdbcType="VARCHAR" property="roleuserauthtime" />
     <result column="ROLEUSERCREATORID" jdbcType="VARCHAR" property="roleusercreatorid" />
@@ -73,7 +73,7 @@
     ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
     ROLEUSERMODIFYTIME, USERID, ROLEID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,13 +97,13 @@
     delete from FRMROLEUSER
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample">
     delete from FRMROLEUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     insert into FRMROLEUSER (ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, 
       ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
       ROLEUSERMODIFYTIME, USERID, ROLEID
@@ -113,7 +113,7 @@
       #{roleusermodifytime,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     insert into FRMROLEUSER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleuserid != null">
@@ -168,7 +168,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample" resultType="java.lang.Integer">
     select count(*) from FRMROLEUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -220,7 +220,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     update FRMROLEUSER
     <set>
       <if test="roleuserauthtime != null">
@@ -247,7 +247,7 @@
     </set>
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     update FRMROLEUSER
     set ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
       ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
@@ -258,7 +258,7 @@
       ROLEID = #{roleid,jdbcType=VARCHAR}
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     <id column="ROLEUSERID" jdbcType="VARCHAR" property="roleuserid" />
     <result column="ROLEUSERAUTHTIME" jdbcType="VARCHAR" property="roleuserauthtime" />
     <result column="ROLEUSERCREATORID" jdbcType="VARCHAR" property="roleusercreatorid" />
@@ -330,7 +330,7 @@
     ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
     ROLEUSERMODIFYTIME, USERID, ROLEID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -354,13 +354,13 @@
     delete from FRMROLEUSER
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample">
     delete from FRMROLEUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     insert into FRMROLEUSER (ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, 
       ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
       ROLEUSERMODIFYTIME, USERID, ROLEID
@@ -370,7 +370,7 @@
       #{roleusermodifytime,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     insert into FRMROLEUSER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleuserid != null">
@@ -425,7 +425,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample" resultType="java.lang.Integer">
     select count(*) from FRMROLEUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -477,7 +477,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     update FRMROLEUSER
     <set>
       <if test="roleuserauthtime != null">
@@ -504,7 +504,7 @@
     </set>
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     update FRMROLEUSER
     set ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
       ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
@@ -515,7 +515,7 @@
       ROLEID = #{roleid,jdbcType=VARCHAR}
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     <id column="ROLEUSERID" jdbcType="VARCHAR" property="roleuserid" />
     <result column="ROLEUSERAUTHTIME" jdbcType="VARCHAR" property="roleuserauthtime" />
     <result column="ROLEUSERCREATORID" jdbcType="VARCHAR" property="roleusercreatorid" />
@@ -589,7 +589,7 @@
     ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
     ROLEUSERMODIFYTIME, USERID, ROLEID, PAGEID, SYSID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -613,13 +613,13 @@
     delete from FRMROLEUSER
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample">
     delete from FRMROLEUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     insert into FRMROLEUSER (ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, 
       ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
       ROLEUSERMODIFYTIME, USERID, ROLEID, 
@@ -629,7 +629,7 @@
       #{roleusermodifytime,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}, 
       #{pageid,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     insert into FRMROLEUSER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleuserid != null">
@@ -696,7 +696,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample" resultType="java.lang.Integer">
     select count(*) from FRMROLEUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -756,7 +756,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     update FRMROLEUSER
     <set>
       <if test="roleuserauthtime != null">
@@ -789,7 +789,7 @@
     </set>
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     update FRMROLEUSER
     set ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
       ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},
@@ -802,7 +802,7 @@
       SYSID = #{sysid,jdbcType=VARCHAR}
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     <id column="ROLEUSERID" jdbcType="VARCHAR" property="roleuserid" />
     <result column="ROLEUSERAUTHTIME" jdbcType="VARCHAR" property="roleuserauthtime" />
     <result column="ROLEUSERCREATORID" jdbcType="VARCHAR" property="roleusercreatorid" />
@@ -876,7 +876,7 @@
     ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
     ROLEUSERMODIFYTIME, USERID, ROLEID, PAGEID, SYSID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -900,13 +900,13 @@
     delete from FRMROLEUSER
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample">
     delete from FRMROLEUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     insert into FRMROLEUSER (ROLEUSERID, ROLEUSERAUTHTIME, ROLEUSERCREATORID, 
       ROLEUSERCREATETIME, ROLEUSERMODIFIERID, 
       ROLEUSERMODIFYTIME, USERID, ROLEID, 
@@ -916,7 +916,7 @@
       #{roleusermodifytime,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}, 
       #{pageid,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     insert into FRMROLEUSER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleuserid != null">
@@ -983,7 +983,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUserExample" resultType="java.lang.Integer">
     select count(*) from FRMROLEUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -1043,7 +1043,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     update FRMROLEUSER
     <set>
       <if test="roleuserauthtime != null">
@@ -1076,7 +1076,7 @@
     </set>
     where ROLEUSERID = #{roleuserid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleUser">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleUser">
     update FRMROLEUSER
     set ROLEUSERAUTHTIME = #{roleuserauthtime,jdbcType=VARCHAR},
       ROLEUSERCREATORID = #{roleusercreatorid,jdbcType=VARCHAR},

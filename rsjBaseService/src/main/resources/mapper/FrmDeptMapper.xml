@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmDeptMapper" >
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmDept" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.FrmDeptMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmDept" >
     <id column="XX0301ID" property="xx0301id" jdbcType="VARCHAR" />
     <result column="DWH" property="dwh" jdbcType="VARCHAR" />
     <result column="DWMC" property="dwmc" jdbcType="VARCHAR" />
@@ -78,7 +78,7 @@
   <sql id="Base_Column_List" >
     XX0301ID, DWH, DWMC, DWJC, DWDZ, LSDWH, JLNY, BZ, CJR, CJSJ, XGR, XGSJ, YLZD, ISDEL
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDeptExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.FrmDeptExample" >
     select
     <if test="distinct" >
       distinct
@@ -102,13 +102,13 @@
     delete from FRMDEPT
     where XX0301ID = #{xx0301id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDeptExample" >
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmDeptExample" >
     delete from FRMDEPT
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDept" >
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmDept" >
     insert into FRMDEPT (XX0301ID, DWH, DWMC, 
       DWJC, DWDZ, LSDWH, 
       JLNY, BZ, CJR, CJSJ, 
@@ -120,7 +120,7 @@
       #{xgr,jdbcType=VARCHAR}, #{xgsj,jdbcType=VARCHAR}, #{ylzd,jdbcType=VARCHAR}, #{isdel,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDept" >
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmDept" >
     insert into FRMDEPT
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="xx0301id != null" >
@@ -211,7 +211,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDeptExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmDeptExample" resultType="java.lang.Integer" >
     select count(*) from FRMDEPT
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -287,7 +287,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDept" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmDept" >
     update FRMDEPT
     <set >
       <if test="dwh != null" >
@@ -332,7 +332,7 @@
     </set>
     where XX0301ID = #{xx0301id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmDept" >
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmDept" >
     update FRMDEPT
     set DWH = #{dwh,jdbcType=VARCHAR},
       DWMC = #{dwmc,jdbcType=VARCHAR},

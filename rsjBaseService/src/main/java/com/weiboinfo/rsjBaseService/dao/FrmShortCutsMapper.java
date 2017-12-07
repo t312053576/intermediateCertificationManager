@@ -1,10 +1,9 @@
 package com.weiboinfo.rsjBaseService.dao;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.weiboinfo.rsjBaseService.entry.FrmShortCuts;
 import com.weiboinfo.rsjBaseService.entry.FrmShortCutsExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FrmShortCutsMapper {
     int countByExample(FrmShortCutsExample example);

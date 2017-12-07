@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.AdviseMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.Advise" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="IDCARD" property="idcard" jdbcType="VARCHAR" />
+    <result column="TELNUMBER" property="telnumber" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="ADVISECONTENT" property="advisecontent" jdbcType="VARCHAR" />
+    <result column="SEARCHCODE" property="searchcode" jdbcType="VARCHAR" />
+    <result column="ADVISETYPE" property="advisetype" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+    <result column="REPLYTIME" property="replytime" jdbcType="VARCHAR" />
+    <result column="REPLYSTATUS" property="replystatus" jdbcType="VARCHAR" />
+    <result column="REPLYCONTENT" property="replycontent" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="HITS" property="hits" jdbcType="DECIMAL" />
+    <result column="ADVISEDL" property="advisedl" jdbcType="VARCHAR" />
+    <result column="ISINOA" property="isinoa" jdbcType="CHAR" />
+    <result column="MYDPJ" property="mydpj" jdbcType="VARCHAR" />
+    <result column="MYDFKYJ" property="mydfkyj" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, NAME, IDCARD, TELNUMBER, ADDRESS, ADVISECONTENT, SEARCHCODE, ADVISETYPE, CREATETIME, 
+    REPLYTIME, REPLYSTATUS, REPLYCONTENT, TYPE, TITLE, HITS, ADVISEDL, ISINOA, MYDPJ, 
+    MYDFKYJ
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.AdviseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ADVISE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ADVISE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ADVISE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.AdviseExample" >
+    delete from ADVISE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.Advise" >
+    insert into ADVISE (ID, NAME, IDCARD, 
+      TELNUMBER, ADDRESS, ADVISECONTENT, 
+      SEARCHCODE, ADVISETYPE, CREATETIME, 
+      REPLYTIME, REPLYSTATUS, REPLYCONTENT, 
+      TYPE, TITLE, HITS, 
+      ADVISEDL, ISINOA, MYDPJ, 
+      MYDFKYJ)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{telnumber,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{advisecontent,jdbcType=VARCHAR}, 
+      #{searchcode,jdbcType=VARCHAR}, #{advisetype,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{replytime,jdbcType=VARCHAR}, #{replystatus,jdbcType=VARCHAR}, #{replycontent,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{hits,jdbcType=DECIMAL}, 
+      #{advisedl,jdbcType=VARCHAR}, #{isinoa,jdbcType=CHAR}, #{mydpj,jdbcType=VARCHAR}, 
+      #{mydfkyj,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.Advise" >
+    insert into ADVISE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="idcard != null" >
+        IDCARD,
+      </if>
+      <if test="telnumber != null" >
+        TELNUMBER,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="advisecontent != null" >
+        ADVISECONTENT,
+      </if>
+      <if test="searchcode != null" >
+        SEARCHCODE,
+      </if>
+      <if test="advisetype != null" >
+        ADVISETYPE,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="replytime != null" >
+        REPLYTIME,
+      </if>
+      <if test="replystatus != null" >
+        REPLYSTATUS,
+      </if>
+      <if test="replycontent != null" >
+        REPLYCONTENT,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="hits != null" >
+        HITS,
+      </if>
+      <if test="advisedl != null" >
+        ADVISEDL,
+      </if>
+      <if test="isinoa != null" >
+        ISINOA,
+      </if>
+      <if test="mydpj != null" >
+        MYDPJ,
+      </if>
+      <if test="mydfkyj != null" >
+        MYDFKYJ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="telnumber != null" >
+        #{telnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="advisecontent != null" >
+        #{advisecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="searchcode != null" >
+        #{searchcode,jdbcType=VARCHAR},
+      </if>
+      <if test="advisetype != null" >
+        #{advisetype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="replytime != null" >
+        #{replytime,jdbcType=VARCHAR},
+      </if>
+      <if test="replystatus != null" >
+        #{replystatus,jdbcType=VARCHAR},
+      </if>
+      <if test="replycontent != null" >
+        #{replycontent,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="hits != null" >
+        #{hits,jdbcType=DECIMAL},
+      </if>
+      <if test="advisedl != null" >
+        #{advisedl,jdbcType=VARCHAR},
+      </if>
+      <if test="isinoa != null" >
+        #{isinoa,jdbcType=CHAR},
+      </if>
+      <if test="mydpj != null" >
+        #{mydpj,jdbcType=VARCHAR},
+      </if>
+      <if test="mydfkyj != null" >
+        #{mydfkyj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.AdviseExample" resultType="java.lang.Integer" >
+    select count(*) from ADVISE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ADVISE
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null" >
+        IDCARD = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telnumber != null" >
+        TELNUMBER = #{record.telnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.advisecontent != null" >
+        ADVISECONTENT = #{record.advisecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.searchcode != null" >
+        SEARCHCODE = #{record.searchcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.advisetype != null" >
+        ADVISETYPE = #{record.advisetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replytime != null" >
+        REPLYTIME = #{record.replytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replystatus != null" >
+        REPLYSTATUS = #{record.replystatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replycontent != null" >
+        REPLYCONTENT = #{record.replycontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hits != null" >
+        HITS = #{record.hits,jdbcType=DECIMAL},
+      </if>
+      <if test="record.advisedl != null" >
+        ADVISEDL = #{record.advisedl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isinoa != null" >
+        ISINOA = #{record.isinoa,jdbcType=CHAR},
+      </if>
+      <if test="record.mydpj != null" >
+        MYDPJ = #{record.mydpj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mydfkyj != null" >
+        MYDFKYJ = #{record.mydfkyj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ADVISE
+    set ID = #{record.id,jdbcType=VARCHAR},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      IDCARD = #{record.idcard,jdbcType=VARCHAR},
+      TELNUMBER = #{record.telnumber,jdbcType=VARCHAR},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      ADVISECONTENT = #{record.advisecontent,jdbcType=VARCHAR},
+      SEARCHCODE = #{record.searchcode,jdbcType=VARCHAR},
+      ADVISETYPE = #{record.advisetype,jdbcType=VARCHAR},
+      CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      REPLYTIME = #{record.replytime,jdbcType=VARCHAR},
+      REPLYSTATUS = #{record.replystatus,jdbcType=VARCHAR},
+      REPLYCONTENT = #{record.replycontent,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      HITS = #{record.hits,jdbcType=DECIMAL},
+      ADVISEDL = #{record.advisedl,jdbcType=VARCHAR},
+      ISINOA = #{record.isinoa,jdbcType=CHAR},
+      MYDPJ = #{record.mydpj,jdbcType=VARCHAR},
+      MYDFKYJ = #{record.mydfkyj,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.Advise" >
+    update ADVISE
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        IDCARD = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="telnumber != null" >
+        TELNUMBER = #{telnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="advisecontent != null" >
+        ADVISECONTENT = #{advisecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="searchcode != null" >
+        SEARCHCODE = #{searchcode,jdbcType=VARCHAR},
+      </if>
+      <if test="advisetype != null" >
+        ADVISETYPE = #{advisetype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="replytime != null" >
+        REPLYTIME = #{replytime,jdbcType=VARCHAR},
+      </if>
+      <if test="replystatus != null" >
+        REPLYSTATUS = #{replystatus,jdbcType=VARCHAR},
+      </if>
+      <if test="replycontent != null" >
+        REPLYCONTENT = #{replycontent,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="hits != null" >
+        HITS = #{hits,jdbcType=DECIMAL},
+      </if>
+      <if test="advisedl != null" >
+        ADVISEDL = #{advisedl,jdbcType=VARCHAR},
+      </if>
+      <if test="isinoa != null" >
+        ISINOA = #{isinoa,jdbcType=CHAR},
+      </if>
+      <if test="mydpj != null" >
+        MYDPJ = #{mydpj,jdbcType=VARCHAR},
+      </if>
+      <if test="mydfkyj != null" >
+        MYDFKYJ = #{mydfkyj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.Advise" >
+    update ADVISE
+    set NAME = #{name,jdbcType=VARCHAR},
+      IDCARD = #{idcard,jdbcType=VARCHAR},
+      TELNUMBER = #{telnumber,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      ADVISECONTENT = #{advisecontent,jdbcType=VARCHAR},
+      SEARCHCODE = #{searchcode,jdbcType=VARCHAR},
+      ADVISETYPE = #{advisetype,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      REPLYTIME = #{replytime,jdbcType=VARCHAR},
+      REPLYSTATUS = #{replystatus,jdbcType=VARCHAR},
+      REPLYCONTENT = #{replycontent,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      HITS = #{hits,jdbcType=DECIMAL},
+      ADVISEDL = #{advisedl,jdbcType=VARCHAR},
+      ISINOA = #{isinoa,jdbcType=CHAR},
+      MYDPJ = #{mydpj,jdbcType=VARCHAR},
+      MYDFKYJ = #{mydfkyj,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

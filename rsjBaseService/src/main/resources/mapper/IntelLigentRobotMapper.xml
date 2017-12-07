@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.IntelLigentRobotMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.IntelLigentRobot">
+    <id column="INFOID" jdbcType="VARCHAR" property="infoid" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="PARENTID" jdbcType="VARCHAR" property="parentid" />
+    <result column="TITLE" jdbcType="VARCHAR" property="title" />
+    <result column="LINK" jdbcType="VARCHAR" property="link" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="WZCJDATE" jdbcType="VARCHAR" property="wzcjdate" />
+    <result column="ENTERINGDATE" jdbcType="VARCHAR" property="enteringdate" />
+    <result column="MODIFYDATE" jdbcType="VARCHAR" property="modifydate" />
+    <result column="INFO1" jdbcType="VARCHAR" property="info1" />
+    <result column="INFO2" jdbcType="VARCHAR" property="info2" />
+    <result column="INFO3" jdbcType="VARCHAR" property="info3" />
+    <result column="INFO4" jdbcType="VARCHAR" property="info4" />
+    <result column="INFO5" jdbcType="VARCHAR" property="info5" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    INFOID, TYPE, PARENTID, TITLE, LINK, STATUS, WZCJDATE, ENTERINGDATE, MODIFYDATE, 
+    INFO1, INFO2, INFO3, INFO4, INFO5
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobotExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from INTELLIGENTROBOT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from INTELLIGENTROBOT
+    where INFOID = #{infoid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from INTELLIGENTROBOT
+    where INFOID = #{infoid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobotExample">
+    delete from INTELLIGENTROBOT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobot">
+    insert into INTELLIGENTROBOT (INFOID, TYPE, PARENTID, 
+      TITLE, LINK, STATUS, 
+      WZCJDATE, ENTERINGDATE, MODIFYDATE, 
+      INFO1, INFO2, INFO3, 
+      INFO4, INFO5)
+    values (#{infoid,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{wzcjdate,jdbcType=VARCHAR}, #{enteringdate,jdbcType=VARCHAR}, #{modifydate,jdbcType=VARCHAR}, 
+      #{info1,jdbcType=VARCHAR}, #{info2,jdbcType=VARCHAR}, #{info3,jdbcType=VARCHAR}, 
+      #{info4,jdbcType=VARCHAR}, #{info5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobot">
+    insert into INTELLIGENTROBOT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="infoid != null">
+        INFOID,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="parentid != null">
+        PARENTID,
+      </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="link != null">
+        LINK,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="wzcjdate != null">
+        WZCJDATE,
+      </if>
+      <if test="enteringdate != null">
+        ENTERINGDATE,
+      </if>
+      <if test="modifydate != null">
+        MODIFYDATE,
+      </if>
+      <if test="info1 != null">
+        INFO1,
+      </if>
+      <if test="info2 != null">
+        INFO2,
+      </if>
+      <if test="info3 != null">
+        INFO3,
+      </if>
+      <if test="info4 != null">
+        INFO4,
+      </if>
+      <if test="info5 != null">
+        INFO5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="infoid != null">
+        #{infoid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="wzcjdate != null">
+        #{wzcjdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringdate != null">
+        #{enteringdate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydate != null">
+        #{modifydate,jdbcType=VARCHAR},
+      </if>
+      <if test="info1 != null">
+        #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null">
+        #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null">
+        #{info3,jdbcType=VARCHAR},
+      </if>
+      <if test="info4 != null">
+        #{info4,jdbcType=VARCHAR},
+      </if>
+      <if test="info5 != null">
+        #{info5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobotExample" resultType="java.lang.Integer">
+    select count(*) from INTELLIGENTROBOT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update INTELLIGENTROBOT
+    <set>
+      <if test="record.infoid != null">
+        INFOID = #{record.infoid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentid != null">
+        PARENTID = #{record.parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null">
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.link != null">
+        LINK = #{record.link,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wzcjdate != null">
+        WZCJDATE = #{record.wzcjdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enteringdate != null">
+        ENTERINGDATE = #{record.enteringdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifydate != null">
+        MODIFYDATE = #{record.modifydate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info1 != null">
+        INFO1 = #{record.info1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info2 != null">
+        INFO2 = #{record.info2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info3 != null">
+        INFO3 = #{record.info3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info4 != null">
+        INFO4 = #{record.info4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info5 != null">
+        INFO5 = #{record.info5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update INTELLIGENTROBOT
+    set INFOID = #{record.infoid,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      PARENTID = #{record.parentid,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      LINK = #{record.link,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      WZCJDATE = #{record.wzcjdate,jdbcType=VARCHAR},
+      ENTERINGDATE = #{record.enteringdate,jdbcType=VARCHAR},
+      MODIFYDATE = #{record.modifydate,jdbcType=VARCHAR},
+      INFO1 = #{record.info1,jdbcType=VARCHAR},
+      INFO2 = #{record.info2,jdbcType=VARCHAR},
+      INFO3 = #{record.info3,jdbcType=VARCHAR},
+      INFO4 = #{record.info4,jdbcType=VARCHAR},
+      INFO5 = #{record.info5,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobot">
+    update INTELLIGENTROBOT
+    <set>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        PARENTID = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        LINK = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="wzcjdate != null">
+        WZCJDATE = #{wzcjdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringdate != null">
+        ENTERINGDATE = #{enteringdate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydate != null">
+        MODIFYDATE = #{modifydate,jdbcType=VARCHAR},
+      </if>
+      <if test="info1 != null">
+        INFO1 = #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null">
+        INFO2 = #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null">
+        INFO3 = #{info3,jdbcType=VARCHAR},
+      </if>
+      <if test="info4 != null">
+        INFO4 = #{info4,jdbcType=VARCHAR},
+      </if>
+      <if test="info5 != null">
+        INFO5 = #{info5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where INFOID = #{infoid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobot">
+    update INTELLIGENTROBOT
+    set TYPE = #{type,jdbcType=VARCHAR},
+      PARENTID = #{parentid,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      LINK = #{link,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      WZCJDATE = #{wzcjdate,jdbcType=VARCHAR},
+      ENTERINGDATE = #{enteringdate,jdbcType=VARCHAR},
+      MODIFYDATE = #{modifydate,jdbcType=VARCHAR},
+      INFO1 = #{info1,jdbcType=VARCHAR},
+      INFO2 = #{info2,jdbcType=VARCHAR},
+      INFO3 = #{info3,jdbcType=VARCHAR},
+      INFO4 = #{info4,jdbcType=VARCHAR},
+      INFO5 = #{info5,jdbcType=VARCHAR}
+    where INFOID = #{infoid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.IntelLigentRobot">
+    <id column="INFOID" jdbcType="VARCHAR" property="infoid" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="PARENTID" jdbcType="VARCHAR" property="parentid" />
+    <result column="TITLE" jdbcType="VARCHAR" property="title" />
+    <result column="LINK" jdbcType="VARCHAR" property="link" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="WZCJDATE" jdbcType="VARCHAR" property="wzcjdate" />
+    <result column="ENTERINGDATE" jdbcType="VARCHAR" property="enteringdate" />
+    <result column="MODIFYDATE" jdbcType="VARCHAR" property="modifydate" />
+    <result column="INFO1" jdbcType="VARCHAR" property="info1" />
+    <result column="INFO2" jdbcType="VARCHAR" property="info2" />
+    <result column="INFO3" jdbcType="VARCHAR" property="info3" />
+    <result column="INFO4" jdbcType="VARCHAR" property="info4" />
+    <result column="INFO5" jdbcType="VARCHAR" property="info5" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    INFOID, TYPE, PARENTID, TITLE, LINK, STATUS, WZCJDATE, ENTERINGDATE, MODIFYDATE, 
+    INFO1, INFO2, INFO3, INFO4, INFO5
+  </sql>
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobotExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from INTELLIGENTROBOT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from INTELLIGENTROBOT
+    where INFOID = #{infoid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from INTELLIGENTROBOT
+    where INFOID = #{infoid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobotExample">
+    delete from INTELLIGENTROBOT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobot">
+    insert into INTELLIGENTROBOT (INFOID, TYPE, PARENTID, 
+      TITLE, LINK, STATUS, 
+      WZCJDATE, ENTERINGDATE, MODIFYDATE, 
+      INFO1, INFO2, INFO3, 
+      INFO4, INFO5)
+    values (#{infoid,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{wzcjdate,jdbcType=VARCHAR}, #{enteringdate,jdbcType=VARCHAR}, #{modifydate,jdbcType=VARCHAR}, 
+      #{info1,jdbcType=VARCHAR}, #{info2,jdbcType=VARCHAR}, #{info3,jdbcType=VARCHAR}, 
+      #{info4,jdbcType=VARCHAR}, #{info5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobot">
+    insert into INTELLIGENTROBOT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="infoid != null">
+        INFOID,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="parentid != null">
+        PARENTID,
+      </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="link != null">
+        LINK,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="wzcjdate != null">
+        WZCJDATE,
+      </if>
+      <if test="enteringdate != null">
+        ENTERINGDATE,
+      </if>
+      <if test="modifydate != null">
+        MODIFYDATE,
+      </if>
+      <if test="info1 != null">
+        INFO1,
+      </if>
+      <if test="info2 != null">
+        INFO2,
+      </if>
+      <if test="info3 != null">
+        INFO3,
+      </if>
+      <if test="info4 != null">
+        INFO4,
+      </if>
+      <if test="info5 != null">
+        INFO5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="infoid != null">
+        #{infoid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="wzcjdate != null">
+        #{wzcjdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringdate != null">
+        #{enteringdate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydate != null">
+        #{modifydate,jdbcType=VARCHAR},
+      </if>
+      <if test="info1 != null">
+        #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null">
+        #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null">
+        #{info3,jdbcType=VARCHAR},
+      </if>
+      <if test="info4 != null">
+        #{info4,jdbcType=VARCHAR},
+      </if>
+      <if test="info5 != null">
+        #{info5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobotExample" resultType="java.lang.Integer">
+    select count(*) from INTELLIGENTROBOT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update INTELLIGENTROBOT
+    <set>
+      <if test="record.infoid != null">
+        INFOID = #{record.infoid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentid != null">
+        PARENTID = #{record.parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null">
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.link != null">
+        LINK = #{record.link,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wzcjdate != null">
+        WZCJDATE = #{record.wzcjdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enteringdate != null">
+        ENTERINGDATE = #{record.enteringdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifydate != null">
+        MODIFYDATE = #{record.modifydate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info1 != null">
+        INFO1 = #{record.info1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info2 != null">
+        INFO2 = #{record.info2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info3 != null">
+        INFO3 = #{record.info3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info4 != null">
+        INFO4 = #{record.info4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.info5 != null">
+        INFO5 = #{record.info5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update INTELLIGENTROBOT
+    set INFOID = #{record.infoid,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      PARENTID = #{record.parentid,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      LINK = #{record.link,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      WZCJDATE = #{record.wzcjdate,jdbcType=VARCHAR},
+      ENTERINGDATE = #{record.enteringdate,jdbcType=VARCHAR},
+      MODIFYDATE = #{record.modifydate,jdbcType=VARCHAR},
+      INFO1 = #{record.info1,jdbcType=VARCHAR},
+      INFO2 = #{record.info2,jdbcType=VARCHAR},
+      INFO3 = #{record.info3,jdbcType=VARCHAR},
+      INFO4 = #{record.info4,jdbcType=VARCHAR},
+      INFO5 = #{record.info5,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobot">
+    update INTELLIGENTROBOT
+    <set>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        PARENTID = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        LINK = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="wzcjdate != null">
+        WZCJDATE = #{wzcjdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringdate != null">
+        ENTERINGDATE = #{enteringdate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydate != null">
+        MODIFYDATE = #{modifydate,jdbcType=VARCHAR},
+      </if>
+      <if test="info1 != null">
+        INFO1 = #{info1,jdbcType=VARCHAR},
+      </if>
+      <if test="info2 != null">
+        INFO2 = #{info2,jdbcType=VARCHAR},
+      </if>
+      <if test="info3 != null">
+        INFO3 = #{info3,jdbcType=VARCHAR},
+      </if>
+      <if test="info4 != null">
+        INFO4 = #{info4,jdbcType=VARCHAR},
+      </if>
+      <if test="info5 != null">
+        INFO5 = #{info5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where INFOID = #{infoid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.IntelLigentRobot">
+    update INTELLIGENTROBOT
+    set TYPE = #{type,jdbcType=VARCHAR},
+      PARENTID = #{parentid,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      LINK = #{link,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      WZCJDATE = #{wzcjdate,jdbcType=VARCHAR},
+      ENTERINGDATE = #{enteringdate,jdbcType=VARCHAR},
+      MODIFYDATE = #{modifydate,jdbcType=VARCHAR},
+      INFO1 = #{info1,jdbcType=VARCHAR},
+      INFO2 = #{info2,jdbcType=VARCHAR},
+      INFO3 = #{info3,jdbcType=VARCHAR},
+      INFO4 = #{info4,jdbcType=VARCHAR},
+      INFO5 = #{info5,jdbcType=VARCHAR}
+    where INFOID = #{infoid,jdbcType=VARCHAR}
+  </update>
+</mapper>

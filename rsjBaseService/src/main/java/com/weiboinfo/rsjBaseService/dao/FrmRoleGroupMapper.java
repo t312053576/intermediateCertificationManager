@@ -1,10 +1,9 @@
 package com.weiboinfo.rsjBaseService.dao;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.weiboinfo.rsjBaseService.entry.FrmRoleGroup;
 import com.weiboinfo.rsjBaseService.entry.FrmRoleGroupExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FrmRoleGroupMapper {
     int countByExample(FrmRoleGroupExample example);

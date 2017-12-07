@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmRoleMapper">
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.FrmRoleMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmRole">
     <id column="ROLEID" jdbcType="VARCHAR" property="roleid" />
     <result column="ROLENAME" jdbcType="VARCHAR" property="rolename" />
     <result column="ROLEDESC" jdbcType="VARCHAR" property="roledesc" />
@@ -77,7 +77,7 @@
     ROLEID, ROLENAME, ROLEDESC, ROLEDEPARTMENT, ROLECREATORID, ROLECREATETIME, ROLEMODIFIERID, 
     ROLEMODIFYTIME, ROLEINDEX, ROLEGROUPID, PAGEID, SYSID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -101,13 +101,13 @@
     delete from FRMROLE
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample">
     delete from FRMROLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     insert into FRMROLE (ROLEID, ROLENAME, ROLEDESC, 
       ROLEDEPARTMENT, ROLECREATORID, ROLECREATETIME, 
       ROLEMODIFIERID, ROLEMODIFYTIME, ROLEINDEX, 
@@ -119,7 +119,7 @@
       #{rolegroupid,jdbcType=VARCHAR}, #{pageid,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     insert into FRMROLE
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleid != null">
@@ -198,7 +198,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample" resultType="java.lang.Integer">
     select count(*) from FRMROLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -266,7 +266,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     update FRMROLE
     <set>
       <if test="rolename != null">
@@ -305,7 +305,7 @@
     </set>
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     update FRMROLE
     set ROLENAME = #{rolename,jdbcType=VARCHAR},
       ROLEDESC = #{roledesc,jdbcType=VARCHAR},
@@ -320,7 +320,7 @@
       SYSID = #{sysid,jdbcType=VARCHAR}
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmRole">
     <id column="ROLEID" jdbcType="VARCHAR" property="roleid" />
     <result column="ROLENAME" jdbcType="VARCHAR" property="rolename" />
     <result column="ROLEDESC" jdbcType="VARCHAR" property="roledesc" />
@@ -394,7 +394,7 @@
     ROLEID, ROLENAME, ROLEDESC, ROLEDEPARTMENT, ROLECREATORID, ROLECREATETIME, ROLEMODIFIERID, 
     ROLEMODIFYTIME, ROLEINDEX, ROLEGROUPID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -418,13 +418,13 @@
     delete from FRMROLE
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample">
     delete from FRMROLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     insert into FRMROLE (ROLEID, ROLENAME, ROLEDESC, 
       ROLEDEPARTMENT, ROLECREATORID, ROLECREATETIME, 
       ROLEMODIFIERID, ROLEMODIFYTIME, ROLEINDEX, 
@@ -434,7 +434,7 @@
       #{rolemodifierid,jdbcType=VARCHAR}, #{rolemodifytime,jdbcType=VARCHAR}, #{roleindex,jdbcType=VARCHAR}, 
       #{rolegroupid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     insert into FRMROLE
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleid != null">
@@ -501,7 +501,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample" resultType="java.lang.Integer">
     select count(*) from FRMROLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -561,7 +561,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     update FRMROLE
     <set>
       <if test="rolename != null">
@@ -594,7 +594,7 @@
     </set>
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     update FRMROLE
     set ROLENAME = #{rolename,jdbcType=VARCHAR},
       ROLEDESC = #{roledesc,jdbcType=VARCHAR},
@@ -607,7 +607,7 @@
       ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmRole">
     <id column="ROLEID" jdbcType="VARCHAR" property="roleid" />
     <result column="ROLENAME" jdbcType="VARCHAR" property="rolename" />
     <result column="ROLEDESC" jdbcType="VARCHAR" property="roledesc" />
@@ -681,7 +681,7 @@
     ROLEID, ROLENAME, ROLEDESC, ROLEDEPARTMENT, ROLECREATORID, ROLECREATETIME, ROLEMODIFIERID, 
     ROLEMODIFYTIME, ROLEINDEX, ROLEGROUPID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -705,13 +705,13 @@
     delete from FRMROLE
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample">
     delete from FRMROLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     insert into FRMROLE (ROLEID, ROLENAME, ROLEDESC, 
       ROLEDEPARTMENT, ROLECREATORID, ROLECREATETIME, 
       ROLEMODIFIERID, ROLEMODIFYTIME, ROLEINDEX, 
@@ -721,7 +721,7 @@
       #{rolemodifierid,jdbcType=VARCHAR}, #{rolemodifytime,jdbcType=VARCHAR}, #{roleindex,jdbcType=VARCHAR}, 
       #{rolegroupid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     insert into FRMROLE
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleid != null">
@@ -788,7 +788,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample" resultType="java.lang.Integer">
     select count(*) from FRMROLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -848,7 +848,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     update FRMROLE
     <set>
       <if test="rolename != null">
@@ -881,7 +881,7 @@
     </set>
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     update FRMROLE
     set ROLENAME = #{rolename,jdbcType=VARCHAR},
       ROLEDESC = #{roledesc,jdbcType=VARCHAR},
@@ -894,7 +894,7 @@
       ROLEGROUPID = #{rolegroupid,jdbcType=VARCHAR}
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmRole">
     <id column="ROLEID" jdbcType="VARCHAR" property="roleid" />
     <result column="ROLENAME" jdbcType="VARCHAR" property="rolename" />
     <result column="ROLEDESC" jdbcType="VARCHAR" property="roledesc" />
@@ -970,7 +970,7 @@
     ROLEID, ROLENAME, ROLEDESC, ROLEDEPARTMENT, ROLECREATORID, ROLECREATETIME, ROLEMODIFIERID, 
     ROLEMODIFYTIME, ROLEINDEX, ROLEGROUPID, PAGEID, SYSID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -994,13 +994,13 @@
     delete from FRMROLE
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample">
     delete from FRMROLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     insert into FRMROLE (ROLEID, ROLENAME, ROLEDESC, 
       ROLEDEPARTMENT, ROLECREATORID, ROLECREATETIME, 
       ROLEMODIFIERID, ROLEMODIFYTIME, ROLEINDEX, 
@@ -1012,7 +1012,7 @@
       #{rolegroupid,jdbcType=VARCHAR}, #{pageid,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     insert into FRMROLE
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleid != null">
@@ -1091,7 +1091,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRoleExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRoleExample" resultType="java.lang.Integer">
     select count(*) from FRMROLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -1159,7 +1159,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     update FRMROLE
     <set>
       <if test="rolename != null">
@@ -1198,7 +1198,7 @@
     </set>
     where ROLEID = #{roleid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmRole">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmRole">
     update FRMROLE
     set ROLENAME = #{rolename,jdbcType=VARCHAR},
       ROLEDESC = #{roledesc,jdbcType=VARCHAR},

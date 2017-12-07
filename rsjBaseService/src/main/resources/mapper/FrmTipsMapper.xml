@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmTipsMapper">
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.FrmTipsMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmTips">
     <result column="TIPINFO" jdbcType="VARCHAR" property="tipinfo" />
     <result column="TIPURL" jdbcType="VARCHAR" property="tipurl" />
     <result column="ISENFORCE" jdbcType="DECIMAL" property="isenforce" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     TIPINFO, TIPURL, ISENFORCE, USERID, ISSHOWED, CREATETIME
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -84,13 +84,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample">
     delete from FRMTIPS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTips">
     insert into FRMTIPS (TIPINFO, TIPURL, ISENFORCE, 
       USERID, ISSHOWED, CREATETIME
       )
@@ -98,7 +98,7 @@
       #{userid,jdbcType=VARCHAR}, #{isshowed,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTips">
     insert into FRMTIPS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tipinfo != null">
@@ -141,7 +141,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample" resultType="java.lang.Integer">
     select count(*) from FRMTIPS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -185,7 +185,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmTips">
     <result column="TIPINFO" jdbcType="VARCHAR" property="tipinfo" />
     <result column="TIPURL" jdbcType="VARCHAR" property="tipurl" />
     <result column="ISENFORCE" jdbcType="DECIMAL" property="isenforce" />
@@ -255,7 +255,7 @@
   <sql id="Base_Column_List">
     TIPINFO, TIPURL, ISENFORCE, USERID, ISSHOWED, CREATETIME, SYSID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -269,13 +269,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample">
     delete from FRMTIPS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTips">
     insert into FRMTIPS (TIPINFO, TIPURL, ISENFORCE, 
       USERID, ISSHOWED, CREATETIME, 
       SYSID)
@@ -283,7 +283,7 @@
       #{userid,jdbcType=VARCHAR}, #{isshowed,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
       #{sysid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTips">
     insert into FRMTIPS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tipinfo != null">
@@ -332,7 +332,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample" resultType="java.lang.Integer">
     select count(*) from FRMTIPS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -380,7 +380,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmTips">
     <result column="TIPINFO" jdbcType="VARCHAR" property="tipinfo" />
     <result column="TIPURL" jdbcType="VARCHAR" property="tipurl" />
     <result column="ISENFORCE" jdbcType="DECIMAL" property="isenforce" />
@@ -449,7 +449,7 @@
   <sql id="Base_Column_List">
     TIPINFO, TIPURL, ISENFORCE, USERID, ISSHOWED, CREATETIME
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -463,13 +463,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample">
     delete from FRMTIPS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTips">
     insert into FRMTIPS (TIPINFO, TIPURL, ISENFORCE, 
       USERID, ISSHOWED, CREATETIME
       )
@@ -477,7 +477,7 @@
       #{userid,jdbcType=VARCHAR}, #{isshowed,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTips">
     insert into FRMTIPS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tipinfo != null">
@@ -520,7 +520,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample" resultType="java.lang.Integer">
     select count(*) from FRMTIPS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -564,7 +564,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmTips">
     <result column="TIPINFO" jdbcType="VARCHAR" property="tipinfo" />
     <result column="TIPURL" jdbcType="VARCHAR" property="tipurl" />
     <result column="ISENFORCE" jdbcType="DECIMAL" property="isenforce" />
@@ -634,7 +634,7 @@
   <sql id="Base_Column_List">
     TIPINFO, TIPURL, ISENFORCE, USERID, ISSHOWED, CREATETIME, SYSID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -648,13 +648,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample">
     delete from FRMTIPS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTips">
     insert into FRMTIPS (TIPINFO, TIPURL, ISENFORCE, 
       USERID, ISSHOWED, CREATETIME, 
       SYSID)
@@ -662,7 +662,7 @@
       #{userid,jdbcType=VARCHAR}, #{isshowed,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
       #{sysid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTips">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTips">
     insert into FRMTIPS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tipinfo != null">
@@ -711,7 +711,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmTipsExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmTipsExample" resultType="java.lang.Integer">
     select count(*) from FRMTIPS
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.SceneMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.Scene" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="SCENENAME" property="scenename" jdbcType="VARCHAR" />
+    <result column="FID" property="fid" jdbcType="VARCHAR" />
+    <result column="STYPE" property="stype" jdbcType="VARCHAR" />
+    <result column="XMLURL" property="xmlurl" jdbcType="VARCHAR" />
+    <result column="TEMPLATEURL" property="templateurl" jdbcType="VARCHAR" />
+    <result column="VIEWURL" property="viewurl" jdbcType="VARCHAR" />
+    <result column="LISTTEMPLATE" property="listtemplate" jdbcType="VARCHAR" />
+    <result column="DETAILTEMPLATE" property="detailtemplate" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.weiboinfo.rsjBaseService.entry.Scene" extends="BaseResultMap" >
+    <result column="XMLCONTENT" property="xmlcontent" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, SCENENAME, FID, STYPE, XMLURL, TEMPLATEURL, VIEWURL, LISTTEMPLATE, DETAILTEMPLATE
+  </sql>
+  <sql id="Blob_Column_List" >
+    XMLCONTENT
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.weiboinfo.rsjBaseService.entry.SceneExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from SCENE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.SceneExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SCENE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from SCENE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SCENE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SceneExample" >
+    delete from SCENE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.Scene" >
+    insert into SCENE (ID, SCENENAME, FID, 
+      STYPE, XMLURL, TEMPLATEURL, 
+      VIEWURL, LISTTEMPLATE, DETAILTEMPLATE, 
+      XMLCONTENT)
+    values (#{id,jdbcType=VARCHAR}, #{scenename,jdbcType=VARCHAR}, #{fid,jdbcType=VARCHAR}, 
+      #{stype,jdbcType=VARCHAR}, #{xmlurl,jdbcType=VARCHAR}, #{templateurl,jdbcType=VARCHAR}, 
+      #{viewurl,jdbcType=VARCHAR}, #{listtemplate,jdbcType=VARCHAR}, #{detailtemplate,jdbcType=VARCHAR}, 
+      #{xmlcontent,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.Scene" >
+    insert into SCENE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="scenename != null" >
+        SCENENAME,
+      </if>
+      <if test="fid != null" >
+        FID,
+      </if>
+      <if test="stype != null" >
+        STYPE,
+      </if>
+      <if test="xmlurl != null" >
+        XMLURL,
+      </if>
+      <if test="templateurl != null" >
+        TEMPLATEURL,
+      </if>
+      <if test="viewurl != null" >
+        VIEWURL,
+      </if>
+      <if test="listtemplate != null" >
+        LISTTEMPLATE,
+      </if>
+      <if test="detailtemplate != null" >
+        DETAILTEMPLATE,
+      </if>
+      <if test="xmlcontent != null" >
+        XMLCONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="scenename != null" >
+        #{scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="fid != null" >
+        #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="stype != null" >
+        #{stype,jdbcType=VARCHAR},
+      </if>
+      <if test="xmlurl != null" >
+        #{xmlurl,jdbcType=VARCHAR},
+      </if>
+      <if test="templateurl != null" >
+        #{templateurl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewurl != null" >
+        #{viewurl,jdbcType=VARCHAR},
+      </if>
+      <if test="listtemplate != null" >
+        #{listtemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="detailtemplate != null" >
+        #{detailtemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="xmlcontent != null" >
+        #{xmlcontent,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SceneExample" resultType="java.lang.Integer" >
+    select count(*) from SCENE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SCENE
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scenename != null" >
+        SCENENAME = #{record.scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fid != null" >
+        FID = #{record.fid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stype != null" >
+        STYPE = #{record.stype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xmlurl != null" >
+        XMLURL = #{record.xmlurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.templateurl != null" >
+        TEMPLATEURL = #{record.templateurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.viewurl != null" >
+        VIEWURL = #{record.viewurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.listtemplate != null" >
+        LISTTEMPLATE = #{record.listtemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detailtemplate != null" >
+        DETAILTEMPLATE = #{record.detailtemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xmlcontent != null" >
+        XMLCONTENT = #{record.xmlcontent,jdbcType=CLOB},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update SCENE
+    set ID = #{record.id,jdbcType=VARCHAR},
+      SCENENAME = #{record.scenename,jdbcType=VARCHAR},
+      FID = #{record.fid,jdbcType=VARCHAR},
+      STYPE = #{record.stype,jdbcType=VARCHAR},
+      XMLURL = #{record.xmlurl,jdbcType=VARCHAR},
+      TEMPLATEURL = #{record.templateurl,jdbcType=VARCHAR},
+      VIEWURL = #{record.viewurl,jdbcType=VARCHAR},
+      LISTTEMPLATE = #{record.listtemplate,jdbcType=VARCHAR},
+      DETAILTEMPLATE = #{record.detailtemplate,jdbcType=VARCHAR},
+      XMLCONTENT = #{record.xmlcontent,jdbcType=CLOB}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SCENE
+    set ID = #{record.id,jdbcType=VARCHAR},
+      SCENENAME = #{record.scenename,jdbcType=VARCHAR},
+      FID = #{record.fid,jdbcType=VARCHAR},
+      STYPE = #{record.stype,jdbcType=VARCHAR},
+      XMLURL = #{record.xmlurl,jdbcType=VARCHAR},
+      TEMPLATEURL = #{record.templateurl,jdbcType=VARCHAR},
+      VIEWURL = #{record.viewurl,jdbcType=VARCHAR},
+      LISTTEMPLATE = #{record.listtemplate,jdbcType=VARCHAR},
+      DETAILTEMPLATE = #{record.detailtemplate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.Scene" >
+    update SCENE
+    <set >
+      <if test="scenename != null" >
+        SCENENAME = #{scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="fid != null" >
+        FID = #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="stype != null" >
+        STYPE = #{stype,jdbcType=VARCHAR},
+      </if>
+      <if test="xmlurl != null" >
+        XMLURL = #{xmlurl,jdbcType=VARCHAR},
+      </if>
+      <if test="templateurl != null" >
+        TEMPLATEURL = #{templateurl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewurl != null" >
+        VIEWURL = #{viewurl,jdbcType=VARCHAR},
+      </if>
+      <if test="listtemplate != null" >
+        LISTTEMPLATE = #{listtemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="detailtemplate != null" >
+        DETAILTEMPLATE = #{detailtemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="xmlcontent != null" >
+        XMLCONTENT = #{xmlcontent,jdbcType=CLOB},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weiboinfo.rsjBaseService.entry.Scene" >
+    update SCENE
+    set SCENENAME = #{scenename,jdbcType=VARCHAR},
+      FID = #{fid,jdbcType=VARCHAR},
+      STYPE = #{stype,jdbcType=VARCHAR},
+      XMLURL = #{xmlurl,jdbcType=VARCHAR},
+      TEMPLATEURL = #{templateurl,jdbcType=VARCHAR},
+      VIEWURL = #{viewurl,jdbcType=VARCHAR},
+      LISTTEMPLATE = #{listtemplate,jdbcType=VARCHAR},
+      DETAILTEMPLATE = #{detailtemplate,jdbcType=VARCHAR},
+      XMLCONTENT = #{xmlcontent,jdbcType=CLOB}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.Scene" >
+    update SCENE
+    set SCENENAME = #{scenename,jdbcType=VARCHAR},
+      FID = #{fid,jdbcType=VARCHAR},
+      STYPE = #{stype,jdbcType=VARCHAR},
+      XMLURL = #{xmlurl,jdbcType=VARCHAR},
+      TEMPLATEURL = #{templateurl,jdbcType=VARCHAR},
+      VIEWURL = #{viewurl,jdbcType=VARCHAR},
+      LISTTEMPLATE = #{listtemplate,jdbcType=VARCHAR},
+      DETAILTEMPLATE = #{detailtemplate,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

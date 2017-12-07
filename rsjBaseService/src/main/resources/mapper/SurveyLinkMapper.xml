@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.SurveyLinkMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.SurveyLink" >
+    <id column="L_ID" property="lId" jdbcType="VARCHAR" />
+    <result column="L_URL" property="lUrl" jdbcType="VARCHAR" />
+    <result column="L_NAME" property="lName" jdbcType="VARCHAR" />
+    <result column="L_IMG" property="lImg" jdbcType="VARCHAR" />
+    <result column="L_INFO" property="lInfo" jdbcType="VARCHAR" />
+    <result column="L_ISLOCK" property="lIslock" jdbcType="CHAR" />
+    <result column="L_ADDTIME" property="lAddtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    L_ID, L_URL, L_NAME, L_IMG, L_INFO, L_ISLOCK, L_ADDTIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyLinkExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SURVEY_LINK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SURVEY_LINK
+    where L_ID = #{lId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SURVEY_LINK
+    where L_ID = #{lId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyLinkExample" >
+    delete from SURVEY_LINK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyLink" >
+    insert into SURVEY_LINK (L_ID, L_URL, L_NAME, 
+      L_IMG, L_INFO, L_ISLOCK, 
+      L_ADDTIME)
+    values (#{lId,jdbcType=VARCHAR}, #{lUrl,jdbcType=VARCHAR}, #{lName,jdbcType=VARCHAR}, 
+      #{lImg,jdbcType=VARCHAR}, #{lInfo,jdbcType=VARCHAR}, #{lIslock,jdbcType=CHAR}, 
+      #{lAddtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyLink" >
+    insert into SURVEY_LINK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lId != null" >
+        L_ID,
+      </if>
+      <if test="lUrl != null" >
+        L_URL,
+      </if>
+      <if test="lName != null" >
+        L_NAME,
+      </if>
+      <if test="lImg != null" >
+        L_IMG,
+      </if>
+      <if test="lInfo != null" >
+        L_INFO,
+      </if>
+      <if test="lIslock != null" >
+        L_ISLOCK,
+      </if>
+      <if test="lAddtime != null" >
+        L_ADDTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lId != null" >
+        #{lId,jdbcType=VARCHAR},
+      </if>
+      <if test="lUrl != null" >
+        #{lUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="lName != null" >
+        #{lName,jdbcType=VARCHAR},
+      </if>
+      <if test="lImg != null" >
+        #{lImg,jdbcType=VARCHAR},
+      </if>
+      <if test="lInfo != null" >
+        #{lInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="lIslock != null" >
+        #{lIslock,jdbcType=CHAR},
+      </if>
+      <if test="lAddtime != null" >
+        #{lAddtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyLinkExample" resultType="java.lang.Integer" >
+    select count(*) from SURVEY_LINK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SURVEY_LINK
+    <set >
+      <if test="record.lId != null" >
+        L_ID = #{record.lId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lUrl != null" >
+        L_URL = #{record.lUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lName != null" >
+        L_NAME = #{record.lName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lImg != null" >
+        L_IMG = #{record.lImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lInfo != null" >
+        L_INFO = #{record.lInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lIslock != null" >
+        L_ISLOCK = #{record.lIslock,jdbcType=CHAR},
+      </if>
+      <if test="record.lAddtime != null" >
+        L_ADDTIME = #{record.lAddtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SURVEY_LINK
+    set L_ID = #{record.lId,jdbcType=VARCHAR},
+      L_URL = #{record.lUrl,jdbcType=VARCHAR},
+      L_NAME = #{record.lName,jdbcType=VARCHAR},
+      L_IMG = #{record.lImg,jdbcType=VARCHAR},
+      L_INFO = #{record.lInfo,jdbcType=VARCHAR},
+      L_ISLOCK = #{record.lIslock,jdbcType=CHAR},
+      L_ADDTIME = #{record.lAddtime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyLink" >
+    update SURVEY_LINK
+    <set >
+      <if test="lUrl != null" >
+        L_URL = #{lUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="lName != null" >
+        L_NAME = #{lName,jdbcType=VARCHAR},
+      </if>
+      <if test="lImg != null" >
+        L_IMG = #{lImg,jdbcType=VARCHAR},
+      </if>
+      <if test="lInfo != null" >
+        L_INFO = #{lInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="lIslock != null" >
+        L_ISLOCK = #{lIslock,jdbcType=CHAR},
+      </if>
+      <if test="lAddtime != null" >
+        L_ADDTIME = #{lAddtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where L_ID = #{lId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyLink" >
+    update SURVEY_LINK
+    set L_URL = #{lUrl,jdbcType=VARCHAR},
+      L_NAME = #{lName,jdbcType=VARCHAR},
+      L_IMG = #{lImg,jdbcType=VARCHAR},
+      L_INFO = #{lInfo,jdbcType=VARCHAR},
+      L_ISLOCK = #{lIslock,jdbcType=CHAR},
+      L_ADDTIME = #{lAddtime,jdbcType=VARCHAR}
+    where L_ID = #{lId,jdbcType=VARCHAR}
+  </update>
+</mapper>

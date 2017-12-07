@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.SurveyTempletMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.SurveyTemplet" >
+    <id column="TEMPLET_ID" property="templetId" jdbcType="VARCHAR" />
+    <result column="TEMPLET_NAME" property="templetName" jdbcType="VARCHAR" />
+    <result column="TEMPLET_DEFAULT" property="templetDefault" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.weiboinfo.rsjBaseService.entry.SurveyTemplet" extends="BaseResultMap" >
+    <result column="TEMPLET_TOP" property="templetTop" jdbcType="CLOB" />
+    <result column="TEMPLET_BODY" property="templetBody" jdbcType="CLOB" />
+    <result column="TEMPLET_BOTTOM" property="templetBottom" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    TEMPLET_ID, TEMPLET_NAME, TEMPLET_DEFAULT
+  </sql>
+  <sql id="Blob_Column_List" >
+    TEMPLET_TOP, TEMPLET_BODY, TEMPLET_BOTTOM
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyTempletExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from SURVEY_TEMPLET
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyTempletExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SURVEY_TEMPLET
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from SURVEY_TEMPLET
+    where TEMPLET_ID = #{templetId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SURVEY_TEMPLET
+    where TEMPLET_ID = #{templetId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyTempletExample" >
+    delete from SURVEY_TEMPLET
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyTemplet" >
+    insert into SURVEY_TEMPLET (TEMPLET_ID, TEMPLET_NAME, TEMPLET_DEFAULT, 
+      TEMPLET_TOP, TEMPLET_BODY, TEMPLET_BOTTOM
+      )
+    values (#{templetId,jdbcType=VARCHAR}, #{templetName,jdbcType=VARCHAR}, #{templetDefault,jdbcType=CHAR}, 
+      #{templetTop,jdbcType=CLOB}, #{templetBody,jdbcType=CLOB}, #{templetBottom,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyTemplet" >
+    insert into SURVEY_TEMPLET
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="templetId != null" >
+        TEMPLET_ID,
+      </if>
+      <if test="templetName != null" >
+        TEMPLET_NAME,
+      </if>
+      <if test="templetDefault != null" >
+        TEMPLET_DEFAULT,
+      </if>
+      <if test="templetTop != null" >
+        TEMPLET_TOP,
+      </if>
+      <if test="templetBody != null" >
+        TEMPLET_BODY,
+      </if>
+      <if test="templetBottom != null" >
+        TEMPLET_BOTTOM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="templetId != null" >
+        #{templetId,jdbcType=VARCHAR},
+      </if>
+      <if test="templetName != null" >
+        #{templetName,jdbcType=VARCHAR},
+      </if>
+      <if test="templetDefault != null" >
+        #{templetDefault,jdbcType=CHAR},
+      </if>
+      <if test="templetTop != null" >
+        #{templetTop,jdbcType=CLOB},
+      </if>
+      <if test="templetBody != null" >
+        #{templetBody,jdbcType=CLOB},
+      </if>
+      <if test="templetBottom != null" >
+        #{templetBottom,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyTempletExample" resultType="java.lang.Integer" >
+    select count(*) from SURVEY_TEMPLET
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SURVEY_TEMPLET
+    <set >
+      <if test="record.templetId != null" >
+        TEMPLET_ID = #{record.templetId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.templetName != null" >
+        TEMPLET_NAME = #{record.templetName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.templetDefault != null" >
+        TEMPLET_DEFAULT = #{record.templetDefault,jdbcType=CHAR},
+      </if>
+      <if test="record.templetTop != null" >
+        TEMPLET_TOP = #{record.templetTop,jdbcType=CLOB},
+      </if>
+      <if test="record.templetBody != null" >
+        TEMPLET_BODY = #{record.templetBody,jdbcType=CLOB},
+      </if>
+      <if test="record.templetBottom != null" >
+        TEMPLET_BOTTOM = #{record.templetBottom,jdbcType=CLOB},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update SURVEY_TEMPLET
+    set TEMPLET_ID = #{record.templetId,jdbcType=VARCHAR},
+      TEMPLET_NAME = #{record.templetName,jdbcType=VARCHAR},
+      TEMPLET_DEFAULT = #{record.templetDefault,jdbcType=CHAR},
+      TEMPLET_TOP = #{record.templetTop,jdbcType=CLOB},
+      TEMPLET_BODY = #{record.templetBody,jdbcType=CLOB},
+      TEMPLET_BOTTOM = #{record.templetBottom,jdbcType=CLOB}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SURVEY_TEMPLET
+    set TEMPLET_ID = #{record.templetId,jdbcType=VARCHAR},
+      TEMPLET_NAME = #{record.templetName,jdbcType=VARCHAR},
+      TEMPLET_DEFAULT = #{record.templetDefault,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyTemplet" >
+    update SURVEY_TEMPLET
+    <set >
+      <if test="templetName != null" >
+        TEMPLET_NAME = #{templetName,jdbcType=VARCHAR},
+      </if>
+      <if test="templetDefault != null" >
+        TEMPLET_DEFAULT = #{templetDefault,jdbcType=CHAR},
+      </if>
+      <if test="templetTop != null" >
+        TEMPLET_TOP = #{templetTop,jdbcType=CLOB},
+      </if>
+      <if test="templetBody != null" >
+        TEMPLET_BODY = #{templetBody,jdbcType=CLOB},
+      </if>
+      <if test="templetBottom != null" >
+        TEMPLET_BOTTOM = #{templetBottom,jdbcType=CLOB},
+      </if>
+    </set>
+    where TEMPLET_ID = #{templetId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyTemplet" >
+    update SURVEY_TEMPLET
+    set TEMPLET_NAME = #{templetName,jdbcType=VARCHAR},
+      TEMPLET_DEFAULT = #{templetDefault,jdbcType=CHAR},
+      TEMPLET_TOP = #{templetTop,jdbcType=CLOB},
+      TEMPLET_BODY = #{templetBody,jdbcType=CLOB},
+      TEMPLET_BOTTOM = #{templetBottom,jdbcType=CLOB}
+    where TEMPLET_ID = #{templetId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyTemplet" >
+    update SURVEY_TEMPLET
+    set TEMPLET_NAME = #{templetName,jdbcType=VARCHAR},
+      TEMPLET_DEFAULT = #{templetDefault,jdbcType=CHAR}
+    where TEMPLET_ID = #{templetId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.ApplyerOrgMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.ApplyerOrg" >
+    <id column="AOID" property="aoid" jdbcType="VARCHAR" />
+    <result column="APPLYERNAME" property="applyername" jdbcType="VARCHAR" />
+    <result column="ORGANIZECODE" property="organizecode" jdbcType="VARCHAR" />
+    <result column="LEGALPERSON" property="legalperson" jdbcType="VARCHAR" />
+    <result column="ASSOCIATIONPERSON" property="associationperson" jdbcType="VARCHAR" />
+    <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
+    <result column="FAX" property="fax" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    AOID, APPLYERNAME, ORGANIZECODE, LEGALPERSON, ASSOCIATIONPERSON, TELEPHONE, FAX, 
+    ADDRESS, EMAIL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyerOrgExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from APPLYERORG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from APPLYERORG
+    where AOID = #{aoid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from APPLYERORG
+    where AOID = #{aoid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyerOrgExample" >
+    delete from APPLYERORG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyerOrg" >
+    insert into APPLYERORG (AOID, APPLYERNAME, ORGANIZECODE, 
+      LEGALPERSON, ASSOCIATIONPERSON, TELEPHONE, 
+      FAX, ADDRESS, EMAIL
+      )
+    values (#{aoid,jdbcType=VARCHAR}, #{applyername,jdbcType=VARCHAR}, #{organizecode,jdbcType=VARCHAR}, 
+      #{legalperson,jdbcType=VARCHAR}, #{associationperson,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyerOrg" >
+    insert into APPLYERORG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aoid != null" >
+        AOID,
+      </if>
+      <if test="applyername != null" >
+        APPLYERNAME,
+      </if>
+      <if test="organizecode != null" >
+        ORGANIZECODE,
+      </if>
+      <if test="legalperson != null" >
+        LEGALPERSON,
+      </if>
+      <if test="associationperson != null" >
+        ASSOCIATIONPERSON,
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE,
+      </if>
+      <if test="fax != null" >
+        FAX,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aoid != null" >
+        #{aoid,jdbcType=VARCHAR},
+      </if>
+      <if test="applyername != null" >
+        #{applyername,jdbcType=VARCHAR},
+      </if>
+      <if test="organizecode != null" >
+        #{organizecode,jdbcType=VARCHAR},
+      </if>
+      <if test="legalperson != null" >
+        #{legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="associationperson != null" >
+        #{associationperson,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyerOrgExample" resultType="java.lang.Integer" >
+    select count(*) from APPLYERORG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update APPLYERORG
+    <set >
+      <if test="record.aoid != null" >
+        AOID = #{record.aoid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyername != null" >
+        APPLYERNAME = #{record.applyername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.organizecode != null" >
+        ORGANIZECODE = #{record.organizecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalperson != null" >
+        LEGALPERSON = #{record.legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.associationperson != null" >
+        ASSOCIATIONPERSON = #{record.associationperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fax != null" >
+        FAX = #{record.fax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update APPLYERORG
+    set AOID = #{record.aoid,jdbcType=VARCHAR},
+      APPLYERNAME = #{record.applyername,jdbcType=VARCHAR},
+      ORGANIZECODE = #{record.organizecode,jdbcType=VARCHAR},
+      LEGALPERSON = #{record.legalperson,jdbcType=VARCHAR},
+      ASSOCIATIONPERSON = #{record.associationperson,jdbcType=VARCHAR},
+      TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      FAX = #{record.fax,jdbcType=VARCHAR},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      EMAIL = #{record.email,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyerOrg" >
+    update APPLYERORG
+    <set >
+      <if test="applyername != null" >
+        APPLYERNAME = #{applyername,jdbcType=VARCHAR},
+      </if>
+      <if test="organizecode != null" >
+        ORGANIZECODE = #{organizecode,jdbcType=VARCHAR},
+      </if>
+      <if test="legalperson != null" >
+        LEGALPERSON = #{legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="associationperson != null" >
+        ASSOCIATIONPERSON = #{associationperson,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        FAX = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AOID = #{aoid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.ApplyerOrg" >
+    update APPLYERORG
+    set APPLYERNAME = #{applyername,jdbcType=VARCHAR},
+      ORGANIZECODE = #{organizecode,jdbcType=VARCHAR},
+      LEGALPERSON = #{legalperson,jdbcType=VARCHAR},
+      ASSOCIATIONPERSON = #{associationperson,jdbcType=VARCHAR},
+      TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      FAX = #{fax,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR}
+    where AOID = #{aoid,jdbcType=VARCHAR}
+  </update>
+</mapper>

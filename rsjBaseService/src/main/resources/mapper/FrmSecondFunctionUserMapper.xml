@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmSecondFunctionUserMapper">
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUser">
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.FrmSecondFunctionUserMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser">
     <id column="SECONDFUNCTIONUSERID" jdbcType="VARCHAR" property="secondfunctionuserid" />
     <result column="SECONDFUNCTIONUSERAUTHTIME" jdbcType="VARCHAR" property="secondfunctionuserauthtime" />
     <result column="SOURCEUSERID" jdbcType="VARCHAR" property="sourceuserid" />
@@ -76,7 +76,7 @@
     SECONDFUNCTIONUSERID, SECONDFUNCTIONUSERAUTHTIME, SOURCEUSERID, AUTHSTARTTIME, AUTHENDTIME, 
     TARGETUSERID, FUCECODE, CJR, CJSJ, XGR, XGSJ
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -100,13 +100,13 @@
     delete from FRMSECONDFUNCTIONUSER
     where SECONDFUNCTIONUSERID = #{secondfunctionuserid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUserExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUserExample">
     delete from FRMSECONDFUNCTIONUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUser">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser">
     insert into FRMSECONDFUNCTIONUSER (SECONDFUNCTIONUSERID, SECONDFUNCTIONUSERAUTHTIME, 
       SOURCEUSERID, AUTHSTARTTIME, AUTHENDTIME, 
       TARGETUSERID, FUCECODE, CJR, 
@@ -116,7 +116,7 @@
       #{targetuserid,jdbcType=VARCHAR}, #{fucecode,jdbcType=VARCHAR}, #{cjr,jdbcType=VARCHAR}, 
       #{cjsj,jdbcType=VARCHAR}, #{xgr,jdbcType=VARCHAR}, #{xgsj,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUser">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser">
     insert into FRMSECONDFUNCTIONUSER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="secondfunctionuserid != null">
@@ -189,7 +189,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUserExample" resultType="java.lang.Integer">
     select count(*) from FRMSECONDFUNCTIONUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -253,7 +253,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser">
     update FRMSECONDFUNCTIONUSER
     <set>
       <if test="secondfunctionuserauthtime != null">
@@ -289,7 +289,7 @@
     </set>
     where SECONDFUNCTIONUSERID = #{secondfunctionuserid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUser">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser">
     update FRMSECONDFUNCTIONUSER
     set SECONDFUNCTIONUSERAUTHTIME = #{secondfunctionuserauthtime,jdbcType=VARCHAR},
       SOURCEUSERID = #{sourceuserid,jdbcType=VARCHAR},
@@ -303,7 +303,7 @@
       XGSJ = #{xgsj,jdbcType=VARCHAR}
     where SECONDFUNCTIONUSERID = #{secondfunctionuserid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUser">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser">
     <id column="SECONDFUNCTIONUSERID" jdbcType="VARCHAR" property="secondfunctionuserid" />
     <result column="SECONDFUNCTIONUSERAUTHTIME" jdbcType="VARCHAR" property="secondfunctionuserauthtime" />
     <result column="SOURCEUSERID" jdbcType="VARCHAR" property="sourceuserid" />
@@ -378,7 +378,7 @@
     SECONDFUNCTIONUSERID, SECONDFUNCTIONUSERAUTHTIME, SOURCEUSERID, AUTHSTARTTIME, AUTHENDTIME, 
     TARGETUSERID, FUCECODE, CJR, CJSJ, XGR, XGSJ
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -402,13 +402,13 @@
     delete from FRMSECONDFUNCTIONUSER
     where SECONDFUNCTIONUSERID = #{secondfunctionuserid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUserExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUserExample">
     delete from FRMSECONDFUNCTIONUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUser">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser">
     insert into FRMSECONDFUNCTIONUSER (SECONDFUNCTIONUSERID, SECONDFUNCTIONUSERAUTHTIME, 
       SOURCEUSERID, AUTHSTARTTIME, AUTHENDTIME, 
       TARGETUSERID, FUCECODE, CJR, 
@@ -418,7 +418,7 @@
       #{targetuserid,jdbcType=VARCHAR}, #{fucecode,jdbcType=VARCHAR}, #{cjr,jdbcType=VARCHAR}, 
       #{cjsj,jdbcType=VARCHAR}, #{xgr,jdbcType=VARCHAR}, #{xgsj,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUser">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser">
     insert into FRMSECONDFUNCTIONUSER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="secondfunctionuserid != null">
@@ -491,7 +491,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUserExample" resultType="java.lang.Integer">
     select count(*) from FRMSECONDFUNCTIONUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -555,7 +555,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser">
     update FRMSECONDFUNCTIONUSER
     <set>
       <if test="secondfunctionuserauthtime != null">
@@ -591,7 +591,7 @@
     </set>
     where SECONDFUNCTIONUSERID = #{secondfunctionuserid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmSecondFunctionUser">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser">
     update FRMSECONDFUNCTIONUSER
     set SECONDFUNCTIONUSERAUTHTIME = #{secondfunctionuserauthtime,jdbcType=VARCHAR},
       SOURCEUSERID = #{sourceuserid,jdbcType=VARCHAR},

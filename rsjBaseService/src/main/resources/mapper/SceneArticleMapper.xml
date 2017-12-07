@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.SceneArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.SceneArticle" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="SCENEID" property="sceneid" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="NODEID" property="nodeid" jdbcType="VARCHAR" />
+    <result column="PUBTIME" property="pubtime" jdbcType="VARCHAR" />
+    <result column="AUTHOR" property="author" jdbcType="VARCHAR" />
+    <result column="DOCTYPE" property="doctype" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.weiboinfo.rsjBaseService.entry.SceneArticle" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, SCENEID, TITLE, URL, NODEID, PUBTIME, AUTHOR, DOCTYPE
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.weiboinfo.rsjBaseService.entry.SceneArticleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from SCENEARTICLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.SceneArticleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SCENEARTICLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from SCENEARTICLE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SCENEARTICLE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SceneArticleExample" >
+    delete from SCENEARTICLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.SceneArticle" >
+    insert into SCENEARTICLE (ID, SCENEID, TITLE, 
+      URL, NODEID, PUBTIME, 
+      AUTHOR, DOCTYPE, CONTENT)
+    values (#{id,jdbcType=VARCHAR}, #{sceneid,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{nodeid,jdbcType=VARCHAR}, #{pubtime,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{doctype,jdbcType=CHAR}, #{content,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.SceneArticle" >
+    insert into SCENEARTICLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="sceneid != null" >
+        SCENEID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="nodeid != null" >
+        NODEID,
+      </if>
+      <if test="pubtime != null" >
+        PUBTIME,
+      </if>
+      <if test="author != null" >
+        AUTHOR,
+      </if>
+      <if test="doctype != null" >
+        DOCTYPE,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneid != null" >
+        #{sceneid,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeid != null" >
+        #{nodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="pubtime != null" >
+        #{pubtime,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="doctype != null" >
+        #{doctype,jdbcType=CHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SceneArticleExample" resultType="java.lang.Integer" >
+    select count(*) from SCENEARTICLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SCENEARTICLE
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sceneid != null" >
+        SCENEID = #{record.sceneid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+        URL = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodeid != null" >
+        NODEID = #{record.nodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pubtime != null" >
+        PUBTIME = #{record.pubtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.author != null" >
+        AUTHOR = #{record.author,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctype != null" >
+        DOCTYPE = #{record.doctype,jdbcType=CHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=CLOB},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update SCENEARTICLE
+    set ID = #{record.id,jdbcType=VARCHAR},
+      SCENEID = #{record.sceneid,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      URL = #{record.url,jdbcType=VARCHAR},
+      NODEID = #{record.nodeid,jdbcType=VARCHAR},
+      PUBTIME = #{record.pubtime,jdbcType=VARCHAR},
+      AUTHOR = #{record.author,jdbcType=VARCHAR},
+      DOCTYPE = #{record.doctype,jdbcType=CHAR},
+      CONTENT = #{record.content,jdbcType=CLOB}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SCENEARTICLE
+    set ID = #{record.id,jdbcType=VARCHAR},
+      SCENEID = #{record.sceneid,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      URL = #{record.url,jdbcType=VARCHAR},
+      NODEID = #{record.nodeid,jdbcType=VARCHAR},
+      PUBTIME = #{record.pubtime,jdbcType=VARCHAR},
+      AUTHOR = #{record.author,jdbcType=VARCHAR},
+      DOCTYPE = #{record.doctype,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.SceneArticle" >
+    update SCENEARTICLE
+    <set >
+      <if test="sceneid != null" >
+        SCENEID = #{sceneid,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeid != null" >
+        NODEID = #{nodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="pubtime != null" >
+        PUBTIME = #{pubtime,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        AUTHOR = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="doctype != null" >
+        DOCTYPE = #{doctype,jdbcType=CHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=CLOB},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weiboinfo.rsjBaseService.entry.SceneArticle" >
+    update SCENEARTICLE
+    set SCENEID = #{sceneid,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      NODEID = #{nodeid,jdbcType=VARCHAR},
+      PUBTIME = #{pubtime,jdbcType=VARCHAR},
+      AUTHOR = #{author,jdbcType=VARCHAR},
+      DOCTYPE = #{doctype,jdbcType=CHAR},
+      CONTENT = #{content,jdbcType=CLOB}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.SceneArticle" >
+    update SCENEARTICLE
+    set SCENEID = #{sceneid,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      NODEID = #{nodeid,jdbcType=VARCHAR},
+      PUBTIME = #{pubtime,jdbcType=VARCHAR},
+      AUTHOR = #{author,jdbcType=VARCHAR},
+      DOCTYPE = #{doctype,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

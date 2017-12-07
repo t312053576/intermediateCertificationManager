@@ -1,10 +1,9 @@
 package com.weiboinfo.rsjBaseService.dao;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.weiboinfo.rsjBaseService.entry.CertificateInfo;
 import com.weiboinfo.rsjBaseService.entry.CertificateInfoExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface CertificateInfoMapper {
     int countByExample(CertificateInfoExample example);

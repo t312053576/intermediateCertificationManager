@@ -1,10 +1,9 @@
 package com.weiboinfo.rsjBaseService.dao;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.weiboinfo.rsjBaseService.entry.FrmSecurityConfig;
 import com.weiboinfo.rsjBaseService.entry.FrmSecurityConfigExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FrmSecurityConfigMapper {
     int countByExample(FrmSecurityConfigExample example);

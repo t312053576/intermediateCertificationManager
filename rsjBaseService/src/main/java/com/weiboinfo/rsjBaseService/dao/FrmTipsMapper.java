@@ -1,10 +1,9 @@
 package com.weiboinfo.rsjBaseService.dao;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.weiboinfo.rsjBaseService.entry.FrmTips;
 import com.weiboinfo.rsjBaseService.entry.FrmTipsExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FrmTipsMapper {
     int countByExample(FrmTipsExample example);

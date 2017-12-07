@@ -1,10 +1,9 @@
 package com.weiboinfo.rsjBaseService.dao;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUser;
 import com.weiboinfo.rsjBaseService.entry.FrmSecondFunctionUserExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FrmSecondFunctionUserMapper {
     int countByExample(FrmSecondFunctionUserExample example);

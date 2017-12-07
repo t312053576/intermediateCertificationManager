@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmFunctionCellURLMapper">
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.FrmFunctionCellURLMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     <id column="FUCEURLID" jdbcType="VARCHAR" property="fuceurlid" />
     <result column="FUCECODE" jdbcType="VARCHAR" property="fucecode" />
     <result column="FUCEURLNAME" jdbcType="VARCHAR" property="fuceurlname" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List">
     FUCEURLID, FUCECODE, FUCEURLNAME, FUCEURLDESC, FUCEURLRESOURCE, PAGEID, SYSID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -95,13 +95,13 @@
     delete from FRMFUNCTIONCELLURL
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample">
     delete from FRMFUNCTIONCELLURL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     insert into FRMFUNCTIONCELLURL (FUCEURLID, FUCECODE, FUCEURLNAME, 
       FUCEURLDESC, FUCEURLRESOURCE, PAGEID, 
       SYSID)
@@ -109,7 +109,7 @@
       #{fuceurldesc,jdbcType=VARCHAR}, #{fuceurlresource,jdbcType=VARCHAR}, #{pageid,jdbcType=DECIMAL}, 
       #{sysid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     insert into FRMFUNCTIONCELLURL
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="fuceurlid != null">
@@ -158,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample" resultType="java.lang.Integer">
     select count(*) from FRMFUNCTIONCELLURL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -206,7 +206,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     update FRMFUNCTIONCELLURL
     <set>
       <if test="fucecode != null">
@@ -230,7 +230,7 @@
     </set>
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     update FRMFUNCTIONCELLURL
     set FUCECODE = #{fucecode,jdbcType=VARCHAR},
       FUCEURLNAME = #{fuceurlname,jdbcType=VARCHAR},
@@ -240,7 +240,7 @@
       SYSID = #{sysid,jdbcType=VARCHAR}
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     <id column="FUCEURLID" jdbcType="VARCHAR" property="fuceurlid" />
     <result column="FUCECODE" jdbcType="VARCHAR" property="fucecode" />
     <result column="FUCEURLNAME" jdbcType="VARCHAR" property="fuceurlname" />
@@ -310,7 +310,7 @@
   <sql id="Base_Column_List">
     FUCEURLID, FUCECODE, FUCEURLNAME, FUCEURLDESC, FUCEURLRESOURCE, PAGEID, SYSID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -334,13 +334,13 @@
     delete from FRMFUNCTIONCELLURL
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample">
     delete from FRMFUNCTIONCELLURL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     insert into FRMFUNCTIONCELLURL (FUCEURLID, FUCECODE, FUCEURLNAME, 
       FUCEURLDESC, FUCEURLRESOURCE, PAGEID, 
       SYSID)
@@ -348,7 +348,7 @@
       #{fuceurldesc,jdbcType=VARCHAR}, #{fuceurlresource,jdbcType=VARCHAR}, #{pageid,jdbcType=DECIMAL}, 
       #{sysid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     insert into FRMFUNCTIONCELLURL
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="fuceurlid != null">
@@ -397,7 +397,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample" resultType="java.lang.Integer">
     select count(*) from FRMFUNCTIONCELLURL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -445,7 +445,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     update FRMFUNCTIONCELLURL
     <set>
       <if test="fucecode != null">
@@ -469,7 +469,7 @@
     </set>
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     update FRMFUNCTIONCELLURL
     set FUCECODE = #{fucecode,jdbcType=VARCHAR},
       FUCEURLNAME = #{fuceurlname,jdbcType=VARCHAR},
@@ -479,7 +479,7 @@
       SYSID = #{sysid,jdbcType=VARCHAR}
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     <id column="FUCEURLID" jdbcType="VARCHAR" property="fuceurlid" />
     <result column="FUCECODE" jdbcType="VARCHAR" property="fucecode" />
     <result column="FUCEURLNAME" jdbcType="VARCHAR" property="fuceurlname" />
@@ -547,7 +547,7 @@
   <sql id="Base_Column_List">
     FUCEURLID, FUCECODE, FUCEURLNAME, FUCEURLDESC, FUCEURLRESOURCE
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -571,19 +571,19 @@
     delete from FRMFUNCTIONCELLURL
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample">
     delete from FRMFUNCTIONCELLURL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     insert into FRMFUNCTIONCELLURL (FUCEURLID, FUCECODE, FUCEURLNAME, 
       FUCEURLDESC, FUCEURLRESOURCE)
     values (#{fuceurlid,jdbcType=VARCHAR}, #{fucecode,jdbcType=VARCHAR}, #{fuceurlname,jdbcType=VARCHAR}, 
       #{fuceurldesc,jdbcType=VARCHAR}, #{fuceurlresource,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     insert into FRMFUNCTIONCELLURL
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="fuceurlid != null">
@@ -620,7 +620,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample" resultType="java.lang.Integer">
     select count(*) from FRMFUNCTIONCELLURL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -660,7 +660,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     update FRMFUNCTIONCELLURL
     <set>
       <if test="fucecode != null">
@@ -678,7 +678,7 @@
     </set>
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     update FRMFUNCTIONCELLURL
     set FUCECODE = #{fucecode,jdbcType=VARCHAR},
       FUCEURLNAME = #{fuceurlname,jdbcType=VARCHAR},
@@ -686,7 +686,7 @@
       FUCEURLRESOURCE = #{fuceurlresource,jdbcType=VARCHAR}
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     <id column="FUCEURLID" jdbcType="VARCHAR" property="fuceurlid" />
     <result column="FUCECODE" jdbcType="VARCHAR" property="fucecode" />
     <result column="FUCEURLNAME" jdbcType="VARCHAR" property="fuceurlname" />
@@ -754,7 +754,7 @@
   <sql id="Base_Column_List">
     FUCEURLID, FUCECODE, FUCEURLNAME, FUCEURLDESC, FUCEURLRESOURCE
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -778,19 +778,19 @@
     delete from FRMFUNCTIONCELLURL
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample">
     delete from FRMFUNCTIONCELLURL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     insert into FRMFUNCTIONCELLURL (FUCEURLID, FUCECODE, FUCEURLNAME, 
       FUCEURLDESC, FUCEURLRESOURCE)
     values (#{fuceurlid,jdbcType=VARCHAR}, #{fucecode,jdbcType=VARCHAR}, #{fuceurlname,jdbcType=VARCHAR}, 
       #{fuceurldesc,jdbcType=VARCHAR}, #{fuceurlresource,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     insert into FRMFUNCTIONCELLURL
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="fuceurlid != null">
@@ -827,7 +827,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURLExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURLExample" resultType="java.lang.Integer">
     select count(*) from FRMFUNCTIONCELLURL
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -867,7 +867,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     update FRMFUNCTIONCELLURL
     <set>
       <if test="fucecode != null">
@@ -885,7 +885,7 @@
     </set>
     where FUCEURLID = #{fuceurlid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmFunctionCellURL">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmFunctionCellURL">
     update FRMFUNCTIONCELLURL
     set FUCECODE = #{fucecode,jdbcType=VARCHAR},
       FUCEURLNAME = #{fuceurlname,jdbcType=VARCHAR},

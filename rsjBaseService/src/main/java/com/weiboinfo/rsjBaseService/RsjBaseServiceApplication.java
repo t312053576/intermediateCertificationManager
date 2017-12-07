@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IntermediateCertificationManagerApplication {
+public class RsjBaseServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(IntermediateCertificationManagerApplication.class, args);
+		SpringApplication.run(RsjBaseServiceApplication.class, args);
 	}
 }

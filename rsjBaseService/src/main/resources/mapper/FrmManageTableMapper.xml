@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmManageTableMapper">
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.FrmManageTableMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmManageTable">
     <id column="TABLEID" jdbcType="VARCHAR" property="tableid" />
     <result column="TABLEXSZT" jdbcType="VARCHAR" property="tablexszt" />
     <result column="TABLEFIELD" jdbcType="VARCHAR" property="tablefield" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     TABLEID, TABLEXSZT, TABLEFIELD, TABLENAME, TABLEINDEX, TABLEURL
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTableExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,13 +94,13 @@
     delete from FRMMANAGETABLE
     where TABLEID = #{tableid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTableExample">
     delete from FRMMANAGETABLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTable">
     insert into FRMMANAGETABLE (TABLEID, TABLEXSZT, TABLEFIELD, 
       TABLENAME, TABLEINDEX, TABLEURL
       )
@@ -108,7 +108,7 @@
       #{tablename,jdbcType=VARCHAR}, #{tableindex,jdbcType=DECIMAL}, #{tableurl,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTable">
     insert into FRMMANAGETABLE
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableid != null">
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTableExample" resultType="java.lang.Integer">
     select count(*) from FRMMANAGETABLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTable">
     update FRMMANAGETABLE
     <set>
       <if test="tablexszt != null">
@@ -216,7 +216,7 @@
     </set>
     where TABLEID = #{tableid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTable">
     update FRMMANAGETABLE
     set TABLEXSZT = #{tablexszt,jdbcType=VARCHAR},
       TABLEFIELD = #{tablefield,jdbcType=VARCHAR},
@@ -225,7 +225,7 @@
       TABLEURL = #{tableurl,jdbcType=VARCHAR}
     where TABLEID = #{tableid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmManageTable">
     <id column="TABLEID" jdbcType="VARCHAR" property="tableid" />
     <result column="TABLEXSZT" jdbcType="VARCHAR" property="tablexszt" />
     <result column="TABLEFIELD" jdbcType="VARCHAR" property="tablefield" />
@@ -294,7 +294,7 @@
   <sql id="Base_Column_List">
     TABLEID, TABLEXSZT, TABLEFIELD, TABLENAME, TABLEINDEX, TABLEURL
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTableExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -318,13 +318,13 @@
     delete from FRMMANAGETABLE
     where TABLEID = #{tableid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTableExample">
     delete from FRMMANAGETABLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTable">
     insert into FRMMANAGETABLE (TABLEID, TABLEXSZT, TABLEFIELD, 
       TABLENAME, TABLEINDEX, TABLEURL
       )
@@ -332,7 +332,7 @@
       #{tablename,jdbcType=VARCHAR}, #{tableindex,jdbcType=DECIMAL}, #{tableurl,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTable">
     insert into FRMMANAGETABLE
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tableid != null">
@@ -375,7 +375,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTableExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTableExample" resultType="java.lang.Integer">
     select count(*) from FRMMANAGETABLE
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -419,7 +419,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTable">
     update FRMMANAGETABLE
     <set>
       <if test="tablexszt != null">
@@ -440,7 +440,7 @@
     </set>
     where TABLEID = #{tableid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmManageTable">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmManageTable">
     update FRMMANAGETABLE
     set TABLEXSZT = #{tablexszt,jdbcType=VARCHAR},
       TABLEFIELD = #{tablefield,jdbcType=VARCHAR},

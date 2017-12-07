@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.TemplatesMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.Templates" >
+    <id column="TID" property="tid" jdbcType="VARCHAR" />
+    <result column="TNICKNAME" property="tnickname" jdbcType="VARCHAR" />
+    <result column="TFILENAME" property="tfilename" jdbcType="VARCHAR" />
+    <result column="TTYPE" property="ttype" jdbcType="VARCHAR" />
+    <result column="JSPFILENAME" property="jspfilename" jdbcType="VARCHAR" />
+    <result column="FILEURL" property="fileurl" jdbcType="VARCHAR" />
+    <result column="ISHOMEPAGE" property="ishomepage" jdbcType="CHAR" />
+    <result column="VIEWURL" property="viewurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    TID, TNICKNAME, TFILENAME, TTYPE, JSPFILENAME, FILEURL, ISHOMEPAGE, VIEWURL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.TemplatesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TEMPLATES
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TEMPLATES
+    where TID = #{tid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TEMPLATES
+    where TID = #{tid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.TemplatesExample" >
+    delete from TEMPLATES
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.Templates" >
+    insert into TEMPLATES (TID, TNICKNAME, TFILENAME, 
+      TTYPE, JSPFILENAME, FILEURL, 
+      ISHOMEPAGE, VIEWURL)
+    values (#{tid,jdbcType=VARCHAR}, #{tnickname,jdbcType=VARCHAR}, #{tfilename,jdbcType=VARCHAR}, 
+      #{ttype,jdbcType=VARCHAR}, #{jspfilename,jdbcType=VARCHAR}, #{fileurl,jdbcType=VARCHAR}, 
+      #{ishomepage,jdbcType=CHAR}, #{viewurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.Templates" >
+    insert into TEMPLATES
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        TID,
+      </if>
+      <if test="tnickname != null" >
+        TNICKNAME,
+      </if>
+      <if test="tfilename != null" >
+        TFILENAME,
+      </if>
+      <if test="ttype != null" >
+        TTYPE,
+      </if>
+      <if test="jspfilename != null" >
+        JSPFILENAME,
+      </if>
+      <if test="fileurl != null" >
+        FILEURL,
+      </if>
+      <if test="ishomepage != null" >
+        ISHOMEPAGE,
+      </if>
+      <if test="viewurl != null" >
+        VIEWURL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        #{tid,jdbcType=VARCHAR},
+      </if>
+      <if test="tnickname != null" >
+        #{tnickname,jdbcType=VARCHAR},
+      </if>
+      <if test="tfilename != null" >
+        #{tfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="ttype != null" >
+        #{ttype,jdbcType=VARCHAR},
+      </if>
+      <if test="jspfilename != null" >
+        #{jspfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="fileurl != null" >
+        #{fileurl,jdbcType=VARCHAR},
+      </if>
+      <if test="ishomepage != null" >
+        #{ishomepage,jdbcType=CHAR},
+      </if>
+      <if test="viewurl != null" >
+        #{viewurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.TemplatesExample" resultType="java.lang.Integer" >
+    select count(*) from TEMPLATES
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TEMPLATES
+    <set >
+      <if test="record.tid != null" >
+        TID = #{record.tid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tnickname != null" >
+        TNICKNAME = #{record.tnickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tfilename != null" >
+        TFILENAME = #{record.tfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ttype != null" >
+        TTYPE = #{record.ttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jspfilename != null" >
+        JSPFILENAME = #{record.jspfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileurl != null" >
+        FILEURL = #{record.fileurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ishomepage != null" >
+        ISHOMEPAGE = #{record.ishomepage,jdbcType=CHAR},
+      </if>
+      <if test="record.viewurl != null" >
+        VIEWURL = #{record.viewurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TEMPLATES
+    set TID = #{record.tid,jdbcType=VARCHAR},
+      TNICKNAME = #{record.tnickname,jdbcType=VARCHAR},
+      TFILENAME = #{record.tfilename,jdbcType=VARCHAR},
+      TTYPE = #{record.ttype,jdbcType=VARCHAR},
+      JSPFILENAME = #{record.jspfilename,jdbcType=VARCHAR},
+      FILEURL = #{record.fileurl,jdbcType=VARCHAR},
+      ISHOMEPAGE = #{record.ishomepage,jdbcType=CHAR},
+      VIEWURL = #{record.viewurl,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.Templates" >
+    update TEMPLATES
+    <set >
+      <if test="tnickname != null" >
+        TNICKNAME = #{tnickname,jdbcType=VARCHAR},
+      </if>
+      <if test="tfilename != null" >
+        TFILENAME = #{tfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="ttype != null" >
+        TTYPE = #{ttype,jdbcType=VARCHAR},
+      </if>
+      <if test="jspfilename != null" >
+        JSPFILENAME = #{jspfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="fileurl != null" >
+        FILEURL = #{fileurl,jdbcType=VARCHAR},
+      </if>
+      <if test="ishomepage != null" >
+        ISHOMEPAGE = #{ishomepage,jdbcType=CHAR},
+      </if>
+      <if test="viewurl != null" >
+        VIEWURL = #{viewurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TID = #{tid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.Templates" >
+    update TEMPLATES
+    set TNICKNAME = #{tnickname,jdbcType=VARCHAR},
+      TFILENAME = #{tfilename,jdbcType=VARCHAR},
+      TTYPE = #{ttype,jdbcType=VARCHAR},
+      JSPFILENAME = #{jspfilename,jdbcType=VARCHAR},
+      FILEURL = #{fileurl,jdbcType=VARCHAR},
+      ISHOMEPAGE = #{ishomepage,jdbcType=CHAR},
+      VIEWURL = #{viewurl,jdbcType=VARCHAR}
+    where TID = #{tid,jdbcType=VARCHAR}
+  </update>
+</mapper>

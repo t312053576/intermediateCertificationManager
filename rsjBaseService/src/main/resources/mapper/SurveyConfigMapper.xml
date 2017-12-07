@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.SurveyConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.SurveyConfig" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="C_SITENAME" property="cSitename" jdbcType="VARCHAR" />
+    <result column="C_SITEURL" property="cSiteurl" jdbcType="VARCHAR" />
+    <result column="C_ISOPEN" property="cIsopen" jdbcType="CHAR" />
+    <result column="C_CLOSEWORD" property="cCloseword" jdbcType="VARCHAR" />
+    <result column="COPYRIGHT" property="copyright" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, C_SITENAME, C_SITEURL, C_ISOPEN, C_CLOSEWORD, COPYRIGHT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyConfigExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SURVEY_CONFIG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SURVEY_CONFIG
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SURVEY_CONFIG
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyConfigExample" >
+    delete from SURVEY_CONFIG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyConfig" >
+    insert into SURVEY_CONFIG (ID, C_SITENAME, C_SITEURL, 
+      C_ISOPEN, C_CLOSEWORD, COPYRIGHT
+      )
+    values (#{id,jdbcType=VARCHAR}, #{cSitename,jdbcType=VARCHAR}, #{cSiteurl,jdbcType=VARCHAR}, 
+      #{cIsopen,jdbcType=CHAR}, #{cCloseword,jdbcType=VARCHAR}, #{copyright,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyConfig" >
+    insert into SURVEY_CONFIG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="cSitename != null" >
+        C_SITENAME,
+      </if>
+      <if test="cSiteurl != null" >
+        C_SITEURL,
+      </if>
+      <if test="cIsopen != null" >
+        C_ISOPEN,
+      </if>
+      <if test="cCloseword != null" >
+        C_CLOSEWORD,
+      </if>
+      <if test="copyright != null" >
+        COPYRIGHT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="cSitename != null" >
+        #{cSitename,jdbcType=VARCHAR},
+      </if>
+      <if test="cSiteurl != null" >
+        #{cSiteurl,jdbcType=VARCHAR},
+      </if>
+      <if test="cIsopen != null" >
+        #{cIsopen,jdbcType=CHAR},
+      </if>
+      <if test="cCloseword != null" >
+        #{cCloseword,jdbcType=VARCHAR},
+      </if>
+      <if test="copyright != null" >
+        #{copyright,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyConfigExample" resultType="java.lang.Integer" >
+    select count(*) from SURVEY_CONFIG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SURVEY_CONFIG
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSitename != null" >
+        C_SITENAME = #{record.cSitename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSiteurl != null" >
+        C_SITEURL = #{record.cSiteurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cIsopen != null" >
+        C_ISOPEN = #{record.cIsopen,jdbcType=CHAR},
+      </if>
+      <if test="record.cCloseword != null" >
+        C_CLOSEWORD = #{record.cCloseword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.copyright != null" >
+        COPYRIGHT = #{record.copyright,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SURVEY_CONFIG
+    set ID = #{record.id,jdbcType=VARCHAR},
+      C_SITENAME = #{record.cSitename,jdbcType=VARCHAR},
+      C_SITEURL = #{record.cSiteurl,jdbcType=VARCHAR},
+      C_ISOPEN = #{record.cIsopen,jdbcType=CHAR},
+      C_CLOSEWORD = #{record.cCloseword,jdbcType=VARCHAR},
+      COPYRIGHT = #{record.copyright,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyConfig" >
+    update SURVEY_CONFIG
+    <set >
+      <if test="cSitename != null" >
+        C_SITENAME = #{cSitename,jdbcType=VARCHAR},
+      </if>
+      <if test="cSiteurl != null" >
+        C_SITEURL = #{cSiteurl,jdbcType=VARCHAR},
+      </if>
+      <if test="cIsopen != null" >
+        C_ISOPEN = #{cIsopen,jdbcType=CHAR},
+      </if>
+      <if test="cCloseword != null" >
+        C_CLOSEWORD = #{cCloseword,jdbcType=VARCHAR},
+      </if>
+      <if test="copyright != null" >
+        COPYRIGHT = #{copyright,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyConfig" >
+    update SURVEY_CONFIG
+    set C_SITENAME = #{cSitename,jdbcType=VARCHAR},
+      C_SITEURL = #{cSiteurl,jdbcType=VARCHAR},
+      C_ISOPEN = #{cIsopen,jdbcType=CHAR},
+      C_CLOSEWORD = #{cCloseword,jdbcType=VARCHAR},
+      COPYRIGHT = #{copyright,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

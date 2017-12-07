@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.SurveyGuestBookMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.SurveyGuestBook" >
+    <id column="GB_ID" property="gbId" jdbcType="VARCHAR" />
+    <result column="GB_USER" property="gbUser" jdbcType="VARCHAR" />
+    <result column="GB_POSTDATE" property="gbPostdate" jdbcType="VARCHAR" />
+    <result column="GB_CONTENT" property="gbContent" jdbcType="VARCHAR" />
+    <result column="GB_PHONE" property="gbPhone" jdbcType="VARCHAR" />
+    <result column="GB_QQ" property="gbQq" jdbcType="VARCHAR" />
+    <result column="GB_EMAIL" property="gbEmail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    GB_ID, GB_USER, GB_POSTDATE, GB_CONTENT, GB_PHONE, GB_QQ, GB_EMAIL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyGuestBookExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SURVEY_GUESTBOOK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SURVEY_GUESTBOOK
+    where GB_ID = #{gbId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SURVEY_GUESTBOOK
+    where GB_ID = #{gbId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyGuestBookExample" >
+    delete from SURVEY_GUESTBOOK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyGuestBook" >
+    insert into SURVEY_GUESTBOOK (GB_ID, GB_USER, GB_POSTDATE, 
+      GB_CONTENT, GB_PHONE, GB_QQ, 
+      GB_EMAIL)
+    values (#{gbId,jdbcType=VARCHAR}, #{gbUser,jdbcType=VARCHAR}, #{gbPostdate,jdbcType=VARCHAR}, 
+      #{gbContent,jdbcType=VARCHAR}, #{gbPhone,jdbcType=VARCHAR}, #{gbQq,jdbcType=VARCHAR}, 
+      #{gbEmail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyGuestBook" >
+    insert into SURVEY_GUESTBOOK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gbId != null" >
+        GB_ID,
+      </if>
+      <if test="gbUser != null" >
+        GB_USER,
+      </if>
+      <if test="gbPostdate != null" >
+        GB_POSTDATE,
+      </if>
+      <if test="gbContent != null" >
+        GB_CONTENT,
+      </if>
+      <if test="gbPhone != null" >
+        GB_PHONE,
+      </if>
+      <if test="gbQq != null" >
+        GB_QQ,
+      </if>
+      <if test="gbEmail != null" >
+        GB_EMAIL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gbId != null" >
+        #{gbId,jdbcType=VARCHAR},
+      </if>
+      <if test="gbUser != null" >
+        #{gbUser,jdbcType=VARCHAR},
+      </if>
+      <if test="gbPostdate != null" >
+        #{gbPostdate,jdbcType=VARCHAR},
+      </if>
+      <if test="gbContent != null" >
+        #{gbContent,jdbcType=VARCHAR},
+      </if>
+      <if test="gbPhone != null" >
+        #{gbPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="gbQq != null" >
+        #{gbQq,jdbcType=VARCHAR},
+      </if>
+      <if test="gbEmail != null" >
+        #{gbEmail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyGuestBookExample" resultType="java.lang.Integer" >
+    select count(*) from SURVEY_GUESTBOOK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SURVEY_GUESTBOOK
+    <set >
+      <if test="record.gbId != null" >
+        GB_ID = #{record.gbId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gbUser != null" >
+        GB_USER = #{record.gbUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gbPostdate != null" >
+        GB_POSTDATE = #{record.gbPostdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gbContent != null" >
+        GB_CONTENT = #{record.gbContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gbPhone != null" >
+        GB_PHONE = #{record.gbPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gbQq != null" >
+        GB_QQ = #{record.gbQq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gbEmail != null" >
+        GB_EMAIL = #{record.gbEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SURVEY_GUESTBOOK
+    set GB_ID = #{record.gbId,jdbcType=VARCHAR},
+      GB_USER = #{record.gbUser,jdbcType=VARCHAR},
+      GB_POSTDATE = #{record.gbPostdate,jdbcType=VARCHAR},
+      GB_CONTENT = #{record.gbContent,jdbcType=VARCHAR},
+      GB_PHONE = #{record.gbPhone,jdbcType=VARCHAR},
+      GB_QQ = #{record.gbQq,jdbcType=VARCHAR},
+      GB_EMAIL = #{record.gbEmail,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyGuestBook" >
+    update SURVEY_GUESTBOOK
+    <set >
+      <if test="gbUser != null" >
+        GB_USER = #{gbUser,jdbcType=VARCHAR},
+      </if>
+      <if test="gbPostdate != null" >
+        GB_POSTDATE = #{gbPostdate,jdbcType=VARCHAR},
+      </if>
+      <if test="gbContent != null" >
+        GB_CONTENT = #{gbContent,jdbcType=VARCHAR},
+      </if>
+      <if test="gbPhone != null" >
+        GB_PHONE = #{gbPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="gbQq != null" >
+        GB_QQ = #{gbQq,jdbcType=VARCHAR},
+      </if>
+      <if test="gbEmail != null" >
+        GB_EMAIL = #{gbEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GB_ID = #{gbId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.SurveyGuestBook" >
+    update SURVEY_GUESTBOOK
+    set GB_USER = #{gbUser,jdbcType=VARCHAR},
+      GB_POSTDATE = #{gbPostdate,jdbcType=VARCHAR},
+      GB_CONTENT = #{gbContent,jdbcType=VARCHAR},
+      GB_PHONE = #{gbPhone,jdbcType=VARCHAR},
+      GB_QQ = #{gbQq,jdbcType=VARCHAR},
+      GB_EMAIL = #{gbEmail,jdbcType=VARCHAR}
+    where GB_ID = #{gbId,jdbcType=VARCHAR}
+  </update>
+</mapper>

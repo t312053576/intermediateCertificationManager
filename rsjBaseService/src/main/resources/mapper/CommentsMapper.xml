@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.CommentsMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.Comments" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="WMCDOCUID" property="wmcdocuid" jdbcType="DECIMAL" />
+    <result column="CREATORID" property="creatorid" jdbcType="VARCHAR" />
+    <result column="CREATORNAME" property="creatorname" jdbcType="VARCHAR" />
+    <result column="CREATTIME" property="creattime" jdbcType="TIMESTAMP" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+    <result column="VERIFYERID" property="verifyerid" jdbcType="VARCHAR" />
+    <result column="VERIFYNAME" property="verifyname" jdbcType="VARCHAR" />
+    <result column="VERIFYTIME" property="verifytime" jdbcType="TIMESTAMP" />
+    <result column="REPLY" property="reply" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, WMCDOCUID, CREATORID, CREATORNAME, CREATTIME, COMMENTS, VERIFYERID, VERIFYNAME, 
+    VERIFYTIME, REPLY
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.CommentsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from COMMENTS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from COMMENTS
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from COMMENTS
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.CommentsExample" >
+    delete from COMMENTS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.Comments" >
+    insert into COMMENTS (ID, WMCDOCUID, CREATORID, 
+      CREATORNAME, CREATTIME, COMMENTS, 
+      VERIFYERID, VERIFYNAME, VERIFYTIME, 
+      REPLY)
+    values (#{id,jdbcType=VARCHAR}, #{wmcdocuid,jdbcType=DECIMAL}, #{creatorid,jdbcType=VARCHAR}, 
+      #{creatorname,jdbcType=VARCHAR}, #{creattime,jdbcType=TIMESTAMP}, #{comments,jdbcType=VARCHAR}, 
+      #{verifyerid,jdbcType=VARCHAR}, #{verifyname,jdbcType=VARCHAR}, #{verifytime,jdbcType=TIMESTAMP}, 
+      #{reply,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.Comments" >
+    insert into COMMENTS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="wmcdocuid != null" >
+        WMCDOCUID,
+      </if>
+      <if test="creatorid != null" >
+        CREATORID,
+      </if>
+      <if test="creatorname != null" >
+        CREATORNAME,
+      </if>
+      <if test="creattime != null" >
+        CREATTIME,
+      </if>
+      <if test="comments != null" >
+        COMMENTS,
+      </if>
+      <if test="verifyerid != null" >
+        VERIFYERID,
+      </if>
+      <if test="verifyname != null" >
+        VERIFYNAME,
+      </if>
+      <if test="verifytime != null" >
+        VERIFYTIME,
+      </if>
+      <if test="reply != null" >
+        REPLY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="wmcdocuid != null" >
+        #{wmcdocuid,jdbcType=DECIMAL},
+      </if>
+      <if test="creatorid != null" >
+        #{creatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorname != null" >
+        #{creatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null" >
+        #{creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyerid != null" >
+        #{verifyerid,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyname != null" >
+        #{verifyname,jdbcType=VARCHAR},
+      </if>
+      <if test="verifytime != null" >
+        #{verifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reply != null" >
+        #{reply,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.CommentsExample" resultType="java.lang.Integer" >
+    select count(*) from COMMENTS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update COMMENTS
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wmcdocuid != null" >
+        WMCDOCUID = #{record.wmcdocuid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.creatorid != null" >
+        CREATORID = #{record.creatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatorname != null" >
+        CREATORNAME = #{record.creatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creattime != null" >
+        CREATTIME = #{record.creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.comments != null" >
+        COMMENTS = #{record.comments,jdbcType=VARCHAR},
+      </if>
+      <if test="record.verifyerid != null" >
+        VERIFYERID = #{record.verifyerid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.verifyname != null" >
+        VERIFYNAME = #{record.verifyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.verifytime != null" >
+        VERIFYTIME = #{record.verifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reply != null" >
+        REPLY = #{record.reply,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update COMMENTS
+    set ID = #{record.id,jdbcType=VARCHAR},
+      WMCDOCUID = #{record.wmcdocuid,jdbcType=DECIMAL},
+      CREATORID = #{record.creatorid,jdbcType=VARCHAR},
+      CREATORNAME = #{record.creatorname,jdbcType=VARCHAR},
+      CREATTIME = #{record.creattime,jdbcType=TIMESTAMP},
+      COMMENTS = #{record.comments,jdbcType=VARCHAR},
+      VERIFYERID = #{record.verifyerid,jdbcType=VARCHAR},
+      VERIFYNAME = #{record.verifyname,jdbcType=VARCHAR},
+      VERIFYTIME = #{record.verifytime,jdbcType=TIMESTAMP},
+      REPLY = #{record.reply,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.Comments" >
+    update COMMENTS
+    <set >
+      <if test="wmcdocuid != null" >
+        WMCDOCUID = #{wmcdocuid,jdbcType=DECIMAL},
+      </if>
+      <if test="creatorid != null" >
+        CREATORID = #{creatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorname != null" >
+        CREATORNAME = #{creatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null" >
+        CREATTIME = #{creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comments != null" >
+        COMMENTS = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyerid != null" >
+        VERIFYERID = #{verifyerid,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyname != null" >
+        VERIFYNAME = #{verifyname,jdbcType=VARCHAR},
+      </if>
+      <if test="verifytime != null" >
+        VERIFYTIME = #{verifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reply != null" >
+        REPLY = #{reply,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.Comments" >
+    update COMMENTS
+    set WMCDOCUID = #{wmcdocuid,jdbcType=DECIMAL},
+      CREATORID = #{creatorid,jdbcType=VARCHAR},
+      CREATORNAME = #{creatorname,jdbcType=VARCHAR},
+      CREATTIME = #{creattime,jdbcType=TIMESTAMP},
+      COMMENTS = #{comments,jdbcType=VARCHAR},
+      VERIFYERID = #{verifyerid,jdbcType=VARCHAR},
+      VERIFYNAME = #{verifyname,jdbcType=VARCHAR},
+      VERIFYTIME = #{verifytime,jdbcType=TIMESTAMP},
+      REPLY = #{reply,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

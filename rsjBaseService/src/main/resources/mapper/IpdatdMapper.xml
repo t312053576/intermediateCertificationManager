@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.IpdatdMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.Ipdatd" >
+    <result column="BEGINID" property="beginid" jdbcType="VARCHAR" />
+    <result column="ENDID" property="endid" jdbcType="VARCHAR" />
+    <result column="VALUEK" property="valuek" jdbcType="VARCHAR" />
+    <result column="ATTACHMENT" property="attachment" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    BEGINID, ENDID, VALUEK, ATTACHMENT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.IpdatdExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from IPDATD
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.IpdatdExample" >
+    delete from IPDATD
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.Ipdatd" >
+    insert into IPDATD (BEGINID, ENDID, VALUEK, 
+      ATTACHMENT)
+    values (#{beginid,jdbcType=VARCHAR}, #{endid,jdbcType=VARCHAR}, #{valuek,jdbcType=VARCHAR}, 
+      #{attachment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.Ipdatd" >
+    insert into IPDATD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="beginid != null" >
+        BEGINID,
+      </if>
+      <if test="endid != null" >
+        ENDID,
+      </if>
+      <if test="valuek != null" >
+        VALUEK,
+      </if>
+      <if test="attachment != null" >
+        ATTACHMENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="beginid != null" >
+        #{beginid,jdbcType=VARCHAR},
+      </if>
+      <if test="endid != null" >
+        #{endid,jdbcType=VARCHAR},
+      </if>
+      <if test="valuek != null" >
+        #{valuek,jdbcType=VARCHAR},
+      </if>
+      <if test="attachment != null" >
+        #{attachment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.IpdatdExample" resultType="java.lang.Integer" >
+    select count(*) from IPDATD
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update IPDATD
+    <set >
+      <if test="record.beginid != null" >
+        BEGINID = #{record.beginid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endid != null" >
+        ENDID = #{record.endid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.valuek != null" >
+        VALUEK = #{record.valuek,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attachment != null" >
+        ATTACHMENT = #{record.attachment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update IPDATD
+    set BEGINID = #{record.beginid,jdbcType=VARCHAR},
+      ENDID = #{record.endid,jdbcType=VARCHAR},
+      VALUEK = #{record.valuek,jdbcType=VARCHAR},
+      ATTACHMENT = #{record.attachment,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

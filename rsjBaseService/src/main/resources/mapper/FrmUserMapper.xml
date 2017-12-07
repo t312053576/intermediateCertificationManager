@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmUserMapper">
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.FrmUserMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmUser">
     <id column="USERID" jdbcType="VARCHAR" property="userid" />
     <result column="USERPASSWD" jdbcType="VARCHAR" property="userpasswd" />
     <result column="USERACCOUNT" jdbcType="VARCHAR" property="useraccount" />
@@ -100,7 +100,7 @@
     USERCREATORID, USERCREATETIME, USERMODIFIERID, USERMODIFYTIME, USERPAGESIZE, USERMOBILE, 
     IDCARD, SEX, ADDRESS, PAGEID, LOGINCOUNT, SYSID, ORDERBY, USERPASSWD1, ISFIRST
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -124,13 +124,13 @@
     delete from FRMUSER
     where USERID = #{userid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample">
     delete from FRMUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     insert into FRMUSER (USERID, USERPASSWD, USERACCOUNT, 
       USERREALNAME, USERACCOUNTTYPE, USERLASTLOGINDATE, 
       USERLASTLOGINTIME, USERPWDQUESTION1, USERPWDANSWER1, 
@@ -154,7 +154,7 @@
       #{logincount,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR}, #{orderby,jdbcType=DECIMAL}, 
       #{userpasswd1,jdbcType=VARCHAR}, #{isfirst,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     insert into FRMUSER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -353,7 +353,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample" resultType="java.lang.Integer">
     select count(*) from FRMUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -501,7 +501,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     update FRMUSER
     <set>
       <if test="userpasswd != null">
@@ -600,7 +600,7 @@
     </set>
     where USERID = #{userid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     update FRMUSER
     set USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
       USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
@@ -635,7 +635,7 @@
       ISFIRST = #{isfirst,jdbcType=CHAR}
     where USERID = #{userid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmUser">
     <id column="USERID" jdbcType="VARCHAR" property="userid" />
     <result column="USERPASSWD" jdbcType="VARCHAR" property="userpasswd" />
     <result column="USERACCOUNT" jdbcType="VARCHAR" property="useraccount" />
@@ -727,7 +727,7 @@
     USERCREATORID, USERCREATETIME, USERMODIFIERID, USERMODIFYTIME, USERPAGESIZE, USERDOGCODE, 
     USERPASSWORDBAK, XS0101ORJG0101ID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -751,13 +751,13 @@
     delete from FRMUSER
     where USERID = #{userid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample">
     delete from FRMUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     insert into FRMUSER (USERID, USERPASSWD, USERACCOUNT, 
       USERREALNAME, USERACCOUNTTYPE, USERLASTLOGINDATE, 
       USERLASTLOGINTIME, USERPWDQUESTION1, USERPWDANSWER1, 
@@ -777,7 +777,7 @@
       #{userpagesize,jdbcType=DECIMAL}, #{userdogcode,jdbcType=VARCHAR}, #{userpasswordbak,jdbcType=VARCHAR}, 
       #{xs0101orjg0101id,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     insert into FRMUSER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -934,7 +934,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample" resultType="java.lang.Integer">
     select count(*) from FRMUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -1054,7 +1054,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     update FRMUSER
     <set>
       <if test="userpasswd != null">
@@ -1132,7 +1132,7 @@
     </set>
     where USERID = #{userid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     update FRMUSER
     set USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
       USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
@@ -1160,7 +1160,7 @@
       XS0101ORJG0101ID = #{xs0101orjg0101id,jdbcType=VARCHAR}
     where USERID = #{userid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmUser">
     <id column="USERID" jdbcType="VARCHAR" property="userid" />
     <result column="USERPASSWD" jdbcType="VARCHAR" property="userpasswd" />
     <result column="USERACCOUNT" jdbcType="VARCHAR" property="useraccount" />
@@ -1259,7 +1259,7 @@
     USERCREATORID, USERCREATETIME, USERMODIFIERID, USERMODIFYTIME, USERPAGESIZE, USERMOBILE, 
     IDCARD, SEX, ADDRESS, PAGEID, LOGINCOUNT, SYSID, ORDERBY, USERPASSWD1, ISFIRST
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -1283,13 +1283,13 @@
     delete from FRMUSER
     where USERID = #{userid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample">
     delete from FRMUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     insert into FRMUSER (USERID, USERPASSWD, USERACCOUNT, 
       USERREALNAME, USERACCOUNTTYPE, USERLASTLOGINDATE, 
       USERLASTLOGINTIME, USERPWDQUESTION1, USERPWDANSWER1, 
@@ -1313,7 +1313,7 @@
       #{logincount,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR}, #{orderby,jdbcType=DECIMAL}, 
       #{userpasswd1,jdbcType=VARCHAR}, #{isfirst,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     insert into FRMUSER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -1512,7 +1512,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample" resultType="java.lang.Integer">
     select count(*) from FRMUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -1660,7 +1660,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     update FRMUSER
     <set>
       <if test="userpasswd != null">
@@ -1759,7 +1759,7 @@
     </set>
     where USERID = #{userid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     update FRMUSER
     set USERPASSWD = #{userpasswd,jdbcType=VARCHAR},
       USERACCOUNT = #{useraccount,jdbcType=VARCHAR},
@@ -1794,7 +1794,7 @@
       ISFIRST = #{isfirst,jdbcType=CHAR}
     where USERID = #{userid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmUser">
     <id column="USERID" jdbcType="VARCHAR" property="userid" />
     <result column="DEPARTMENTID" jdbcType="VARCHAR" property="departmentid" />
     <result column="PREPARE" jdbcType="VARCHAR" property="prepare" />
@@ -1894,7 +1894,7 @@
     USERMODIFIERID, USERPAGESIZE, USERDOGCODE, USERPASSWORDBAK, XS0101ORJG0101ID, USERMODIFYTIME, 
     USERDEPARTMENTID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -1918,13 +1918,13 @@
     delete from FRMUSER
     where USERID = #{userid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample">
     delete from FRMUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     insert into FRMUSER (USERID, DEPARTMENTID, PREPARE, 
       POLITICAL_STATUS, TITLE, ADMINISTRATIVE_LEVEL, 
       SEX, TEL, USERPASSWD, 
@@ -1948,7 +1948,7 @@
       #{userdogcode,jdbcType=VARCHAR}, #{userpasswordbak,jdbcType=VARCHAR}, #{xs0101orjg0101id,jdbcType=VARCHAR}, 
       #{usermodifytime,jdbcType=VARCHAR}, #{userdepartmentid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     insert into FRMUSER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -2147,7 +2147,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUserExample" resultType="java.lang.Integer">
     select count(*) from FRMUSER
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -2295,7 +2295,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     update FRMUSER
     <set>
       <if test="departmentid != null">
@@ -2394,7 +2394,7 @@
     </set>
     where USERID = #{userid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmUser">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmUser">
     update FRMUSER
     set DEPARTMENTID = #{departmentid,jdbcType=VARCHAR},
       PREPARE = #{prepare,jdbcType=VARCHAR},

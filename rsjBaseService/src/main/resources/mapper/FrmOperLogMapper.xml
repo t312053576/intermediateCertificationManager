@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.weiboinfo.intermediateCertificationManager.dao.FrmOperLogMapper">
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.FrmOperLogMapper">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
     <result column="USERNAME" jdbcType="VARCHAR" property="username" />
@@ -73,7 +73,7 @@
   <sql id="Base_Column_List">
     ID, ACCOUNT, USERNAME, OPERTIME, USERIP, OPERTYPE, OPERMEMO, PAGEID, SYSID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,13 +97,13 @@
     delete from FRMOPERLOG
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample">
     delete from FRMOPERLOG
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     insert into FRMOPERLOG (ID, ACCOUNT, USERNAME, 
       OPERTIME, USERIP, OPERTYPE, 
       OPERMEMO, PAGEID, SYSID
@@ -113,7 +113,7 @@
       #{opermemo,jdbcType=VARCHAR}, #{pageid,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     insert into FRMOPERLOG
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -174,7 +174,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample" resultType="java.lang.Integer">
     select count(*) from FRMOPERLOG
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -230,7 +230,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     update FRMOPERLOG
     <set>
       <if test="account != null">
@@ -260,7 +260,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     update FRMOPERLOG
     set ACCOUNT = #{account,jdbcType=VARCHAR},
       USERNAME = #{username,jdbcType=VARCHAR},
@@ -272,7 +272,7 @@
       SYSID = #{sysid,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
     <result column="USERNAME" jdbcType="VARCHAR" property="username" />
@@ -342,7 +342,7 @@
   <sql id="Base_Column_List">
     ID, ACCOUNT, USERNAME, OPERTIME, USERIP, OPERTYPE, OPERMEMO
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -366,13 +366,13 @@
     delete from FRMOPERLOG
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample">
     delete from FRMOPERLOG
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     insert into FRMOPERLOG (ID, ACCOUNT, USERNAME, 
       OPERTIME, USERIP, OPERTYPE, 
       OPERMEMO)
@@ -380,7 +380,7 @@
       #{opertime,jdbcType=VARCHAR}, #{userip,jdbcType=VARCHAR}, #{opertype,jdbcType=VARCHAR}, 
       #{opermemo,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     insert into FRMOPERLOG
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -429,7 +429,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample" resultType="java.lang.Integer">
     select count(*) from FRMOPERLOG
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -477,7 +477,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     update FRMOPERLOG
     <set>
       <if test="account != null">
@@ -501,7 +501,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     update FRMOPERLOG
     set ACCOUNT = #{account,jdbcType=VARCHAR},
       USERNAME = #{username,jdbcType=VARCHAR},
@@ -511,7 +511,7 @@
       OPERMEMO = #{opermemo,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
     <result column="USERNAME" jdbcType="VARCHAR" property="username" />
@@ -583,7 +583,7 @@
   <sql id="Base_Column_List">
     ID, ACCOUNT, USERNAME, OPERTIME, USERIP, OPERTYPE, OPERMEMO, PAGEID, SYSID
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -607,13 +607,13 @@
     delete from FRMOPERLOG
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample">
     delete from FRMOPERLOG
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     insert into FRMOPERLOG (ID, ACCOUNT, USERNAME, 
       OPERTIME, USERIP, OPERTYPE, 
       OPERMEMO, PAGEID, SYSID
@@ -623,7 +623,7 @@
       #{opermemo,jdbcType=VARCHAR}, #{pageid,jdbcType=DECIMAL}, #{sysid,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     insert into FRMOPERLOG
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -684,7 +684,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample" resultType="java.lang.Integer">
     select count(*) from FRMOPERLOG
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -740,7 +740,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     update FRMOPERLOG
     <set>
       <if test="account != null">
@@ -770,7 +770,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     update FRMOPERLOG
     set ACCOUNT = #{account,jdbcType=VARCHAR},
       USERNAME = #{username,jdbcType=VARCHAR},
@@ -782,7 +782,7 @@
       SYSID = #{sysid,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
     <result column="USERNAME" jdbcType="VARCHAR" property="username" />
@@ -852,7 +852,7 @@
   <sql id="Base_Column_List">
     ID, ACCOUNT, USERNAME, OPERTIME, USERIP, OPERTYPE, OPERMEMO
   </sql>
-  <select id="selectByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -876,13 +876,13 @@
     delete from FRMOPERLOG
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample">
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample">
     delete from FRMOPERLOG
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     insert into FRMOPERLOG (ID, ACCOUNT, USERNAME, 
       OPERTIME, USERIP, OPERTYPE, 
       OPERMEMO)
@@ -890,7 +890,7 @@
       #{opertime,jdbcType=VARCHAR}, #{userip,jdbcType=VARCHAR}, #{opertype,jdbcType=VARCHAR}, 
       #{opermemo,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     insert into FRMOPERLOG
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -939,7 +939,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLogExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLogExample" resultType="java.lang.Integer">
     select count(*) from FRMOPERLOG
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -987,7 +987,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     update FRMOPERLOG
     <set>
       <if test="account != null">
@@ -1011,7 +1011,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.intermediateCertificationManager.entry.FrmOperLog">
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.FrmOperLog">
     update FRMOPERLOG
     set ACCOUNT = #{account,jdbcType=VARCHAR},
       USERNAME = #{username,jdbcType=VARCHAR},

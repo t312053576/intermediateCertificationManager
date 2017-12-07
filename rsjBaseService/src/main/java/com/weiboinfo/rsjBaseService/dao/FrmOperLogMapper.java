@@ -1,10 +1,9 @@
 package com.weiboinfo.rsjBaseService.dao;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.weiboinfo.rsjBaseService.entry.FrmOperLog;
 import com.weiboinfo.rsjBaseService.entry.FrmOperLogExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FrmOperLogMapper {
     int countByExample(FrmOperLogExample example);

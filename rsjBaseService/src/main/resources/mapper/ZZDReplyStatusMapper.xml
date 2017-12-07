@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.ZZDReplyStatusMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.ZZDReplyStatus" >
+    <id column="DM" property="dm" jdbcType="VARCHAR" />
+    <result column="DMMC" property="dmmc" jdbcType="VARCHAR" />
+    <result column="XH" property="xh" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DM, DMMC, XH
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.ZZDReplyStatusExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ZZDREPLYSTATUS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZZDREPLYSTATUS
+    where DM = #{dm,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ZZDREPLYSTATUS
+    where DM = #{dm,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.ZZDReplyStatusExample" >
+    delete from ZZDREPLYSTATUS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.ZZDReplyStatus" >
+    insert into ZZDREPLYSTATUS (DM, DMMC, XH)
+    values (#{dm,jdbcType=VARCHAR}, #{dmmc,jdbcType=VARCHAR}, #{xh,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.ZZDReplyStatus" >
+    insert into ZZDREPLYSTATUS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dm != null" >
+        DM,
+      </if>
+      <if test="dmmc != null" >
+        DMMC,
+      </if>
+      <if test="xh != null" >
+        XH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dm != null" >
+        #{dm,jdbcType=VARCHAR},
+      </if>
+      <if test="dmmc != null" >
+        #{dmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xh != null" >
+        #{xh,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.ZZDReplyStatusExample" resultType="java.lang.Integer" >
+    select count(*) from ZZDREPLYSTATUS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ZZDREPLYSTATUS
+    <set >
+      <if test="record.dm != null" >
+        DM = #{record.dm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dmmc != null" >
+        DMMC = #{record.dmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xh != null" >
+        XH = #{record.xh,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ZZDREPLYSTATUS
+    set DM = #{record.dm,jdbcType=VARCHAR},
+      DMMC = #{record.dmmc,jdbcType=VARCHAR},
+      XH = #{record.xh,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.ZZDReplyStatus" >
+    update ZZDREPLYSTATUS
+    <set >
+      <if test="dmmc != null" >
+        DMMC = #{dmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xh != null" >
+        XH = #{xh,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DM = #{dm,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.ZZDReplyStatus" >
+    update ZZDREPLYSTATUS
+    set DMMC = #{dmmc,jdbcType=VARCHAR},
+      XH = #{xh,jdbcType=VARCHAR}
+    where DM = #{dm,jdbcType=VARCHAR}
+  </update>
+</mapper>

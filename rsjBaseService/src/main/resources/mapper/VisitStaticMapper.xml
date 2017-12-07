@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiboinfo.rsjBaseService.dao.VisitStaticMapper" >
+  <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.VisitStatic" >
+    <result column="VID" property="vid" jdbcType="VARCHAR" />
+    <result column="PAGEURL" property="pageurl" jdbcType="VARCHAR" />
+    <result column="VIP" property="vip" jdbcType="VARCHAR" />
+    <result column="VTIME" property="vtime" jdbcType="VARCHAR" />
+    <result column="VIPDISTINCT" property="vipdistinct" jdbcType="VARCHAR" />
+    <result column="VIPPROVIDER" property="vipprovider" jdbcType="VARCHAR" />
+    <result column="VREFERER" property="vreferer" jdbcType="VARCHAR" />
+    <result column="PAGETITLE" property="pagetitle" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    VID, PAGEURL, VIP, VTIME, VIPDISTINCT, VIPPROVIDER, VREFERER, PAGETITLE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.VisitStaticExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from VISITSTATIC
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.weiboinfo.rsjBaseService.entry.VisitStaticExample" >
+    delete from VISITSTATIC
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.VisitStatic" >
+    insert into VISITSTATIC (VID, PAGEURL, VIP, 
+      VTIME, VIPDISTINCT, VIPPROVIDER, 
+      VREFERER, PAGETITLE)
+    values (#{vid,jdbcType=VARCHAR}, #{pageurl,jdbcType=VARCHAR}, #{vip,jdbcType=VARCHAR}, 
+      #{vtime,jdbcType=VARCHAR}, #{vipdistinct,jdbcType=VARCHAR}, #{vipprovider,jdbcType=VARCHAR}, 
+      #{vreferer,jdbcType=VARCHAR}, #{pagetitle,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.VisitStatic" >
+    insert into VISITSTATIC
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vid != null" >
+        VID,
+      </if>
+      <if test="pageurl != null" >
+        PAGEURL,
+      </if>
+      <if test="vip != null" >
+        VIP,
+      </if>
+      <if test="vtime != null" >
+        VTIME,
+      </if>
+      <if test="vipdistinct != null" >
+        VIPDISTINCT,
+      </if>
+      <if test="vipprovider != null" >
+        VIPPROVIDER,
+      </if>
+      <if test="vreferer != null" >
+        VREFERER,
+      </if>
+      <if test="pagetitle != null" >
+        PAGETITLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vid != null" >
+        #{vid,jdbcType=VARCHAR},
+      </if>
+      <if test="pageurl != null" >
+        #{pageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="vip != null" >
+        #{vip,jdbcType=VARCHAR},
+      </if>
+      <if test="vtime != null" >
+        #{vtime,jdbcType=VARCHAR},
+      </if>
+      <if test="vipdistinct != null" >
+        #{vipdistinct,jdbcType=VARCHAR},
+      </if>
+      <if test="vipprovider != null" >
+        #{vipprovider,jdbcType=VARCHAR},
+      </if>
+      <if test="vreferer != null" >
+        #{vreferer,jdbcType=VARCHAR},
+      </if>
+      <if test="pagetitle != null" >
+        #{pagetitle,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.VisitStaticExample" resultType="java.lang.Integer" >
+    select count(*) from VISITSTATIC
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update VISITSTATIC
+    <set >
+      <if test="record.vid != null" >
+        VID = #{record.vid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pageurl != null" >
+        PAGEURL = #{record.pageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vip != null" >
+        VIP = #{record.vip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vtime != null" >
+        VTIME = #{record.vtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vipdistinct != null" >
+        VIPDISTINCT = #{record.vipdistinct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vipprovider != null" >
+        VIPPROVIDER = #{record.vipprovider,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vreferer != null" >
+        VREFERER = #{record.vreferer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pagetitle != null" >
+        PAGETITLE = #{record.pagetitle,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update VISITSTATIC
+    set VID = #{record.vid,jdbcType=VARCHAR},
+      PAGEURL = #{record.pageurl,jdbcType=VARCHAR},
+      VIP = #{record.vip,jdbcType=VARCHAR},
+      VTIME = #{record.vtime,jdbcType=VARCHAR},
+      VIPDISTINCT = #{record.vipdistinct,jdbcType=VARCHAR},
+      VIPPROVIDER = #{record.vipprovider,jdbcType=VARCHAR},
+      VREFERER = #{record.vreferer,jdbcType=VARCHAR},
+      PAGETITLE = #{record.pagetitle,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
