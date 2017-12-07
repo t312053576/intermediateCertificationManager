@@ -1,0 +1,2 @@
+# intermediateCertificationManager
+人社局的中级证书项目
