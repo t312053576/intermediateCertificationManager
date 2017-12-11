@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-  <classPathEntry location="C:\Users\Administrator\.m2\repository\com\oracle\ojdbc6\11.2.0.2.0\ojdbc6-11.2.0.2.0.jar" />
+  <classPathEntry location="C:\Users\t3120\.m2\repository\com\oracle\ojdbc6\11.2.0.1.0\ojdbc6-11.2.0.1.0.jar" />
     <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
@@ -15,8 +15,8 @@
 		</commentGenerator>
 
         <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
-                        connectionURL="jdbc:oracle:thin:@10.10.4.18:1521:orcl"
-                        userId="rsbase"
+                        connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:base"
+                        userId="rsj"
                         password="123456">
         </jdbcConnection>
 		
@@ -35,7 +35,8 @@
                              type="XMLMAPPER"/>
                              
         <!--此处只能执行一次后需要屏蔽，否则重复执行代码会翻倍 对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等 -->
-        <table tableName="CERTIFICATE_INFO" domainObjectName="CertificateInfo" />
+         <table tableName="COMMENTS" domainObjectName="Comments" />
+         <!-- <table tableName="CERTIFICATE_INFO" domainObjectName="CertificateInfo" />
         <table tableName="FRMDEPT" domainObjectName="FrmDept" />
         <table tableName="FRMFUNCTIONCELL" domainObjectName="FrmFunctionCell" />
         <table tableName="FRMFUNCTIONCELLURL" domainObjectName="FrmFunctionCellURL" />
@@ -89,7 +90,7 @@
         <table tableName="ZZDTEMPLATETYPE" domainObjectName="ZZDTemplateType" />
         <table tableName="ZZDTYPE" domainObjectName="ZZDType" />
         <table tableName="TEMPLATEBAK" domainObjectName="TemplateBak" />
-        <!-- <table tableName="BM_TALENT_DEMAND" domainObjectName="TalentDemand" />
+        <table tableName="BM_TALENT_DEMAND" domainObjectName="TalentDemand" />
         <table tableName="BM_COMPANY" domainObjectName="Company" />
         <table tableName="BM_TECHNICAL_DEMAND" domainObjectName="TechnicalDemand" />
          -->
