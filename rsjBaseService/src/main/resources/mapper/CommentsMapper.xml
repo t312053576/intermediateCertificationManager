@@ -3,7 +3,6 @@
 <mapper namespace="com.weiboinfo.rsjBaseService.dao.CommentsMapper" >
   <resultMap id="BaseResultMap" type="com.weiboinfo.rsjBaseService.entry.Comments" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
-    <result column="WMCDOCUID" property="wmcdocuid" jdbcType="DECIMAL" />
     <result column="CREATORID" property="creatorid" jdbcType="VARCHAR" />
     <result column="CREATORNAME" property="creatorname" jdbcType="VARCHAR" />
     <result column="CREATTIME" property="creattime" jdbcType="TIMESTAMP" />
@@ -12,6 +11,11 @@
     <result column="VERIFYNAME" property="verifyname" jdbcType="VARCHAR" />
     <result column="VERIFYTIME" property="verifytime" jdbcType="TIMESTAMP" />
     <result column="REPLY" property="reply" jdbcType="VARCHAR" />
+    <result column="WCMCHANELID" property="wcmchanelid" jdbcType="DECIMAL" />
+    <result column="WCMSITEID" property="wcmsiteid" jdbcType="DECIMAL" />
+    <result column="REPLYPUB" property="replypub" jdbcType="CHAR" />
+    <result column="WCMDOCID" property="wcmdocid" jdbcType="DECIMAL" />
+    <result column="VERIFYSTATUS" property="verifystatus" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,8 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, WMCDOCUID, CREATORID, CREATORNAME, CREATTIME, COMMENTS, VERIFYERID, VERIFYNAME, 
-    VERIFYTIME, REPLY
+    ID, CREATORID, CREATORNAME, CREATTIME, COMMENTS, VERIFYERID, VERIFYNAME, VERIFYTIME, 
+    REPLY, WCMCHANELID, WCMSITEID, REPLYPUB, WCMDOCID, VERIFYSTATUS
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weiboinfo.rsjBaseService.entry.CommentsExample" >
     select
@@ -106,23 +110,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.weiboinfo.rsjBaseService.entry.Comments" >
-    insert into COMMENTS (ID, WMCDOCUID, CREATORID, 
-      CREATORNAME, CREATTIME, COMMENTS, 
-      VERIFYERID, VERIFYNAME, VERIFYTIME, 
-      REPLY)
-    values (#{id,jdbcType=VARCHAR}, #{wmcdocuid,jdbcType=DECIMAL}, #{creatorid,jdbcType=VARCHAR}, 
-      #{creatorname,jdbcType=VARCHAR}, #{creattime,jdbcType=TIMESTAMP}, #{comments,jdbcType=VARCHAR}, 
-      #{verifyerid,jdbcType=VARCHAR}, #{verifyname,jdbcType=VARCHAR}, #{verifytime,jdbcType=TIMESTAMP}, 
-      #{reply,jdbcType=VARCHAR})
+    insert into COMMENTS (ID, CREATORID, CREATORNAME, 
+      CREATTIME, COMMENTS, VERIFYERID, 
+      VERIFYNAME, VERIFYTIME, REPLY, 
+      WCMCHANELID, WCMSITEID, REPLYPUB, 
+      WCMDOCID, VERIFYSTATUS)
+    values (#{id,jdbcType=VARCHAR}, #{creatorid,jdbcType=VARCHAR}, #{creatorname,jdbcType=VARCHAR}, 
+      #{creattime,jdbcType=TIMESTAMP}, #{comments,jdbcType=VARCHAR}, #{verifyerid,jdbcType=VARCHAR}, 
+      #{verifyname,jdbcType=VARCHAR}, #{verifytime,jdbcType=TIMESTAMP}, #{reply,jdbcType=VARCHAR}, 
+      #{wcmchanelid,jdbcType=DECIMAL}, #{wcmsiteid,jdbcType=DECIMAL}, #{replypub,jdbcType=CHAR}, 
+      #{wcmdocid,jdbcType=DECIMAL}, #{verifystatus,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.weiboinfo.rsjBaseService.entry.Comments" >
     insert into COMMENTS
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
-      </if>
-      <if test="wmcdocuid != null" >
-        WMCDOCUID,
       </if>
       <if test="creatorid != null" >
         CREATORID,
@@ -148,13 +151,25 @@
       <if test="reply != null" >
         REPLY,
       </if>
+      <if test="wcmchanelid != null" >
+        WCMCHANELID,
+      </if>
+      <if test="wcmsiteid != null" >
+        WCMSITEID,
+      </if>
+      <if test="replypub != null" >
+        REPLYPUB,
+      </if>
+      <if test="wcmdocid != null" >
+        WCMDOCID,
+      </if>
+      <if test="verifystatus != null" >
+        VERIFYSTATUS,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="wmcdocuid != null" >
-        #{wmcdocuid,jdbcType=DECIMAL},
       </if>
       <if test="creatorid != null" >
         #{creatorid,jdbcType=VARCHAR},
@@ -180,6 +195,21 @@
       <if test="reply != null" >
         #{reply,jdbcType=VARCHAR},
       </if>
+      <if test="wcmchanelid != null" >
+        #{wcmchanelid,jdbcType=DECIMAL},
+      </if>
+      <if test="wcmsiteid != null" >
+        #{wcmsiteid,jdbcType=DECIMAL},
+      </if>
+      <if test="replypub != null" >
+        #{replypub,jdbcType=CHAR},
+      </if>
+      <if test="wcmdocid != null" >
+        #{wcmdocid,jdbcType=DECIMAL},
+      </if>
+      <if test="verifystatus != null" >
+        #{verifystatus,jdbcType=CHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.weiboinfo.rsjBaseService.entry.CommentsExample" resultType="java.lang.Integer" >
@@ -193,9 +223,6 @@
     <set >
       <if test="record.id != null" >
         ID = #{record.id,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wmcdocuid != null" >
-        WMCDOCUID = #{record.wmcdocuid,jdbcType=DECIMAL},
       </if>
       <if test="record.creatorid != null" >
         CREATORID = #{record.creatorid,jdbcType=VARCHAR},
@@ -221,6 +248,21 @@
       <if test="record.reply != null" >
         REPLY = #{record.reply,jdbcType=VARCHAR},
       </if>
+      <if test="record.wcmchanelid != null" >
+        WCMCHANELID = #{record.wcmchanelid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.wcmsiteid != null" >
+        WCMSITEID = #{record.wcmsiteid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.replypub != null" >
+        REPLYPUB = #{record.replypub,jdbcType=CHAR},
+      </if>
+      <if test="record.wcmdocid != null" >
+        WCMDOCID = #{record.wcmdocid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.verifystatus != null" >
+        VERIFYSTATUS = #{record.verifystatus,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -229,7 +271,6 @@
   <update id="updateByExample" parameterType="map" >
     update COMMENTS
     set ID = #{record.id,jdbcType=VARCHAR},
-      WMCDOCUID = #{record.wmcdocuid,jdbcType=DECIMAL},
       CREATORID = #{record.creatorid,jdbcType=VARCHAR},
       CREATORNAME = #{record.creatorname,jdbcType=VARCHAR},
       CREATTIME = #{record.creattime,jdbcType=TIMESTAMP},
@@ -237,7 +278,12 @@
       VERIFYERID = #{record.verifyerid,jdbcType=VARCHAR},
       VERIFYNAME = #{record.verifyname,jdbcType=VARCHAR},
       VERIFYTIME = #{record.verifytime,jdbcType=TIMESTAMP},
-      REPLY = #{record.reply,jdbcType=VARCHAR}
+      REPLY = #{record.reply,jdbcType=VARCHAR},
+      WCMCHANELID = #{record.wcmchanelid,jdbcType=DECIMAL},
+      WCMSITEID = #{record.wcmsiteid,jdbcType=DECIMAL},
+      REPLYPUB = #{record.replypub,jdbcType=CHAR},
+      WCMDOCID = #{record.wcmdocid,jdbcType=DECIMAL},
+      VERIFYSTATUS = #{record.verifystatus,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -245,9 +291,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.weiboinfo.rsjBaseService.entry.Comments" >
     update COMMENTS
     <set >
-      <if test="wmcdocuid != null" >
-        WMCDOCUID = #{wmcdocuid,jdbcType=DECIMAL},
-      </if>
       <if test="creatorid != null" >
         CREATORID = #{creatorid,jdbcType=VARCHAR},
       </if>
@@ -272,20 +315,39 @@
       <if test="reply != null" >
         REPLY = #{reply,jdbcType=VARCHAR},
       </if>
+      <if test="wcmchanelid != null" >
+        WCMCHANELID = #{wcmchanelid,jdbcType=DECIMAL},
+      </if>
+      <if test="wcmsiteid != null" >
+        WCMSITEID = #{wcmsiteid,jdbcType=DECIMAL},
+      </if>
+      <if test="replypub != null" >
+        REPLYPUB = #{replypub,jdbcType=CHAR},
+      </if>
+      <if test="wcmdocid != null" >
+        WCMDOCID = #{wcmdocid,jdbcType=DECIMAL},
+      </if>
+      <if test="verifystatus != null" >
+        VERIFYSTATUS = #{verifystatus,jdbcType=CHAR},
+      </if>
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.weiboinfo.rsjBaseService.entry.Comments" >
     update COMMENTS
-    set WMCDOCUID = #{wmcdocuid,jdbcType=DECIMAL},
-      CREATORID = #{creatorid,jdbcType=VARCHAR},
+    set CREATORID = #{creatorid,jdbcType=VARCHAR},
       CREATORNAME = #{creatorname,jdbcType=VARCHAR},
       CREATTIME = #{creattime,jdbcType=TIMESTAMP},
       COMMENTS = #{comments,jdbcType=VARCHAR},
       VERIFYERID = #{verifyerid,jdbcType=VARCHAR},
       VERIFYNAME = #{verifyname,jdbcType=VARCHAR},
       VERIFYTIME = #{verifytime,jdbcType=TIMESTAMP},
-      REPLY = #{reply,jdbcType=VARCHAR}
+      REPLY = #{reply,jdbcType=VARCHAR},
+      WCMCHANELID = #{wcmchanelid,jdbcType=DECIMAL},
+      WCMSITEID = #{wcmsiteid,jdbcType=DECIMAL},
+      REPLYPUB = #{replypub,jdbcType=CHAR},
+      WCMDOCID = #{wcmdocid,jdbcType=DECIMAL},
+      VERIFYSTATUS = #{verifystatus,jdbcType=CHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

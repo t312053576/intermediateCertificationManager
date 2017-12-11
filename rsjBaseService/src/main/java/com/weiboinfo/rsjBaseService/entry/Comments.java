@@ -7,8 +7,6 @@ import java.util.Date;
 public class Comments implements Serializable {
     private String id;
 
-    private BigDecimal wmcdocuid;
-
     private String creatorid;
 
     private String creatorname;
@@ -25,6 +23,16 @@ public class Comments implements Serializable {
 
     private String reply;
 
+    private BigDecimal wcmchanelid;
+
+    private BigDecimal wcmsiteid;
+
+    private String replypub;
+
+    private BigDecimal wcmdocid;
+
+    private String verifystatus;
+
     private static final long serialVersionUID = 1L;
 
     public String getId() {
@@ -33,14 +41,6 @@ public class Comments implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public BigDecimal getWmcdocuid() {
-        return wmcdocuid;
-    }
-
-    public void setWmcdocuid(BigDecimal wmcdocuid) {
-        this.wmcdocuid = wmcdocuid;
     }
 
     public String getCreatorid() {
@@ -105,5 +105,45 @@ public class Comments implements Serializable {
 
     public void setReply(String reply) {
         this.reply = reply;
+    }
+
+    public BigDecimal getWcmchanelid() {
+        return wcmchanelid;
+    }
+
+    public void setWcmchanelid(BigDecimal wcmchanelid) {
+        this.wcmchanelid = wcmchanelid;
+    }
+
+    public BigDecimal getWcmsiteid() {
+        return wcmsiteid;
+    }
+
+    public void setWcmsiteid(BigDecimal wcmsiteid) {
+        this.wcmsiteid = wcmsiteid;
+    }
+
+    public String getReplypub() {
+        return replypub;
+    }
+
+    public void setReplypub(String replypub) {
+        this.replypub = replypub;
+    }
+
+    public BigDecimal getWcmdocid() {
+        return wcmdocid;
+    }
+
+    public void setWcmdocid(BigDecimal wcmdocid) {
+        this.wcmdocid = wcmdocid;
+    }
+
+    public String getVerifystatus() {
+        return verifystatus;
+    }
+
+    public void setVerifystatus(String verifystatus) {
+        this.verifystatus = verifystatus;
     }
 }

@@ -176,66 +176,6 @@ public class CommentsExample {
             return (Criteria) this;
         }
 
-        public Criteria andWmcdocuidIsNull() {
-            addCriterion("WMCDOCUID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidIsNotNull() {
-            addCriterion("WMCDOCUID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidEqualTo(BigDecimal value) {
-            addCriterion("WMCDOCUID =", value, "wmcdocuid");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidNotEqualTo(BigDecimal value) {
-            addCriterion("WMCDOCUID <>", value, "wmcdocuid");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidGreaterThan(BigDecimal value) {
-            addCriterion("WMCDOCUID >", value, "wmcdocuid");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("WMCDOCUID >=", value, "wmcdocuid");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidLessThan(BigDecimal value) {
-            addCriterion("WMCDOCUID <", value, "wmcdocuid");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("WMCDOCUID <=", value, "wmcdocuid");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidIn(List<BigDecimal> values) {
-            addCriterion("WMCDOCUID in", values, "wmcdocuid");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidNotIn(List<BigDecimal> values) {
-            addCriterion("WMCDOCUID not in", values, "wmcdocuid");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("WMCDOCUID between", value1, value2, "wmcdocuid");
-            return (Criteria) this;
-        }
-
-        public Criteria andWmcdocuidNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("WMCDOCUID not between", value1, value2, "wmcdocuid");
-            return (Criteria) this;
-        }
-
         public Criteria andCreatoridIsNull() {
             addCriterion("CREATORID is null");
             return (Criteria) this;
@@ -773,6 +713,326 @@ public class CommentsExample {
 
         public Criteria andReplyNotBetween(String value1, String value2) {
             addCriterion("REPLY not between", value1, value2, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidIsNull() {
+            addCriterion("WCMCHANELID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidIsNotNull() {
+            addCriterion("WCMCHANELID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidEqualTo(BigDecimal value) {
+            addCriterion("WCMCHANELID =", value, "wcmchanelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidNotEqualTo(BigDecimal value) {
+            addCriterion("WCMCHANELID <>", value, "wcmchanelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidGreaterThan(BigDecimal value) {
+            addCriterion("WCMCHANELID >", value, "wcmchanelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("WCMCHANELID >=", value, "wcmchanelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidLessThan(BigDecimal value) {
+            addCriterion("WCMCHANELID <", value, "wcmchanelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("WCMCHANELID <=", value, "wcmchanelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidIn(List<BigDecimal> values) {
+            addCriterion("WCMCHANELID in", values, "wcmchanelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidNotIn(List<BigDecimal> values) {
+            addCriterion("WCMCHANELID not in", values, "wcmchanelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("WCMCHANELID between", value1, value2, "wcmchanelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmchanelidNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("WCMCHANELID not between", value1, value2, "wcmchanelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidIsNull() {
+            addCriterion("WCMSITEID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidIsNotNull() {
+            addCriterion("WCMSITEID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidEqualTo(BigDecimal value) {
+            addCriterion("WCMSITEID =", value, "wcmsiteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidNotEqualTo(BigDecimal value) {
+            addCriterion("WCMSITEID <>", value, "wcmsiteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidGreaterThan(BigDecimal value) {
+            addCriterion("WCMSITEID >", value, "wcmsiteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("WCMSITEID >=", value, "wcmsiteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidLessThan(BigDecimal value) {
+            addCriterion("WCMSITEID <", value, "wcmsiteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("WCMSITEID <=", value, "wcmsiteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidIn(List<BigDecimal> values) {
+            addCriterion("WCMSITEID in", values, "wcmsiteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidNotIn(List<BigDecimal> values) {
+            addCriterion("WCMSITEID not in", values, "wcmsiteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("WCMSITEID between", value1, value2, "wcmsiteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmsiteidNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("WCMSITEID not between", value1, value2, "wcmsiteid");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubIsNull() {
+            addCriterion("REPLYPUB is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubIsNotNull() {
+            addCriterion("REPLYPUB is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubEqualTo(String value) {
+            addCriterion("REPLYPUB =", value, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubNotEqualTo(String value) {
+            addCriterion("REPLYPUB <>", value, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubGreaterThan(String value) {
+            addCriterion("REPLYPUB >", value, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubGreaterThanOrEqualTo(String value) {
+            addCriterion("REPLYPUB >=", value, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubLessThan(String value) {
+            addCriterion("REPLYPUB <", value, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubLessThanOrEqualTo(String value) {
+            addCriterion("REPLYPUB <=", value, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubLike(String value) {
+            addCriterion("REPLYPUB like", value, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubNotLike(String value) {
+            addCriterion("REPLYPUB not like", value, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubIn(List<String> values) {
+            addCriterion("REPLYPUB in", values, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubNotIn(List<String> values) {
+            addCriterion("REPLYPUB not in", values, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubBetween(String value1, String value2) {
+            addCriterion("REPLYPUB between", value1, value2, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplypubNotBetween(String value1, String value2) {
+            addCriterion("REPLYPUB not between", value1, value2, "replypub");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidIsNull() {
+            addCriterion("WCMDOCID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidIsNotNull() {
+            addCriterion("WCMDOCID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidEqualTo(BigDecimal value) {
+            addCriterion("WCMDOCID =", value, "wcmdocid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidNotEqualTo(BigDecimal value) {
+            addCriterion("WCMDOCID <>", value, "wcmdocid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidGreaterThan(BigDecimal value) {
+            addCriterion("WCMDOCID >", value, "wcmdocid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("WCMDOCID >=", value, "wcmdocid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidLessThan(BigDecimal value) {
+            addCriterion("WCMDOCID <", value, "wcmdocid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("WCMDOCID <=", value, "wcmdocid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidIn(List<BigDecimal> values) {
+            addCriterion("WCMDOCID in", values, "wcmdocid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidNotIn(List<BigDecimal> values) {
+            addCriterion("WCMDOCID not in", values, "wcmdocid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("WCMDOCID between", value1, value2, "wcmdocid");
+            return (Criteria) this;
+        }
+
+        public Criteria andWcmdocidNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("WCMDOCID not between", value1, value2, "wcmdocid");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusIsNull() {
+            addCriterion("VERIFYSTATUS is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusIsNotNull() {
+            addCriterion("VERIFYSTATUS is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusEqualTo(String value) {
+            addCriterion("VERIFYSTATUS =", value, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusNotEqualTo(String value) {
+            addCriterion("VERIFYSTATUS <>", value, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusGreaterThan(String value) {
+            addCriterion("VERIFYSTATUS >", value, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusGreaterThanOrEqualTo(String value) {
+            addCriterion("VERIFYSTATUS >=", value, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusLessThan(String value) {
+            addCriterion("VERIFYSTATUS <", value, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusLessThanOrEqualTo(String value) {
+            addCriterion("VERIFYSTATUS <=", value, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusLike(String value) {
+            addCriterion("VERIFYSTATUS like", value, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusNotLike(String value) {
+            addCriterion("VERIFYSTATUS not like", value, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusIn(List<String> values) {
+            addCriterion("VERIFYSTATUS in", values, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusNotIn(List<String> values) {
+            addCriterion("VERIFYSTATUS not in", values, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusBetween(String value1, String value2) {
+            addCriterion("VERIFYSTATUS between", value1, value2, "verifystatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andVerifystatusNotBetween(String value1, String value2) {
+            addCriterion("VERIFYSTATUS not between", value1, value2, "verifystatus");
             return (Criteria) this;
         }
     }
